@@ -1,0 +1,14 @@
+{
+  "name": "Webrivio — Premium Website Studio",
+  "short_name": "Webrivio",
+  "description": "Premium websites for local service businesses.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050B18",
+  "theme_color": "#050B18",
+  "lang": "en-US",
+  "scope": "/",
+  "icons": [
+    { "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

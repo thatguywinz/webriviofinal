@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 48" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="wlo-a" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A5C4FF"/>
+      <stop offset="55%" stop-color="#4D7EFF"/>
+      <stop offset="100%" stop-color="#2E52BE"/>
+    </linearGradient>
+    <linearGradient id="wlo-b" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BBDCFF"/>
+      <stop offset="50%" stop-color="#7BA4FF"/>
+      <stop offset="100%" stop-color="#3E6EEF"/>
+    </linearGradient>
+    <linearGradient id="wlo-c" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9FE9FF"/>
+      <stop offset="100%" stop-color="#4D7EFF"/>
+    </linearGradient>
+    <filter id="wlo-shine" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Left swoop: first V of W -->
+  <path d="M3 5 L10 3.5 L19 32 L26 16 L30.5 26 L24 44 L16 44 Z"
+        fill="url(#wlo-a)" stroke="#E9F1FF" stroke-width="0.3" stroke-opacity="0.35"/>
+
+  <!-- Right swoop: second V of W that extends into a motion arrow -->
+  <path d="M26 5 L34 3.5 L41 28 L55 8 L61 10.5 L46 40 L38 44 L32 38 Z"
+        fill="url(#wlo-b)" stroke="#E9F1FF" stroke-width="0.3" stroke-opacity="0.35"/>
+
+  <!-- Subtle inner highlight on left swoop -->
+  <path d="M6 6 L9 5 L15 24 L13 27 Z" fill="#E9F1FF" opacity="0.15"/>
+
+  <!-- Subtle inner highlight on right swoop -->
+  <path d="M29 6 L32 5 L38 24 L35 28 Z" fill="#E9F1FF" opacity="0.15"/>
+
+  <!-- Arrow tip accent (upper-right, motion/growth) -->
+  <path d="M52 4 L62 5.5 L58 14 Z" fill="url(#wlo-c)"/>
+</svg>
