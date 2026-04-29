@@ -174,27 +174,75 @@
     });
   });
 
-  /* ---------- contact form (UI-only) ---------- */
+  /* ---------- contact form (FormSubmit AJAX) ---------- */
   const form = document.querySelector('.contact-form');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    const status = form.querySelector('.form-status');
+    // ?sent=1 is the fallback redirect target if a non-AJAX submit succeeded
+    if (/[?&]sent=1\b/.test(location.search) && status) {
+      status.textContent = 'Thanks — your inquiry is in. We reply within one business day.';
+      status.className = 'form-status ok';
+      history.replaceState(null, '', location.pathname);
+    }
+    const setStatus = (msg, kind) => {
+      if (!status) return;
+      status.textContent = msg;
+      status.className = 'form-status' + (kind ? ' ' + kind : '');
+    };
+
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]');
-      if (!btn) return;
-      const label = btn.querySelector('.label');
-      const orig = label ? label.textContent : btn.textContent;
-      if (label) label.textContent = 'Sent — we\'ll be in touch';
-      else btn.textContent = 'Sent — we\'ll be in touch';
-      btn.disabled = true;
-      btn.style.opacity = 0.7;
-      setTimeout(() => {
+      const label = btn ? btn.querySelector('.label') : null;
+      const orig = label ? label.textContent : (btn ? btn.textContent : '');
+
+      // Honeypot: if filled, silently succeed (spam bot)
+      const honey = form.querySelector('input[name="_honey"]');
+      if (honey && honey.value) { setStatus('Thanks — we\'ll be in touch shortly.', 'ok'); form.reset(); return; }
+
+      // HTML5 validation
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      if (btn) { btn.disabled = true; btn.style.opacity = 0.7; }
+      if (label) label.textContent = 'Sending…';
+      setStatus('Sending your inquiry…', 'pending');
+
+      try {
+        const fd = new FormData(form);
+        // Use FormSubmit's AJAX endpoint (returns JSON, no redirect)
+        const action = form.getAttribute('action') || '';
+        const ajaxUrl = action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+        const res = await fetch(ajaxUrl, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: fd
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        // FormSubmit responds with JSON; success: "true" (string) or true
+        let ok = true;
+        try {
+          const data = await res.json();
+          if (data && (data.success === false || data.success === 'false')) ok = false;
+        } catch (_) { /* non-JSON ok */ }
+        if (!ok) throw new Error('Submission rejected');
+
+        if (label) label.textContent = 'Sent — we\'ll be in touch';
+        setStatus('Thanks — your inquiry is in. We reply within one business day.', 'ok');
         form.reset();
         form.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
+
+        setTimeout(() => {
+          if (label) label.textContent = orig;
+          if (btn) { btn.disabled = false; btn.style.opacity = 1; }
+        }, 3800);
+      } catch (err) {
         if (label) label.textContent = orig;
-        else btn.textContent = orig;
-        btn.disabled = false;
-        btn.style.opacity = 1;
-      }, 3800);
+        if (btn) { btn.disabled = false; btn.style.opacity = 1; }
+        setStatus('Couldn\'t send right now. Email us at hello@webrivio.com — we\'ll get straight back to you.', 'err');
+      }
     });
   }
 

@@ -231,10 +231,12 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
 }
 .nav-brand:hover { opacity: 0.85; }
 .nav-brand .mark {
-  width: 26px; height: 20px;
+  width: 28px; height: 28px;
   display: block;
-  filter: drop-shadow(0 0 8px rgba(123,164,255,0.3));
+  border-radius: 6px;
+  filter: drop-shadow(0 0 10px rgba(123,164,255,0.35));
   flex-shrink: 0;
+  object-fit: cover;
 }
 .nav-brand .dot {
   width: 7px; height: 7px; border-radius: 50%;
@@ -903,7 +905,12 @@ html:not(.js) .progress { display: none; }
   gap: 14px;
   margin-bottom: 20px;
 }
-.foot-brand-row .mark { width: 32px; height: 24px; }
+.foot-brand-row .mark {
+  width: 36px; height: 36px;
+  border-radius: 7px;
+  object-fit: cover;
+  filter: drop-shadow(0 0 12px rgba(123,164,255,0.3));
+}
 .foot-brand-row .wordmark {
   font-family: var(--serif);
   font-style: italic;
@@ -1295,6 +1302,23 @@ footer {
   background: var(--accent-glow);
   box-shadow: 0 0 10px var(--accent);
 }
+
+/* Form status message (live region) */
+.form-status {
+  margin-top: 18px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--mute-2);
+  min-height: 18px;
+  transition: color .25s var(--ease, ease);
+}
+.form-status.pending { color: var(--ink-soft); }
+.form-status.ok {
+  color: var(--accent-glow);
+  text-shadow: 0 0 18px rgba(127,227,255,0.35);
+}
+.form-status.err { color: #FF8B8B; }
 
 /* Sidebar (simplified, no FAQ) */
 .contact-side {
