@@ -231,12 +231,10 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
 }
 .nav-brand:hover { opacity: 0.85; }
 .nav-brand .mark {
-  width: 28px; height: 28px;
+  width: 26px; height: 20px;
   display: block;
-  border-radius: 6px;
-  filter: drop-shadow(0 0 10px rgba(123,164,255,0.35));
+  filter: drop-shadow(0 0 8px rgba(123,164,255,0.3));
   flex-shrink: 0;
-  object-fit: cover;
 }
 .nav-brand .dot {
   width: 7px; height: 7px; border-radius: 50%;
@@ -905,12 +903,7 @@ html:not(.js) .progress { display: none; }
   gap: 14px;
   margin-bottom: 20px;
 }
-.foot-brand-row .mark {
-  width: 36px; height: 36px;
-  border-radius: 7px;
-  object-fit: cover;
-  filter: drop-shadow(0 0 12px rgba(123,164,255,0.3));
-}
+.foot-brand-row .mark { width: 32px; height: 24px; }
 .foot-brand-row .wordmark {
   font-family: var(--serif);
   font-style: italic;

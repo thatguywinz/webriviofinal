@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="og-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D1E45"/>
+      <stop offset="100%" stop-color="#050B18"/>
+    </linearGradient>
+    <radialGradient id="og-glow" cx="75%" cy="25%" r="40%">
+      <stop offset="0%" stop-color="#7FE3FF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#7FE3FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="og-glow2" cx="20%" cy="85%" r="45%">
+      <stop offset="0%" stop-color="#4D7EFF" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#4D7EFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="og-w-a" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A5C4FF"/>
+      <stop offset="100%" stop-color="#2E52BE"/>
+    </linearGradient>
+    <linearGradient id="og-w-b" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BBDCFF"/>
+      <stop offset="100%" stop-color="#3E6EEF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#og-bg)"/>
+  <rect width="1200" height="630" fill="url(#og-glow)"/>
+  <rect width="1200" height="630" fill="url(#og-glow2)"/>
+
+  <!-- grid lines -->
+  <g opacity="0.08" stroke="#7BA4FF" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="314" x2="1200" y2="314"/>
+    <line x1="0" y1="471" x2="1200" y2="471"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+
+  <!-- top brand bar -->
+  <g transform="translate(80 70)">
+    <g transform="scale(1.4)">
+      <path d="M2 4 L8 2.8 L16 28 L22 14 L26 23 L20 40 L13 40 Z" fill="url(#og-w-a)"/>
+      <path d="M22 4 L29 2.8 L35 25 L47 8 L52 10 L39 36 L32 40 L27 34 Z" fill="url(#og-w-b)"/>
+      <path d="M44 4 L52 5 L49 12 Z" fill="#9FE9FF"/>
+    </g>
+    <text x="100" y="48" font-family="Georgia, serif" font-style="italic" font-size="40" fill="#EEF3FC" letter-spacing="-0.02em">Webrivio</text>
+  </g>
+
+  <!-- tiny label -->
+  <text x="80" y="210" font-family="monospace" font-size="18" fill="#7BA4FF" letter-spacing="0.2em">— PREMIUM WEBSITE STUDIO</text>
+
+  <!-- big display headline -->
+  <text x="80" y="340" font-family="Georgia, serif" font-size="108" fill="#EEF3FC" letter-spacing="-0.025em">Websites that</text>
+  <text x="80" y="460" font-family="Georgia, serif" font-style="italic" font-size="108" fill="#7BA4FF" letter-spacing="-0.025em">earn</text>
+  <text x="310" y="460" font-family="Georgia, serif" font-size="108" fill="#EEF3FC" letter-spacing="-0.025em">their keep.</text>
+
+  <!-- subtext -->
+  <text x="80" y="530" font-family="sans-serif" font-size="24" fill="#C2CEE4">Premium websites for local service businesses — built to convert.</text>
+
+  <!-- bottom right stamp -->
+  <text x="1120" y="570" font-family="monospace" font-size="16" fill="#7BA4FF" text-anchor="end" letter-spacing="0.2em">WEBRIVIO.COM</text>
+</svg>

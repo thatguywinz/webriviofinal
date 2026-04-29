@@ -9,7 +9,6 @@
   "lang": "en-US",
   "scope": "/",
   "icons": [
-    { "src": "/assets/favicon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "/assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png", "purpose": "maskable" }
+    { "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
   ]
 }
