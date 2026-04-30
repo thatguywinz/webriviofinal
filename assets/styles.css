@@ -457,8 +457,8 @@ html:not(.js) .progress { display: none; }
 /* ---------- HERO (home) ---------- */
 .hero {
   min-height: 100vh;
-  min-height: 100dvh;
-  padding: 140px 0 80px;
+  min-height: 100svh;
+  padding: clamp(120px, 22vh, 200px) 0 clamp(40px, 7vh, 80px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -467,7 +467,7 @@ html:not(.js) .progress { display: none; }
 }
 .hero-meta {
   position: absolute;
-  top: 140px;
+  top: clamp(88px, 13vh, 140px);
   left: var(--gutter);
   right: var(--gutter);
   display: flex;
@@ -478,11 +478,11 @@ html:not(.js) .progress { display: none; }
 }
 .hero-meta .tiny-mono { max-width: 280px; line-height: 1.6; }
 .hero-headline {
-  margin-bottom: 60px;
+  margin-bottom: clamp(28px, 5vh, 60px);
 }
 .hero-headline h1 {
   font-family: var(--serif);
-  font-size: clamp(56px, 14vw, 240px);
+  font-size: clamp(40px, min(14vw, 22vh), 240px);
   line-height: 0.9;
   letter-spacing: -0.025em;
   font-weight: 400;
@@ -995,16 +995,22 @@ footer {
 
 /* ---------- Page Header (non-home) ---------- */
 .page-head {
-  padding: 180px 0 100px;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(110px, 18vh, 180px) 0 clamp(48px, 8vh, 100px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   overflow: hidden;
 }
 .page-head h1 {
   font-family: var(--serif);
-  font-size: clamp(64px, 11vw, 180px);
-  line-height: 0.9;
+  font-size: clamp(36px, min(11vw, 18vh), 180px);
+  line-height: 0.92;
   letter-spacing: -0.025em;
   margin: 20px 0 40px;
+  width: 100%;
 }
 .page-head h1 .it { font-style: italic; color: var(--accent-glow); }
 .page-head .lede { max-width: 52ch; }
@@ -1498,14 +1504,10 @@ footer {
   .stats-grid { grid-template-columns: 1fr; }
   .stat-cell { padding: 28px 22px; }
   .section-label { flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 36px; }
-  .hero-meta { top: 110px; gap: 10px; }
+  .hero-meta { gap: 10px; }
   .hero-meta .tiny-mono { max-width: none; line-height: 1.5; font-size: 10px; }
-  .hero { padding: 180px 0 64px; }
-  .hero-headline { margin-bottom: 40px; }
   .hero-footer { padding-top: 32px; gap: 28px; }
-  .page-head { padding: 140px 0 60px; }
-  .page-head h1 { font-size: clamp(54px, 13vw, 180px); }
-  .page-head-meta { padding-top: 40px; margin-top: 40px; gap: 22px; }
+  .page-head-meta { padding-top: 32px; margin-top: 32px; gap: 18px; }
   .case-study .case-stats { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
   .case-study .case-stats .n { font-size: 22px; }
   .cta-block { padding: 56px 22px; }
@@ -1553,7 +1555,6 @@ footer {
   .work-grid { grid-template-columns: 1fr 1fr; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
   .why-wrap, .split, .contact-wrap, .phase { gap: 56px; }
-  .page-head { padding: 150px 0 80px; }
 }
 
 /* very-small phones (iPhone SE / small Androids) */
@@ -1562,14 +1563,10 @@ footer {
   .nav-inner { gap: 8px; padding: 8px 8px 8px 14px; }
   .nav-brand { font-size: 19px; gap: 8px; }
   .nav-brand .mark { width: 22px; height: 17px; }
-  .hero-meta { top: 100px; }
   .hero-meta .tiny-mono { font-size: 9px; letter-spacing: 0.16em; }
-  .hero-headline h1 { font-size: clamp(48px, 13vw, 70px); }
-  .hero { padding: 168px 0 48px; }
   h1.display { font-size: clamp(48px, 12vw, 96px); }
   h2.display { font-size: clamp(36px, 10vw, 84px); }
   .cta-block h2 { font-size: clamp(38px, 11vw, 80px); }
-  .page-head h1 { font-size: clamp(46px, 13vw, 96px); }
   .split-heading { font-size: clamp(32px, 9vw, 64px); }
   .service-card { padding: 24px 20px; }
   .service-card h3 { font-size: 26px; }
@@ -1585,6 +1582,17 @@ footer {
   .foot-big { font-size: clamp(44px, 13vw, 100px); }
   .ticker-item { font-size: clamp(20px, 7vw, 32px); gap: 40px; }
   .ticker-track { gap: 40px; }
+}
+
+/* short viewports (landscape phones, foldables): drop forced min-height
+   so the hero scrolls naturally instead of compressing content into a sliver */
+@media (max-height: 560px) {
+  .hero, .page-head {
+    min-height: auto;
+  }
+  .hero { padding: clamp(96px, 18vh, 140px) 0 clamp(32px, 6vh, 56px); }
+  .page-head { padding: clamp(96px, 16vh, 140px) 0 clamp(32px, 6vh, 56px); }
+  .hero-headline { margin-bottom: clamp(20px, 3vh, 32px); }
 }
 
 /* mobile performance: lighter blurs/orbs on small viewports */
