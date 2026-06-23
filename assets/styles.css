@@ -238,9 +238,10 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
 }
 .nav-brand:hover { opacity: 0.85; }
 .nav-brand .mark {
-  width: 26px; height: 20px;
+  width: 24px; height: 24px;
   display: block;
-  filter: drop-shadow(0 0 8px rgba(123,164,255,0.3));
+  border-radius: 6px;
+  filter: drop-shadow(0 0 10px rgba(123,164,255,0.35));
   flex-shrink: 0;
 }
 .nav-brand .dot {
@@ -916,7 +917,7 @@ html:not(.js) .progress { display: none; }
   gap: 14px;
   margin-bottom: 20px;
 }
-.foot-brand-row .mark { width: 32px; height: 24px; }
+.foot-brand-row .mark { width: 30px; height: 30px; border-radius: 7px; filter: drop-shadow(0 0 10px rgba(123,164,255,0.3)); }
 .foot-brand-row .wordmark {
   font-family: var(--serif);
   font-style: italic;
@@ -1562,7 +1563,7 @@ footer {
   :root { --gutter: 18px; }
   .nav-inner { gap: 8px; padding: 8px 8px 8px 14px; }
   .nav-brand { font-size: 19px; gap: 8px; }
-  .nav-brand .mark { width: 22px; height: 17px; }
+  .nav-brand .mark { width: 22px; height: 22px; }
   .hero-meta .tiny-mono { font-size: 9px; letter-spacing: 0.16em; }
   h1.display { font-size: clamp(48px, 12vw, 96px); }
   h2.display { font-size: clamp(36px, 10vw, 84px); }
