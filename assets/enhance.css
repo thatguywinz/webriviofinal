@@ -11,6 +11,37 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: clip; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
 
+/* ---------- Atmosphere layers 2+3 (drafting grid + aurora wisps) ---------- */
+/* layer 2: drafting grid — 1px lines every 72px, heavier every 360px.
+   Extra top/bottom bleed gives the JS parallax drift headroom. */
+.atm-grid {
+  position: fixed;
+  inset: -360px 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    repeating-linear-gradient(0deg,  rgba(123,164,255,0.04) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(90deg, rgba(123,164,255,0.04) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(0deg,  rgba(123,164,255,0.07) 0 1px, transparent 1px 360px),
+    repeating-linear-gradient(90deg, rgba(123,164,255,0.07) 0 1px, transparent 1px 360px);
+  will-change: transform;
+}
+/* layer 3: aurora wisps canvas (JS-initialized; sits under the grid) */
+#atm-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.1s var(--ease-out);
+}
+#atm-canvas.on { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  #atm-canvas { display: none; }
+}
+
 /* ---------- Hero living field (WebGL canvas + CSS fallback) ---------- */
 .hero-field {
   position: absolute;

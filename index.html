@@ -96,7 +96,11 @@
 <!-- Vercel Web Analytics -->
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
-<body>
+<body data-page="home">
+
+<!-- atmosphere: wisp canvas (JS) + drafting grid overlay; depth gradient paints via CSS -->
+<canvas id="atm-canvas" aria-hidden="true"></canvas>
+<div class="atm-grid" aria-hidden="true"></div>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -144,7 +148,7 @@
 <main id="main">
 
 <!-- ============ HERO ============ -->
-<header class="hero container">
+<header class="hero container" data-atm="0">
   <!-- living field: WebGL aurora on top of an always-painted CSS fallback -->
   <div class="hero-field" aria-hidden="true">
     <canvas id="hero-canvas"></canvas>
@@ -214,7 +218,7 @@
 </div>
 
 <!-- ============ SELECTED WORK (proof, high on the page) ============ -->
-<section class="section-pad showcase" aria-labelledby="work-title">
+<section class="section-pad showcase" data-atm="0.3" aria-labelledby="work-title">
   <div class="container">
     <div class="section-label">
       <span class="num">(01)</span>
@@ -324,7 +328,7 @@
 </section>
 
 <!-- ============ THE UNSEEN COST ============ -->
-<section class="section-pad tight" id="cost" aria-labelledby="problem-title">
+<section class="section-pad tight" id="cost" data-atm="0.2" aria-labelledby="problem-title">
   <div class="container">
     <div class="section-label">
       <span class="num">(02)</span>
@@ -392,7 +396,7 @@
 </section>
 
 <!-- ============ WHAT WE BUILD ============ -->
-<section class="section-pad tight" style="padding-top: 40px;" aria-labelledby="services-title">
+<section class="section-pad tight" style="padding-top: 40px;" data-atm="0.25" aria-labelledby="services-title">
   <div class="container">
     <div class="section-label">
       <span class="num">(03)</span>
@@ -478,7 +482,7 @@
 </section>
 
 <!-- ============ PROOF ============ -->
-<section class="section-pad" style="padding-top: 20px;" aria-labelledby="proof-title">
+<section class="section-pad" style="padding-top: 20px;" data-atm="0.3" aria-labelledby="proof-title">
   <div class="container">
     <div class="section-label">
       <span class="num">(04)</span>
@@ -605,7 +609,7 @@
 </section>
 
 <!-- ============ WHY WEBRIVIO ============ -->
-<section class="section-pad tight" aria-labelledby="why-title">
+<section class="section-pad tight" data-atm="0.2" aria-labelledby="why-title">
   <div class="container">
     <div class="section-label">
       <span class="num">(05)</span>
@@ -663,7 +667,7 @@
 </section>
 
 <!-- ============ FINAL CTA ============ -->
-<section class="section-pad tight" aria-labelledby="cta-title">
+<section class="section-pad tight" data-atm="0.6" aria-labelledby="cta-title">
   <div class="container">
     <div class="cta-block">
       <span class="eyebrow" style="color: var(--accent-glow); justify-content: center; margin-bottom: 32px;">Ready when you are · 2 slots — July 2026</span>
@@ -754,6 +758,8 @@
 
 <!-- baseline interactions (works with no libs) -->
 <script src="assets/app.js" defer></script>
+<!-- atmosphere engine (self-skips; inits after first paint) -->
+<script src="assets/atmosphere.js" defer></script>
 <!-- motion libraries (vendored, ownable) + enhancement layer -->
 <script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/vendor/gsap.min.js" defer></script>

@@ -66,7 +66,10 @@
 <!-- Vercel Web Analytics -->
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
-<body>
+<body data-page="work">
+
+<canvas id="atm-canvas" aria-hidden="true"></canvas>
+<div class="atm-grid" aria-hidden="true"></div>
 
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="progress" aria-hidden="true"></div>
@@ -102,7 +105,7 @@
 
 <main id="main">
 
-<header class="page-head container">
+<header class="page-head container" data-atm="1">
   <div class="hero-orb" style="right:-15%; top: 24%; opacity: 0.6;" data-parallax="0.1" aria-hidden="true"></div>
   <span class="eyebrow">Selected work</span>
   <h1 class="reveal-mask"><span>Proof, not <em class="it">promises</em>.</span></h1>
@@ -117,7 +120,7 @@
 </header>
 
 <!-- ============ PROJECT 1 ============ -->
-<section class="section-pad showcase" style="padding-top: 20px;" aria-labelledby="p1-title">
+<section class="section-pad showcase" style="padding-top: 20px;" data-atm="0.3" aria-labelledby="p1-title">
   <div class="container">
     <div class="section-label"><span class="num">(01)</span><span class="kind">Roofing</span></div>
 
@@ -185,7 +188,7 @@
 </section>
 
 <!-- ============ PROJECT 2 ============ -->
-<section class="section-pad showcase" style="padding-top: 0;" aria-labelledby="p2-title">
+<section class="section-pad showcase" style="padding-top: 0;" data-atm="0.3" aria-labelledby="p2-title">
   <div class="container">
     <div class="section-label"><span class="num">(02)</span><span class="kind">Medspa</span></div>
 
@@ -235,7 +238,7 @@
 </section>
 
 <!-- ============ NEXT / CTA ============ -->
-<section class="section-pad" style="padding-top: 20px;" aria-labelledby="work-cta">
+<section class="section-pad" style="padding-top: 20px;" data-atm="0.6" aria-labelledby="work-cta">
   <div class="container">
     <div class="cta-block">
       <span class="eyebrow" style="color: var(--accent-glow); justify-content: center; margin-bottom: 32px;">A spot open for the right business</span>
@@ -308,6 +311,7 @@
 
 <script>document.getElementById('y2').textContent=new Date().getFullYear();</script>
 <script src="assets/app.js" defer></script>
+<script src="assets/atmosphere.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>

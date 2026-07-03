@@ -100,19 +100,23 @@ body::before {
   background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.9'/></svg>");
 }
 
-/* ambient gradient wash */
+/* atmosphere layer 1 — depth gradient (always painted; the reduced-motion /
+   no-JS / contact / 404 final state). Orb positions set per page via data-page. */
 body::after {
   content: '';
   position: fixed;
-  top: -20vh; left: -10vw;
-  width: 120vw; height: 80vh;
+  inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: -3;
   background:
-    radial-gradient(60% 40% at 30% 20%, rgba(77,126,255,0.12), transparent 70%),
-    radial-gradient(50% 60% at 80% 10%, rgba(127,227,255,0.05), transparent 70%);
-  filter: blur(20px);
+    radial-gradient(900px 600px at var(--atm-orb1-x, 20%) var(--atm-orb1-y, 15%), rgba(30,63,153,0.28), transparent 70%),
+    radial-gradient(1100px 700px at var(--atm-orb2-x, 85%) var(--atm-orb2-y, 70%), rgba(77,126,255,0.14), transparent 72%),
+    linear-gradient(180deg, var(--bg), var(--bg-soft) 55%, var(--bg));
 }
+body[data-page="work"]     { --atm-orb1-x: 78%; --atm-orb1-y: 10%; --atm-orb2-x: 12%; --atm-orb2-y: 78%; }
+body[data-page="services"] { --atm-orb1-x: 12%; --atm-orb1-y: 18%; --atm-orb2-x: 88%; --atm-orb2-y: 62%; }
+body[data-page="process"]  { --atm-orb1-x: 85%; --atm-orb1-y: 16%; --atm-orb2-x: 16%; --atm-orb2-y: 80%; }
+body[data-page="contact"]  { --atm-orb1-x: 16%; --atm-orb1-y: 22%; --atm-orb2-x: 84%; --atm-orb2-y: 74%; }
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }

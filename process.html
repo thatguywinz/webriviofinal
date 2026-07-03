@@ -71,7 +71,10 @@
 <!-- Vercel Web Analytics -->
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
-<body>
+<body data-page="process">
+
+<canvas id="atm-canvas" aria-hidden="true"></canvas>
+<div class="atm-grid" aria-hidden="true"></div>
 
 <a class="skip-link" href="#main">Skip to content</a>
 <div class="progress" aria-hidden="true"></div>
@@ -107,7 +110,7 @@
 
 <main id="main">
 
-<header class="page-head container">
+<header class="page-head container" data-atm="1">
   <div class="hero-orb" style="left:-15%; right: auto; top: 20%;" data-parallax="0.12" aria-hidden="true"></div>
   <span class="eyebrow">Process · How it goes</span>
   <h1 class="reveal-mask"><span>From outreach.<br/><em class="it">To delivery.</em></span></h1>
@@ -121,7 +124,7 @@
   </div>
 </header>
 
-<section class="container proc-timeline" style="padding: 40px 0 120px;" aria-label="Process phases">
+<section class="container proc-timeline" style="padding: 40px 0 120px;" data-atm="0.25" aria-label="Process phases">
   <div class="timeline-line" aria-hidden="true"><span></span></div>
 
   <article class="phase">
@@ -182,7 +185,7 @@
 
 </section>
 
-<section class="section-pad tight" aria-labelledby="ask-title">
+<section class="section-pad tight" data-atm="0.2" aria-labelledby="ask-title">
   <div class="container">
     <div class="section-label">
       <span class="num">(05)</span>
@@ -216,7 +219,7 @@
   </div>
 </section>
 
-<section class="section-pad tight" aria-labelledby="proc-cta">
+<section class="section-pad tight" data-atm="0.6" aria-labelledby="proc-cta">
   <div class="container">
     <div class="cta-block">
       <h2 id="proc-cta">
@@ -285,6 +288,7 @@
 
 <script>document.getElementById('y2').textContent=new Date().getFullYear();</script>
 <script src="assets/app.js" defer></script>
+<script src="assets/atmosphere.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
