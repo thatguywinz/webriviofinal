@@ -140,7 +140,7 @@
   }
 
   /* ---------- marquee duplication ---------- */
-  document.querySelectorAll('.ticker-track').forEach(track => {
+  document.querySelectorAll('.ticker-track, .logo-track').forEach(track => {
     track.innerHTML += track.innerHTML;
     if (prefersReducedMotion) track.style.animation = 'none';
   });
