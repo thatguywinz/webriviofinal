@@ -114,7 +114,8 @@ html.lenis, html.lenis body { height: auto; }
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px;
+  height: var(--btn-h);
+  padding: 0 14px;
   border-radius: 999px;
   font-size: 14px;
   font-weight: 500;
@@ -125,7 +126,7 @@ html.lenis, html.lenis body { height: auto; }
   color: var(--ink);
   flex: 0 0 auto;
   width: 52px;
-  padding: 14px 0;
+  padding: 0;
 }
 .mobile-cta .m-call svg { width: 18px; height: 18px; }
 .mobile-cta .m-start {
@@ -190,7 +191,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* reusable browser mockup */
 .mockup {
-  border-radius: 12px;
+  border-radius: var(--r-md);
   border: 1px solid var(--border-strong);
   background: var(--surface);
   overflow: hidden;
@@ -245,7 +246,7 @@ html.lenis, html.lenis body { height: auto; }
 .demo-hero h6 em { font-style: italic; }
 .demo-hero .demo-cta { display: inline-flex; width: max-content; padding: 7px 14px; border-radius: 999px; font-size: 9px; }
 .demo-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 0 24px 24px; }
-.demo-cards div { height: 46px; border-radius: 8px; }
+.demo-cards div { height: 46px; border-radius: var(--r-sm); }
 
 /* demo-site palettes (representative industries) */
 .demo-roof   { background: linear-gradient(160deg,#0E1B14,#081410); color:#CFEFD8; }
@@ -274,7 +275,7 @@ html.lenis, html.lenis body { height: auto; }
   width: 23%;
   min-width: 92px;
   aspect-ratio: 9 / 19;
-  border-radius: 18px;
+  border-radius: var(--r-md);
   border: 1px solid var(--border-strong);
   background: var(--bg);
   box-shadow: 0 30px 60px -20px rgba(0,0,0,0.85);
@@ -378,7 +379,7 @@ html.lenis, html.lenis body { height: auto; }
 .demo-old .demo-nav b { font-family: var(--sans); font-style: normal; font-weight: 700; font-size: 12px; }
 .demo-old .demo-hero { background:#e7e3d6; align-items:center; text-align:center; }
 .demo-old .demo-hero h6 { font-family: 'Times New Roman', serif; font-style: normal; color:#1b3a8a; text-decoration: underline; }
-.demo-old .demo-hero .demo-cta { background:#1f8f1f; color:#fff; border-radius: 3px; align-self:center; font-weight:700; }
+.demo-old .demo-hero .demo-cta { background:#1f8f1f; color:#fff; border-radius: var(--r-sm); align-self:center; font-weight:700; }
 .demo-old .demo-cards div { background:#cfcabb; border:1px solid #b8b2a2; }
 
 /* ============================================================
@@ -584,7 +585,7 @@ html.lenis, html.lenis body { height: auto; }
 .timeline-line span {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, var(--accent), var(--cyan));
-  border-radius: 2px;
+  border-radius: 999px;
   transform-origin: top;
   box-shadow: 0 0 14px rgba(77,126,255,0.55);
 }
@@ -597,7 +598,7 @@ html.lenis, html.lenis body { height: auto; }
     top: 64px; bottom: 140px;
     width: 2px;
     background: var(--border);
-    border-radius: 2px;
+    border-radius: 999px;
   }
 }
 

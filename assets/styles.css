@@ -30,6 +30,10 @@
   --r-lg: 22px;
   --r-xl: 32px;
 
+  --sect-lg: clamp(96px, 12vw, 180px);
+  --sect-sm: clamp(64px, 8vw, 120px);
+  --btn-h: 48px;
+
   --ease: cubic-bezier(.2, .7, .2, 1);
   --ease-out: cubic-bezier(.16, 1, .3, 1);
 
@@ -68,7 +72,7 @@ body {
   padding: 12px 18px;
   font-size: 14px;
   font-weight: 500;
-  border-radius: 0 0 8px 0;
+  border-radius: 0 0 var(--r-sm) 0;
   z-index: 500;
 }
 .skip-link:focus { left: 0; }
@@ -78,7 +82,7 @@ body {
 :focus-visible {
   outline: 2px solid var(--accent-glow);
   outline-offset: 3px;
-  border-radius: 4px;
+  border-radius: var(--r-sm);
 }
 .btn:focus-visible { outline-offset: 4px; }
 
@@ -133,7 +137,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 .display .it { font-style: italic; }
 
-h1.display { font-size: clamp(64px, 11vw, 188px); }
+h1.display { font-size: clamp(48px, 13.5vw, 232px); }
 h2.display { font-size: clamp(44px, 7vw, 112px); }
 h3.display { font-size: clamp(32px, 4.2vw, 64px); }
 
@@ -172,8 +176,9 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
 
 /* ---------- Buttons ---------- */
 .btn {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 18px 28px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  height: var(--btn-h);
+  padding: 0 28px;
   border-radius: 999px;
   font-family: var(--sans);
   font-size: 14px;
@@ -241,7 +246,7 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
   width: 24px; height: 24px;
   display: block;
   box-sizing: border-box;
-  border-radius: 7px;
+  border-radius: var(--r-sm);
   border: 1px solid var(--border);
   object-fit: cover;
   filter: drop-shadow(0 0 10px rgba(123,164,255,0.35));
@@ -273,7 +278,7 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
   display: block;
   width: 16px; height: 1.5px;
   background: var(--ink);
-  border-radius: 2px;
+  border-radius: 999px;
   transition: transform .4s var(--ease-out), opacity .3s;
 }
 .nav-toggle.open span:nth-child(1) { transform: translateY(3px) rotate(45deg); }
@@ -321,7 +326,9 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
   font-size: 14px;
   background: linear-gradient(180deg, #5A8BFF 0%, #3E6EEF 100%);
   color: white;
-  padding: 16px 32px;
+  display: inline-flex; align-items: center;
+  height: var(--btn-h);
+  padding: 0 32px;
   border-radius: 999px;
 }
 .nav-drawer .drawer-meta {
@@ -392,7 +399,8 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
 
 /* ---------- Sections ---------- */
 section { position: relative; z-index: 1; }
-.section-pad { padding: clamp(96px, 14vh, 180px) 0; }
+.section-pad { padding: var(--sect-lg) 0; }
+.section-pad.tight { padding: var(--sect-sm) 0; }
 
 .section-label {
   display: flex;
@@ -462,7 +470,9 @@ html:not(.js) .progress { display: none; }
 .hero {
   min-height: 100vh;
   min-height: 100svh;
-  padding: clamp(120px, 22vh, 200px) 0 clamp(40px, 7vh, 80px);
+  /* top/bottom only — inline gutters come from .container and must survive */
+  padding-top: clamp(120px, 22vh, 200px);
+  padding-bottom: clamp(40px, 7vh, 80px);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -486,7 +496,7 @@ html:not(.js) .progress { display: none; }
 }
 .hero-headline h1 {
   font-family: var(--serif);
-  font-size: clamp(40px, min(14vw, 22vh), 240px);
+  font-size: clamp(48px, 13.5vw, 232px);
   line-height: 0.9;
   letter-spacing: -0.025em;
   font-weight: 400;
@@ -790,7 +800,7 @@ html:not(.js) .progress { display: none; }
 }
 .site-hero {
   flex: 1;
-  border-radius: 8px;
+  border-radius: var(--r-sm);
   padding: 20px;
   display: flex; flex-direction: column; justify-content: flex-end;
   min-height: 120px;
@@ -815,7 +825,7 @@ html:not(.js) .progress { display: none; }
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px;
   height: 60px;
 }
-.site-grid > div { background: rgba(123,164,255,0.08); border-radius: 4px; }
+.site-grid > div { background: rgba(123,164,255,0.08); border-radius: var(--r-sm); }
 
 /* color variants for visuals */
 .v-roof .site-hero { background: linear-gradient(135deg, #1a3a2a, #0e2d1e); }
@@ -920,7 +930,7 @@ html:not(.js) .progress { display: none; }
   gap: 14px;
   margin-bottom: 20px;
 }
-.foot-brand-row .mark { width: 30px; height: 30px; box-sizing: border-box; border-radius: 8px; border: 1px solid var(--border); object-fit: cover; filter: drop-shadow(0 0 10px rgba(123,164,255,0.3)); }
+.foot-brand-row .mark { width: 30px; height: 30px; box-sizing: border-box; border-radius: var(--r-sm); border: 1px solid var(--border); object-fit: cover; filter: drop-shadow(0 0 10px rgba(123,164,255,0.3)); }
 .foot-brand-row .wordmark {
   font-family: var(--serif);
   font-style: italic;
@@ -1001,7 +1011,8 @@ footer {
 .page-head {
   min-height: 100vh;
   min-height: 100svh;
-  padding: clamp(110px, 18vh, 180px) 0 clamp(48px, 8vh, 100px);
+  padding-top: clamp(110px, 18vh, 180px);
+  padding-bottom: clamp(48px, 8vh, 100px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1010,7 +1021,7 @@ footer {
 }
 .page-head h1 {
   font-family: var(--serif);
-  font-size: clamp(36px, min(11vw, 18vh), 180px);
+  font-size: clamp(40px, 9vw, 152px);
   line-height: 0.92;
   letter-spacing: -0.025em;
   margin: 20px 0 40px;
@@ -1501,7 +1512,6 @@ footer {
 
 @media (max-width: 640px) {
   :root { --gutter: 22px; }
-  .section-pad { padding: clamp(72px, 12vh, 120px) 0; }
   .foot-grid { grid-template-columns: 1fr; gap: 40px; }
   .foot-grid a { padding: 6px 0; display: inline-block; }
   .foot-grid ul { gap: 4px; }
@@ -1517,7 +1527,7 @@ footer {
   .cta-block { padding: 56px 22px; }
   .cta-block h2 { font-size: clamp(44px, 11vw, 96px); margin-bottom: 16px; }
   .cta-block .lede { margin-bottom: 32px; }
-  .btn { padding: 16px 22px; font-size: 13px; }
+  .btn { padding: 0 22px; font-size: 13px; }
   .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
   .hero-actions { width: 100%; }
   .cta-actions { display: flex; flex-direction: column; width: 100%; gap: 10px; }
@@ -1563,12 +1573,11 @@ footer {
 
 /* very-small phones (iPhone SE / small Androids) */
 @media (max-width: 380px) {
-  :root { --gutter: 18px; }
+  :root { --gutter: 20px; }
   .nav-inner { gap: 8px; padding: 8px 8px 8px 14px; }
   .nav-brand { font-size: 19px; gap: 8px; }
   .nav-brand .mark { width: 22px; height: 22px; }
   .hero-meta .tiny-mono { font-size: 9px; letter-spacing: 0.16em; }
-  h1.display { font-size: clamp(48px, 12vw, 96px); }
   h2.display { font-size: clamp(36px, 10vw, 84px); }
   .cta-block h2 { font-size: clamp(38px, 11vw, 80px); }
   .split-heading { font-size: clamp(32px, 9vw, 64px); }
@@ -1594,8 +1603,8 @@ footer {
   .hero, .page-head {
     min-height: auto;
   }
-  .hero { padding: clamp(96px, 18vh, 140px) 0 clamp(32px, 6vh, 56px); }
-  .page-head { padding: clamp(96px, 16vh, 140px) 0 clamp(32px, 6vh, 56px); }
+  .hero { padding-top: clamp(96px, 18vh, 140px); padding-bottom: clamp(32px, 6vh, 56px); }
+  .page-head { padding-top: clamp(96px, 16vh, 140px); padding-bottom: clamp(32px, 6vh, 56px); }
   .hero-headline { margin-bottom: clamp(20px, 3vh, 32px); }
 }
 
