@@ -609,28 +609,72 @@ html.lenis, html.lenis body { height: auto; }
 .compare-list li.yes svg { color: var(--accent-glow); }
 
 /* ============================================================
-   PROCESS — scroll-driven timeline line
+   SIGNAL LINE — the Living Blueprint signature (injected by signal.js)
+   ============================================================ */
+.signal {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+.signal .sig-path {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 1.5;
+  opacity: 0.55;
+}
+/* glow = duplicated wide low-alpha stroke (no SVG filter: Safari-safe, cheap) */
+.signal .sig-glow {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 6;
+  opacity: 0.12;
+}
+.signal .sig-node {
+  fill: var(--bg);
+  stroke: var(--cyan);
+  stroke-width: 1.5;
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+.signal .sig-node.on { opacity: 0.9; }
+.signal .sig-note {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  fill: var(--mute-2);
+  opacity: 0;
+  transition: opacity 0.6s var(--ease);
+}
+.signal .sig-note.on { opacity: 1; }
+/* reduced-motion / no-ScrollTrigger: pre-drawn, quiet */
+.signal.static .sig-path { opacity: 0.35; }
+.signal.static .sig-glow { opacity: 0.07; }
+@media (max-width: 860px) {
+  .signal .sig-note { display: none; }
+}
+/* arrival: one 600ms pulse, then a 2s breathing hold on the primary CTA */
+@keyframes sigPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(127,227,255,0.55), 0 10px 40px -10px rgba(77,126,255,0.55); }
+  100% { box-shadow: 0 0 0 26px rgba(127,227,255,0), 0 10px 40px -10px rgba(77,126,255,0.55); }
+}
+@keyframes sigBreathe {
+  0%, 100% { box-shadow: 0 10px 40px -10px rgba(77,126,255,0.55), inset 0 1px 0 rgba(255,255,255,0.2); }
+  50%      { box-shadow: 0 6px 48px -6px rgba(127,227,255,0.65), inset 0 1px 0 rgba(255,255,255,0.2); }
+}
+.sig-arrive { animation: sigPulse 0.6s var(--ease-out) 1; }
+.sig-breathe { animation: sigBreathe 2s var(--ease) infinite 0.6s; }
+.sig-breathe.paused { animation-play-state: paused; }
+
+/* ============================================================
+   PROCESS — left rail (the signal line is the timeline now)
    ============================================================ */
 .proc-timeline { position: relative; }
-.timeline-line { display: none; }
-.timeline-line span {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, var(--accent), var(--cyan));
-  border-radius: 999px;
-  transform-origin: top;
-  box-shadow: 0 0 14px rgba(77,126,255,0.55);
-}
 @media (min-width: 1025px) {
   .proc-timeline { padding-left: calc(var(--gutter) + var(--safe-l) + 38px); }
-  .proc-timeline .timeline-line {
-    display: block;
-    position: absolute;
-    left: calc(var(--gutter) + var(--safe-l) + 8px);
-    top: 64px; bottom: 140px;
-    width: 2px;
-    background: var(--border);
-    border-radius: 999px;
-  }
 }
 
 /* ============================================================

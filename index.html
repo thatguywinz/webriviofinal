@@ -190,7 +190,7 @@
       </div>
     </div>
     <div class="hero-actions reveal">
-      <a class="btn btn-primary" href="contact.html" data-magnetic="0.25">
+      <a class="btn btn-primary" href="contact.html" data-magnetic="0.25" data-signal-anchor>
         <span>Start a project</span>
         <svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>
@@ -202,7 +202,7 @@
 </header>
 
 <!-- ============ TICKER ============ -->
-<div class="ticker" aria-hidden="true">
+<div class="ticker" aria-hidden="true" data-signal-anchor data-signal-note="WHO IT'S FOR" data-signal-side="left">
   <div class="ticker-track">
     <span class="ticker-item"><span class="dot"></span>Roofing</span>
     <span class="ticker-item"><em>Medspa</em></span>
@@ -236,7 +236,7 @@
 
     <!-- Project 1 -->
     <article class="work-feature reveal">
-      <div class="work-stage" data-placeholder>
+      <div class="work-stage" data-placeholder data-signal-anchor data-signal-note="BUILD 01 — ROOFING" data-signal-side="left">
         <span class="ph-tag">Sample build · SWAP</span>
         <!-- SWAP: real desktop screenshot of demo site #1 -->
         <div class="mockup">
@@ -280,7 +280,7 @@
 
     <!-- Project 2 — with before / after slider -->
     <article class="work-feature flip reveal">
-      <div class="work-stage" data-placeholder>
+      <div class="work-stage" data-placeholder data-signal-anchor data-signal-note="BUILD 02 — F&amp;B">
         <span class="ph-tag">Before / after · SWAP</span>
         <!-- SWAP: real before (old site) + after (new build) screenshots -->
         <div class="ba" data-start="52" aria-label="Before and after website comparison">
@@ -340,7 +340,7 @@
         <span class="leak-eyebrow">Illustrative — the monthly leak</span>
         <div class="leak-amount"><span class="cur">$</span><span data-count-to="1840" data-count-comma="1" data-count-dur="2200">0</span></div>
         <p class="leak-sub">A rough estimate of the leads a slow, unconvincing site lets slip each month — money you already paid to attract.</p>
-        <div class="funnel">
+        <div class="funnel" data-signal-anchor data-signal-align="top">
           <svg viewBox="0 0 220 130" preserveAspectRatio="xMidYMid meet">
             <defs>
               <linearGradient id="funnelG" x1="0" y1="0" x2="0" y2="1">
@@ -495,7 +495,7 @@
 
     <div class="proof-gauges">
       <div class="gauge-card reveal">
-        <div class="gauge" data-gauge="97">
+        <div class="gauge" data-gauge="97" data-signal-anchor>
           <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/><circle class="val" cx="60" cy="60" r="54"/></svg>
           <div class="gauge-center"><span class="n"><span data-count-to="97" data-count-dur="1700">0</span><span class="u">/100</span></span></div>
         </div>
@@ -504,7 +504,7 @@
       </div>
 
       <div class="gauge-card reveal">
-        <div class="gauge" data-gauge="99.9">
+        <div class="gauge" data-gauge="99.9" data-signal-anchor>
           <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/><circle class="val" cx="60" cy="60" r="54"/></svg>
           <div class="gauge-center"><span class="n"><span data-count-to="99.9" data-count-dec="1" data-count-dur="1700">0</span><span class="u">%</span></span></div>
         </div>
@@ -513,7 +513,7 @@
       </div>
 
       <div class="gauge-card reveal">
-        <div class="gauge">
+        <div class="gauge" data-signal-anchor>
           <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/></svg>
           <div class="glyph">&lt;7</div>
         </div>
@@ -522,7 +522,7 @@
       </div>
 
       <div class="gauge-card reveal">
-        <div class="gauge">
+        <div class="gauge" data-signal-anchor>
           <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/></svg>
           <div class="glyph">100%</div>
         </div>
@@ -669,7 +669,7 @@
 <!-- ============ FINAL CTA ============ -->
 <section class="section-pad tight" data-atm="0.6" aria-labelledby="cta-title">
   <div class="container">
-    <div class="cta-block">
+    <div class="cta-block" data-signal-anchor data-signal-align="top" data-signal-note="YOUR CUSTOMER'S PATH ENDS HERE. YOURS STARTS.">
       <span class="eyebrow" style="color: var(--accent-glow); justify-content: center; margin-bottom: 32px;">Ready when you are · 2 slots — July 2026</span>
       <h2 id="cta-title">
         <span class="reveal-mask"><span>Your next customer is</span></span><br/>
@@ -677,7 +677,7 @@
       </h2>
       <p class="lede reveal">Give them a website worth choosing.</p>
       <div class="cta-actions reveal">
-        <a class="btn btn-primary" href="contact.html" data-magnetic="0.25">
+        <a class="btn btn-primary" href="contact.html" data-magnetic="0.25" data-signal-cta>
           <span>Start a project</span>
           <svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg>
         </a>
@@ -765,6 +765,8 @@
 <script src="assets/vendor/gsap.min.js" defer></script>
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/enhance.js" defer></script>
+<!-- signal line (needs GSAP+ScrollTrigger; injects after fonts settle) -->
+<script src="assets/signal.js" defer></script>
 <!-- lazy WebGL hero (self-skips on reduced-motion / low-power / no-WebGL) -->
 <script src="assets/hero.js" defer></script>
 

@@ -186,14 +186,6 @@
         scrollTrigger: { trigger: ph.closest('.work-stage') || ph, start: 'top bottom', end: 'bottom top', scrub: true }
       });
     });
-    // process timeline line draws as you scroll the phases
-    const tline = document.querySelector('.proc-timeline .timeline-line span');
-    if (tline) {
-      gsap.fromTo(tline, { scaleY: 0 }, {
-        scaleY: 1, ease: 'none',
-        scrollTrigger: { trigger: '.proc-timeline', start: 'top 55%', end: 'bottom 85%', scrub: true }
-      });
-    }
   }
 
   /* ---------------- sticky mobile CTA reveal ---------------- */
