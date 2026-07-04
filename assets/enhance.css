@@ -480,22 +480,43 @@ html:not(.js) .sig-underline .u path {
 }
 .leak-amount .cur { font-size: 0.5em; color: var(--accent-glow); margin-right: 4px; font-style: italic; }
 .leak-sub { color: var(--mute); font-size: 14px; max-width: 30ch; }
-/* leaking funnel */
+/* ---- funnel instrument: VISITORS -> DOUBT -> GONE, leaking the count-up ---- */
 .funnel {
-  margin-top: 28px;
-  height: 120px;
   position: relative;
+  margin: 20px auto 0;
+  max-width: 280px;
+  overflow: visible;
 }
-.funnel svg { width: 100%; height: 100%; overflow: visible; }
+.funnel-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.funnel-outline { fill: rgba(77,126,255,0.05); stroke: url(#funnelG); stroke-width: 1.5; stroke-linejoin: round; }
+.funnel-divider { stroke: rgba(127,227,255,0.28); stroke-width: 1; stroke-dasharray: 3 4; }
+.funnel-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; fill: var(--mute); }
+.funnel-drips { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
 .drip {
   position: absolute;
-  left: 50%; top: 64%;
+  top: 84%; left: 50%;
   width: 5px; height: 5px; border-radius: 50%;
   background: var(--cyan);
   box-shadow: 0 0 8px var(--cyan);
   opacity: 0;
 }
+.leak-exit { display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 8px; }
+.leak-amount { justify-content: center; font-size: clamp(48px, 6.5vw, 88px); }
+.leak-amount .per { font-family: var(--sans); font-size: 0.28em; font-style: normal; color: var(--mute); letter-spacing: 0; margin-left: 4px; align-self: center; }
+.leak-sub { text-align: center; margin-top: 6px; }
+.leak-disc { font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: var(--mute-2); text-align: center; margin-top: 14px; }
 .leak-list .bullet:last-child { border-bottom: none; }
+
+/* ---- bullet schematic glyphs (drawn on reveal) ---- */
+.bullet-glyph { display: block; width: 24px; height: 24px; margin-bottom: 10px; color: var(--accent-glow); }
+.bullet-glyph svg { width: 100%; height: 100%; }
+.bullet-glyph svg path, .bullet-glyph svg circle {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset .3s var(--ease-out);
+}
+.bullet.in .bullet-glyph svg path, .bullet.in .bullet-glyph svg circle { stroke-dashoffset: 0; }
+html:not(.js) .bullet-glyph svg path, html:not(.js) .bullet-glyph svg circle { stroke-dashoffset: 0; }
 
 /* ============================================================
    PROOF — gauges, counters, logos, honest testimonial slots

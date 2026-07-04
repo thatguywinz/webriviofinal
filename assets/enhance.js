@@ -115,9 +115,10 @@
     set(parseFloat(ba.dataset.start || range && range.value || 50));
   });
 
-  /* ---------------- money-leak drips ---------------- */
+  /* ---------------- money-leak drips (funnel exit stream) ---------------- */
   const funnel = document.querySelector('.funnel');
-  if (funnel && !reduce) {
+  const dripHost = funnel && (funnel.querySelector('.funnel-drips') || funnel);
+  if (dripHost && !reduce) {
     const host = funnel.closest('.leak-meter') || funnel;
     let active = false;
     inView(host, () => { active = true; }, { threshold: 0.3 });
@@ -125,15 +126,16 @@
       if (active) {
         const d = document.createElement('span');
         d.className = 'drip';
-        d.style.left = (44 + Math.random() * 12) + '%';
-        funnel.appendChild(d);
+        d.style.left = (47 + Math.random() * 6) + '%';
+        dripHost.appendChild(d);
         const fall = d.animate(
-          [{ transform: 'translateY(0)', opacity: 0.9 }, { transform: 'translateY(48px)', opacity: 0 }],
-          { duration: 900 + Math.random() * 500, easing: 'cubic-bezier(.4,0,.7,1)' }
+          [{ transform: 'translate(-50%,0)', opacity: 0.9 }, { transform: 'translate(-50%,62px)', opacity: 0 }],
+          { duration: 950 + Math.random() * 500, easing: 'cubic-bezier(.4,0,.7,1)' }
         );
         fall.onfinish = () => d.remove();
       }
-      setTimeout(spawnDrip, 320 + Math.random() * 260);
+      // ~160ms cadence over ~1s fall keeps roughly 6 drips concurrent
+      setTimeout(spawnDrip, 140 + Math.random() * 90);
     };
     setTimeout(spawnDrip, 600);
   }

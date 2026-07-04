@@ -323,23 +323,33 @@
     </div>
 
     <div class="leak-wrap">
-      <aside class="leak-meter reveal" aria-hidden="true">
+      <aside class="leak-meter reveal">
         <span class="leak-eyebrow">Illustrative — the monthly leak</span>
-        <div class="leak-amount"><span class="cur">$</span><span data-count-to="1840" data-count-comma="1" data-count-dur="2200">0</span></div>
-        <p class="leak-sub">A rough estimate of the leads a slow, unconvincing site lets slip each month — money you already paid to attract.</p>
-        <div class="funnel" data-signal-anchor data-signal-align="top">
-          <svg viewBox="0 0 220 130" preserveAspectRatio="xMidYMid meet">
+        <div class="funnel" data-signal-anchor data-signal-align="top" aria-hidden="true">
+          <svg class="funnel-svg" viewBox="0 0 260 300" preserveAspectRatio="xMidYMid meet">
             <defs>
               <linearGradient id="funnelG" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="0" stop-color="#7BA4FF"/>
                 <stop offset="1" stop-color="#7FE3FF"/>
               </linearGradient>
             </defs>
-            <path d="M22 16 H198 L132 78 V96 Q132 104 124 104 H96 Q88 104 88 96 V78 Z"
-                  fill="rgba(77,126,255,0.06)" stroke="url(#funnelG)" stroke-width="1.5" stroke-linejoin="round"/>
-            <line x1="96" y1="104" x2="124" y2="104" stroke="#7FE3FF" stroke-width="2" stroke-dasharray="3 4" opacity="0.8"/>
+            <!-- funnel body: wide intake tapering to a leaking spout -->
+            <path class="funnel-outline" d="M20 24 H240 L156 190 V236 H150 L150 262 H110 L110 236 H104 V190 Z"/>
+            <!-- chamber dividers -->
+            <line class="funnel-divider" x1="52" y1="96" x2="208" y2="96"/>
+            <line class="funnel-divider" x1="96" y1="168" x2="164" y2="168"/>
+            <!-- chamber labels -->
+            <text class="funnel-label" x="130" y="64" text-anchor="middle">VISITORS</text>
+            <text class="funnel-label" x="130" y="140" text-anchor="middle">DOUBT</text>
+            <text class="funnel-label" x="130" y="216" text-anchor="middle">GONE</text>
           </svg>
+          <div class="funnel-drips" aria-hidden="true"></div>
         </div>
+        <div class="leak-exit">
+          <div class="leak-amount"><span class="cur">$</span><span data-count-to="1840" data-count-comma="1" data-count-dur="2200">0</span><span class="per">/mo*</span></div>
+          <p class="leak-sub">A rough estimate of the leads a slow, unconvincing site lets slip each month — money you already paid to attract.</p>
+        </div>
+        <p class="leak-disc">*Illustrative estimate. Your number depends on traffic and close rate.</p>
       </aside>
 
       <div class="leak-list">
@@ -351,6 +361,7 @@
           <div class="bullet reveal">
             <span class="bullet-num">—01</span>
             <div>
+              <span class="bullet-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle pathLength="1" cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path pathLength="1" d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
               <h4>Visitors leave in under 8 seconds</h4>
               <p>Slow load times, cluttered layouts, and stock-photo energy teach prospects — in three blinks — that you're not the serious choice in town.</p>
             </div>
@@ -358,6 +369,7 @@
           <div class="bullet reveal">
             <span class="bullet-num">—02</span>
             <div>
+              <span class="bullet-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path pathLength="1" d="M3 5h18l-7 8v5l-4 2v-7L3 5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
               <h4>Ad spend leaks straight through</h4>
               <p>Every Google click costs real money. A site that doesn't convert is a funnel with a hole in the bucket — and the business next door collects what spills out.</p>
             </div>
@@ -365,6 +377,7 @@
           <div class="bullet reveal">
             <span class="bullet-num">—03</span>
             <div>
+              <span class="bullet-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path pathLength="1" d="M3 12l4-4 4 3 3-3 4 3 3-2M3 12v4l4 3 4-2 3 2 4-3 3 1v-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               <h4>You lose the trust war before hello</h4>
               <p>In service industries the website is the first handshake. If it looks cheap, the quote feels expensive. If it looks premium, the quote feels fair.</p>
             </div>
@@ -372,6 +385,7 @@
           <div class="bullet reveal">
             <span class="bullet-num">—04</span>
             <div>
+              <span class="bullet-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path pathLength="1" d="M4 10v4h3l7 4V6l-7 4H4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path pathLength="1" d="M18 9a4 4 0 0 1 0 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
               <h4>Your reputation outgrows your presence</h4>
               <p>You've earned the reviews, the referrals, the work. Your website should be the proof — not the thing customers quietly forgive.</p>
             </div>
