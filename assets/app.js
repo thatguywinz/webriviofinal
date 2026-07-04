@@ -294,4 +294,35 @@
   /* ---------- update footer year ---------- */
   const y = document.getElementById('y');
   if (y) y.textContent = new Date().getFullYear();
+
+  /* ---------- page transition (outgoing fade on same-origin nav) ----------
+     Incoming fade is armed by a tiny inline <head> script reading this flag,
+     so it runs before paint (no flash) and only on internal navigations —
+     cold loads stay instant and hero LCP is never delayed. */
+  if (!prefersReducedMotion) {
+    document.addEventListener('click', (e) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      const a = e.target.closest('a[href]');
+      if (!a || a.target === '_blank' || a.hasAttribute('download')) return;
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:')) return;
+      let url;
+      try { url = new URL(a.href, location.href); } catch (_) { return; }
+      if (url.origin !== location.origin) return;
+      // same page (incl. same-page hash) — let it through
+      if (url.pathname === location.pathname && url.search === location.search) return;
+      e.preventDefault();
+      try { sessionStorage.setItem('wv-pt', '1'); } catch (_) { /* ignore */ }
+      document.body.classList.add('pt-leave');
+      setTimeout(() => { location.href = a.href; }, 210);
+    });
+    // clean up the enter class after its animation so it can re-arm
+    const de = document.documentElement;
+    if (de.classList.contains('pt-enter')) {
+      const main = document.querySelector('main');
+      const done = () => de.classList.remove('pt-enter');
+      if (main) main.addEventListener('animationend', done, { once: true });
+      setTimeout(done, 400);
+    }
+  }
 })();

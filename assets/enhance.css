@@ -257,9 +257,16 @@ html:not(.js) .sig-underline .u path {
   box-shadow: 0 40px 90px -30px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
   transform: rotateX(var(--rx,7deg)) rotateY(var(--ry,-9deg));
   transform-style: preserve-3d;
-  transition: transform .6s var(--ease-out);
+  transition: transform .6s var(--ease-out), border-color .3s;
   will-change: transform;
 }
+/* case-card hover: screenshot scales 1.03, frame border brightens (fine pointer) */
+@media (hover: hover) {
+  .work-stage:hover .mockup-screen img { transform: scale(1.03); }
+  .work-stage:hover .mockup { border-color: var(--accent-glow); }
+  .note-card:hover .thumb img { transform: scale(1.03); }
+}
+.note-card .thumb img { transition: transform .6s var(--ease-out); }
 .mockup-bar {
   display: flex;
   align-items: center;
@@ -682,6 +689,87 @@ html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%)
 .compare-list li.no { color: var(--mute-2); }
 .compare-list li.no svg { color: var(--mute-2); }
 .compare-list li.yes svg { color: var(--accent-glow); }
+
+/* ============================================================
+   CASE STUDIES (work page) — real builds, framed and annotated
+   ============================================================ */
+.case { scroll-margin-top: 96px; }
+.case + .case { border-top: 1px solid var(--border); }
+.case-head {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(28px, 4vw, 64px);
+  align-items: center;
+}
+.case.flip .case-head { grid-template-columns: 1.1fr 0.9fr; }
+.case.flip .case-head .work-info { order: 2; }
+.case-visit {
+  display: inline-flex; align-items: center; gap: 10px;
+  height: var(--btn-h); padding: 0 26px; margin-top: 26px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #5A8BFF 0%, #3E6EEF 100%);
+  color: #fff; font-size: 14px; font-weight: 500;
+  box-shadow: 0 10px 40px -10px rgba(77,126,255,0.55);
+  transition: transform .3s var(--ease-out);
+}
+.case-visit:hover { transform: translateY(-2px); }
+.case-visit svg { width: 15px; height: 15px; }
+.demo-note {
+  display: block; margin-top: 18px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--mute-2); max-width: 52ch; line-height: 1.7;
+}
+.case-concept {
+  max-width: 62ch; margin: clamp(40px, 6vh, 80px) 0 clamp(32px, 4vh, 56px);
+}
+.case-concept .lede { color: var(--ink-soft); }
+.case-concept .brief {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--accent-glow); margin-bottom: 18px; display: block;
+}
+
+/* design-note cards (image thumb + caption) */
+.case-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: clamp(24px, 4vh, 48px); }
+.note-card {
+  border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg-soft) 100%);
+  display: flex; flex-direction: column;
+  transition: border-color .3s;
+}
+.note-card:hover { border-color: var(--border-strong); }
+.note-card .thumb { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--border); }
+.note-card .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.note-card .cap { padding: 18px 20px; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
+.note-card .cap b { display: block; font-weight: 500; color: var(--ink); margin-bottom: 4px; font-size: 13px; font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* gallery rhythm */
+.case-gallery { display: flex; flex-direction: column; gap: 16px; margin: clamp(8px,2vh,24px) 0 clamp(28px,4vh,56px); }
+.gal-frame { border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: var(--surface); }
+.gal-frame img { width: 100%; height: auto; display: block; }
+.gal-2up { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.gal-2up .phone-frame {
+  border-radius: var(--r-md); border: 1px solid var(--border-strong);
+  overflow: hidden; background: var(--bg); max-width: 300px; margin: 0 auto;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7);
+}
+.gal-2up .phone-frame img { width: 100%; height: auto; display: block; }
+
+/* craft details list */
+.case-craft { border-top: 1px solid var(--border); padding-top: 28px; }
+.case-craft h4 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); margin-bottom: 18px; }
+.case-craft ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 40px; }
+.case-craft li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--ink-soft); }
+.case-craft li::before { content: ''; width: 6px; height: 6px; border-radius: 999px; background: var(--accent-glow); margin-top: 8px; flex-shrink: 0; }
+
+@media (max-width: 1024px) {
+  .case-head, .case.flip .case-head { grid-template-columns: 1fr; gap: 28px; }
+  .case.flip .case-head .work-info { order: 0; }
+  .case-notes { grid-template-columns: 1fr; }
+  .case-craft ul { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .gal-2up { grid-template-columns: 1fr; }
+}
 
 /* ============================================================
    SIGNAL LINE — the Living Blueprint signature (injected by signal.js)

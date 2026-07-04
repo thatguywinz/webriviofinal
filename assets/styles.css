@@ -120,6 +120,17 @@ body[data-page="contact"]  { --atm-orb1-x: 16%; --atm-orb1-y: 22%; --atm-orb2-x:
 
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
+
+/* ---------- Page transition (fade main out on same-origin nav, in on arrival) ---------- */
+/* Cold loads get no animation, so hero LCP is never delayed; the incoming fade
+   fires only when arriving via an intercepted internal navigation. */
+.pt-leave main { opacity: 0; transition: opacity .22s var(--ease); }
+html.pt-enter main { animation: ptIn .22s var(--ease-out) both; }
+@keyframes ptIn { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .pt-leave main { opacity: 1; transition: none; }
+  html.pt-enter main { animation: none; }
+}
 button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
 ::selection { background: var(--accent); color: white; }
 
