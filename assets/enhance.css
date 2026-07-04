@@ -738,14 +738,16 @@ html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%)
 }
 .note-card:hover { border-color: var(--border-strong); }
 .note-card .thumb { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--border); }
+.note-card .thumb picture { display: block; width: 100%; height: 100%; }
 .note-card .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
 .note-card .cap { padding: 18px 20px; color: var(--ink-soft); font-size: 14px; line-height: 1.5; }
 .note-card .cap b { display: block; font-weight: 500; color: var(--ink); margin-bottom: 4px; font-size: 13px; font-family: var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
 
 /* gallery rhythm */
 .case-gallery { display: flex; flex-direction: column; gap: 16px; margin: clamp(8px,2vh,24px) 0 clamp(28px,4vh,56px); }
-.gal-frame { border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: var(--surface); }
-.gal-frame img { width: 100%; height: auto; display: block; }
+.gal-frame { border: 1px solid var(--border); border-radius: var(--r-lg); overflow: hidden; background: var(--surface); aspect-ratio: 1500 / 938; }
+.gal-frame picture { display: block; width: 100%; height: 100%; }
+.gal-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .gal-2up { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
 .gal-2up .phone-frame {
   border-radius: var(--r-md); border: 1px solid var(--border-strong);

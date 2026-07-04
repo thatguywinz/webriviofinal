@@ -3,6 +3,18 @@
    Shared stylesheet. Editorial / cinematic / midnight-blue.
    ============================================================ */
 
+/* Metric-matched fallback so the serif swap doesn't reflow (CLS ~0).
+   Instrument Serif renders ~0.70x the width of Georgia; size-adjust makes the
+   fallback wrap identically, so no shift when the web font loads. */
+@font-face {
+  font-family: 'Instrument Serif Fallback';
+  src: local('Georgia'), local('Times New Roman');
+  size-adjust: 69.8%;
+  ascent-override: 128%;
+  descent-override: 40%;
+  line-gap-override: 0%;
+}
+
 :root {
   --bg:            #050B18;
   --bg-soft:       #0A1426;
@@ -21,7 +33,7 @@
   --accent-deep:   #1E3F99;
   --cyan:          #7FE3FF;
 
-  --serif: 'Instrument Serif', 'Cormorant Garamond', Georgia, serif;
+  --serif: 'Instrument Serif', 'Instrument Serif Fallback', 'Cormorant Garamond', Georgia, serif;
   --sans:  'Geist', 'Inter Tight', system-ui, -apple-system, sans-serif;
   --mono:  'JetBrains Mono', 'Geist Mono', ui-monospace, monospace;
 
@@ -540,6 +552,9 @@ html:not(.js) .cursor-chip { display: none; }
 }
 .hero-headline .line { display: block; overflow: hidden; }
 .hero-headline .line > span { display: inline-block; }
+/* the two hero lines are single lines by design; nowrap on desktop stops the
+   font-swap fallback from wrapping to an extra line (the homepage CLS source) */
+@media (min-width: 861px) { .hero-headline .line { white-space: nowrap; } }
 .hero-footer {
   display: grid;
   grid-template-columns: 1fr auto;
