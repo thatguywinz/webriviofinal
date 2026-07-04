@@ -230,8 +230,10 @@ html:not(.js) .sig-underline .u path {
 .work-feature.flip { direction: rtl; }
 .work-feature.flip > * { direction: ltr; }
 
-/* the stage that holds the mockups */
+/* the stage that holds the mockups (an anchor to the case study) */
 .work-stage {
+  display: block;
+  color: inherit;
   position: relative;
   perspective: 1400px;
   padding: 4% 6% 8%;
@@ -284,7 +286,14 @@ html:not(.js) .sig-underline .u path {
   max-width: 60%;
 }
 .mockup-screen { position: relative; aspect-ratio: 16 / 10.5; overflow: hidden; }
-.mockup-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.mockup-screen picture { display: block; width: 100%; height: 100%; }
+.mockup-screen img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  transition: transform .6s var(--ease-out);
+}
+/* real screenshot inside the floating phone frame */
+.mockup-phone picture { position: absolute; inset: 0; display: block; }
+.mockup-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 
 /* a polished CSS "demo site" used as a placeholder preview (looks finished) */
 .demo-site { position: absolute; inset: 0; display: flex; flex-direction: column; }
@@ -369,13 +378,14 @@ html:not(.js) .sig-underline .u path {
 }
 .work-result .n { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--ink); }
 .work-result .l { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--mute); }
-.work-links { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 26px; }
+.work-links { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; margin-top: 20px; }
+/* padded hit area >= 44px (DEF-03); underline sits at the text baseline */
 .visit-link {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 14px; color: var(--ink);
-  padding-bottom: 3px; position: relative;
+  padding: 12px 0; position: relative;
 }
-.visit-link::after { content:''; position:absolute; left:0; bottom:0; width:100%; height:1px; background: var(--accent-glow); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease-out); }
+.visit-link::after { content:''; position:absolute; left:0; bottom:9px; width:100%; height:1px; background: var(--accent-glow); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease-out); }
 .visit-link:hover::after { transform: scaleX(1); }
 .visit-link svg { width: 14px; height: 14px; transition: transform .3s var(--ease-out); }
 .visit-link:hover svg { transform: translate(3px,-3px); }
@@ -716,6 +726,10 @@ html:not(.js) .sig-underline .u path {
   .work-feature.flip { direction: ltr; }
   .founder { grid-template-columns: 1fr; text-align: center; }
   .founder-photo { max-width: 200px; margin: 0 auto; }
+}
+/* frames read straight-on below the touch breakpoint (tilt is a fine-pointer affordance) */
+@media (max-width: 860px) {
+  .mockup { transform: none; }
 }
 @media (max-width: 640px) {
   .proof-gauges { grid-template-columns: 1fr 1fr; gap: 10px; }
