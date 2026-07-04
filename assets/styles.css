@@ -683,6 +683,34 @@ html:not(.js) .cursor-chip { display: none; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
+/* line-art schematic in each card's middle, drawn on reveal */
+.card-schematic {
+  display: block;
+  width: 96px; height: 96px;
+  margin: 4px 0;
+  color: var(--accent-glow);
+  opacity: 0.6;
+  align-self: flex-start;
+}
+.card-schematic svg { width: 100%; height: 100%; }
+.card-schematic svg path, .card-schematic svg circle, .card-schematic svg rect {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset .6s var(--ease-out);
+}
+.service-card.in .card-schematic svg path,
+.service-card.in .card-schematic svg circle,
+.service-card.in .card-schematic svg rect { stroke-dashoffset: 0; }
+.service-card:nth-child(2).in .card-schematic svg * { transition-delay: .08s; }
+.service-card:nth-child(3).in .card-schematic svg * { transition-delay: .16s; }
+.service-card:nth-child(4).in .card-schematic svg * { transition-delay: .24s; }
+.service-card:nth-child(5).in .card-schematic svg * { transition-delay: .32s; }
+html:not(.js) .card-schematic svg path,
+html:not(.js) .card-schematic svg circle,
+html:not(.js) .card-schematic svg rect { stroke-dashoffset: 0; }
+@media (max-width: 640px) {
+  .card-schematic { width: 72px; height: 72px; }
+}
 .service-card .tags {
   display: flex;
   flex-wrap: wrap;
