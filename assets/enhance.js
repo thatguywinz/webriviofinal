@@ -31,6 +31,24 @@
       const t = document.querySelector(id);
       if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -90 }); }
     });
+    // Honor an initial URL hash (e.g. arriving at /work#aviva from the homepage).
+    // Lenis resets scroll on init and drops the browser's native jump; fonts,
+    // reveals, the injected signal SVG and lazy images then keep shifting the
+    // target for ~1s. Re-apply the scroll across that settle window, but stop
+    // the moment the visitor takes over so we never yank them back.
+    if (location.hash.length > 1) {
+      let target = null;
+      try { target = document.querySelector(location.hash); } catch (_) { /* invalid selector */ }
+      if (target) {
+        let cancelled = false;
+        const cancel = () => { cancelled = true; };
+        ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach((ev) =>
+          window.addEventListener(ev, cancel, { once: true, passive: true }));
+        const goHash = () => { if (!cancelled) lenis.scrollTo(target, { offset: -96, immediate: true }); };
+        [60, 300, 650, 1100].forEach((ms) => setTimeout(goHash, ms));
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => setTimeout(goHash, 80));
+      }
+    }
   }
 
   if (hasGSAP && window.ScrollTrigger) {
