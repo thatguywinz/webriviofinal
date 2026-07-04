@@ -199,10 +199,13 @@
   const form = document.querySelector('.contact-form');
   if (form) {
     const status = form.querySelector('.form-status');
+    // success message with a drawn check mark (CSS-animated on insert)
+    const OK_MSG = 'Sent. A human reads this today. Reply lands within one business day.';
+    const okHTML = '<svg class="check" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path pathLength="1" d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>' + OK_MSG;
+    const showSuccess = () => { if (status) { status.innerHTML = okHTML; status.className = 'form-status ok'; } };
     // ?sent=1 is the fallback redirect target if a non-AJAX submit succeeded
     if (/[?&]sent=1\b/.test(location.search) && status) {
-      status.textContent = 'Thanks — your inquiry is in. We reply within one business day.';
-      status.className = 'form-status ok';
+      showSuccess();
       history.replaceState(null, '', location.pathname);
     }
     const setStatus = (msg, kind) => {
@@ -251,7 +254,7 @@
         if (!ok) throw new Error('Submission rejected');
 
         if (label) label.textContent = 'Sent — we\'ll be in touch';
-        setStatus('Thanks — your inquiry is in. We reply within one business day.', 'ok');
+        showSuccess();
         form.reset();
         form.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
 

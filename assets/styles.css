@@ -1350,6 +1350,21 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
 }
 .form-panel > * { position: relative; z-index: 1; }
 
+/* drawn top rule + node — a quiet nod to the signal line (static, pre-drawn) */
+.form-rule {
+  position: relative;
+  height: 1px;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, var(--cyan), rgba(127,227,255,0.05) 60%, transparent);
+  opacity: 0.6;
+}
+.form-rule .node {
+  position: absolute; left: 0; top: 50%;
+  width: 7px; height: 7px; border-radius: 999px;
+  background: var(--bg); border: 1.5px solid var(--cyan);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(127,227,255,0.5);
+}
 .form-header {
   padding-bottom: 28px;
   margin-bottom: 28px;
@@ -1480,6 +1495,10 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
   color: var(--accent-glow);
   text-shadow: 0 0 18px rgba(127,227,255,0.35);
 }
+.form-status .check { width: 16px; height: 16px; display: inline-block; vertical-align: -3px; margin-right: 7px; color: var(--accent-glow); }
+.form-status .check path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: drawCheck .45s var(--ease-out) forwards; }
+@keyframes drawCheck { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .form-status .check path { animation: none; stroke-dashoffset: 0; } }
 .form-status.err { color: #FF8B8B; }
 
 /* Sidebar (simplified, no FAQ) */
@@ -1590,6 +1609,7 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
   line-height: 1.2;
   letter-spacing: -0.01em;
   color: var(--ink);
+  padding-block: 12px; /* >=44px hit area (DEF-05) */
 }
 .faq-list details p {
   color: var(--mute);

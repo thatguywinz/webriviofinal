@@ -65,6 +65,11 @@
     margin-bottom: 20px;
   }
   .err-h2 .it { font-style: italic; color: var(--accent-glow); }
+  .err-underline { position: relative; display: inline-block; }
+  .err-underline svg { position: absolute; left: 0; bottom: -0.04em; width: 100%; height: 0.14em; overflow: visible; }
+  .err-underline svg path { fill: none; stroke: var(--cyan); stroke-width: 2; opacity: 0.5; stroke-dasharray: 1; stroke-dashoffset: 1; animation: errDraw .6s var(--ease-out) .5s forwards; }
+  @keyframes errDraw { to { stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) { .err-underline svg path { animation: none; stroke-dashoffset: 0; } }
   .err-p { color: var(--ink-soft); font-size: 18px; max-width: 48ch; margin: 0 auto 40px; }
   .err-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 </style>
@@ -82,11 +87,12 @@
       <em>Webrivio</em>
     </a>
     <div class="nav-links">
+      <a href="work.html">Work</a>
       <a href="services.html">Services</a>
       <a href="process.html">Process</a>
       <a href="contact.html">Contact</a>
     </div>
-    <a class="nav-cta" href="contact.html">Book a call <span aria-hidden="true">→</span></a>
+    <a class="nav-cta" href="contact.html">Start a project <span aria-hidden="true">→</span></a>
   </div>
 </nav>
 
@@ -95,7 +101,7 @@
   <div class="err-inner">
     <span class="err-mono">Error 404 — Lost signal</span>
     <div class="err-huge">404</div>
-    <h1 class="err-h2">This page <span class="it">wandered off</span>.</h1>
+    <h1 class="err-h2">This page <span class="it err-underline">wandered off<svg viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C 34 3, 86 3, 117 6" pathLength="1"/></svg></span>.</h1>
     <p class="err-p">The link you followed is out of date, or the page has moved. Everything else is fine — head home, or reach out and we'll help you find it.</p>
     <div class="err-actions">
       <a class="btn btn-primary" href="index.html">
