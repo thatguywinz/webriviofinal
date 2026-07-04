@@ -639,13 +639,40 @@ html:not(.js) .bullet-glyph svg path, html:not(.js) .bullet-glyph svg circle { s
   box-shadow: 0 30px 80px -40px rgba(77,126,255,0.6);
   position: relative;
 }
+/* side cards dim until hovered; the middle one is the verdict */
+.compare-col:not(.mid) { opacity: 0.75; transition: opacity .3s var(--ease); }
+@media (hover: hover) { .compare-col:not(.mid):hover { opacity: 1; } }
+/* perimeter stroke that draws when the compare scrolls in (700ms) */
+.mid-outline {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  overflow: visible; pointer-events: none; z-index: 2;
+}
+.mid-outline rect {
+  fill: none; stroke: var(--cyan); stroke-width: 1.5;
+  opacity: 0.9;
+  stroke-dasharray: 1; stroke-dashoffset: 1;
+  transition: stroke-dashoffset .7s var(--ease-out);
+}
+.compare.in .mid-outline rect { stroke-dashoffset: 0; }
 .compare-col.mid::before {
   content: 'You are here';
-  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+  position: absolute; top: -11px; left: 50%;
+  transform: translateX(-50%) translateY(-6px) scale(0.9);
+  transform-origin: center top;
   font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em;
   color: #fff; background: linear-gradient(180deg,#5A8BFF,#3E6EEF);
   padding: 5px 14px; border-radius: 999px; white-space: nowrap;
+  opacity: 0; z-index: 3;
+  transition: opacity .3s var(--ease-out) .9s, transform .3s var(--ease-out) .9s;
 }
+.compare.in .compare-col.mid::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0) scale(1);
+}
+html:not(.js) .compare-col:not(.mid) { opacity: 1; }
+html:not(.js) .mid-outline rect { stroke-dashoffset: 0; }
+html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%) scale(1); }
 .compare-col h4 { font-family: var(--serif); font-size: 26px; font-style: italic; line-height: 1; }
 .compare-col.mid h4 { color: var(--accent-glow); }
 .compare-price { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mute); }
@@ -763,4 +790,7 @@ html:not(.js) .bullet-glyph svg path, html:not(.js) .bullet-glyph svg circle { s
   #hero-canvas { display: none; }
   .gauge .val { transition: none; }
   .mockup { transform: none; }
+  .compare-col:not(.mid) { opacity: 1; }
+  .mid-outline rect { stroke-dashoffset: 0; }
+  .sig-arrive, .sig-breathe { animation: none; }
 }
