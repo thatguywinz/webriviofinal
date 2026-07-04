@@ -576,30 +576,17 @@ html:not(.js) .bullet-glyph svg path, html:not(.js) .bullet-glyph svg circle { s
 .logo-chip svg { width: 20px; height: 20px; color: var(--mute-2); }
 .logo-chip span { font-family: var(--serif); font-style: italic; font-size: 20px; letter-spacing: -0.01em; }
 
-/* honest testimonial placeholder slots */
-.tnote { text-align: center; font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--mute-2); margin: 56px 0 22px; }
-.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.testi {
-  border: 1px dashed var(--border-strong);
-  border-radius: var(--r-lg);
-  padding: 30px;
-  display: flex; flex-direction: column; gap: 22px;
-  background: rgba(13,33,71,0.18);
+/* honest stand-in for testimonials (no fake cards) */
+.proof-invite {
+  text-align: center;
+  margin: 56px auto 0;
+  max-width: 44ch;
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
-.testi .stars { display: flex; gap: 4px; color: var(--mute-2); }
-.testi .stars svg { width: 15px; height: 15px; }
-.testi .quote { font-family: var(--serif); font-size: 21px; line-height: 1.3; color: var(--mute); font-style: italic; }
-.testi .who { display: flex; align-items: center; gap: 12px; margin-top: auto; }
-.testi .avatar {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: linear-gradient(180deg, var(--surface-2), var(--surface));
-  border: 1px solid var(--border); flex-shrink: 0;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--mute-2);
-}
-.testi .avatar svg { width: 22px; height: 22px; }
-.testi .who-meta b { display: block; font-weight: 500; font-size: 14px; color: var(--mute); }
-.testi .who-meta span { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mute-2); }
+.proof-invite p { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 28px); line-height: 1.3; color: var(--ink-soft); }
+.proof-invite p.mut { color: var(--mute); font-style: italic; margin-top: 4px; }
 
 /* ---------- Founder / human moment ---------- */
 .founder {
@@ -613,14 +600,18 @@ html:not(.js) .bullet-glyph svg path, html:not(.js) .bullet-glyph svg circle { s
   background: linear-gradient(120deg, var(--surface) 0%, var(--bg-soft) 100%);
   margin-top: 64px;
 }
-.founder-photo {
+.founder-mark {
   aspect-ratio: 1; border-radius: var(--r-lg); overflow: hidden;
   border: 1px solid var(--border-strong);
   background: radial-gradient(120% 120% at 30% 20%, var(--surface-2), var(--bg));
-  display: flex; align-items: flex-end; justify-content: center;
-  position: relative;
+  display: flex; align-items: center; justify-content: center;
 }
-.founder-photo svg { width: 70%; height: 70%; color: var(--mute-2); opacity: 0.5; }
+.founder-mark img {
+  width: 44%; height: 44%;
+  object-fit: contain;
+  border-radius: var(--r-sm);
+  filter: drop-shadow(0 0 16px rgba(123,164,255,0.35));
+}
 .founder blockquote { font-family: var(--serif); font-size: clamp(22px, 2.6vw, 34px); line-height: 1.25; letter-spacing: -0.01em; }
 .founder blockquote .it { font-style: italic; color: var(--accent-glow); }
 .founder .sig { margin-top: 18px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--mute); }
@@ -746,7 +737,7 @@ html:not(.js) .bullet-glyph svg path, html:not(.js) .bullet-glyph svg circle { s
   .work-feature { grid-template-columns: 1fr; }
   .work-feature.flip { direction: ltr; }
   .founder { grid-template-columns: 1fr; text-align: center; }
-  .founder-photo { max-width: 200px; margin: 0 auto; }
+  .founder-mark { max-width: 160px; margin: 0 auto; }
 }
 /* frames read straight-on below the touch breakpoint (tilt is a fine-pointer affordance) */
 @media (max-width: 860px) {
