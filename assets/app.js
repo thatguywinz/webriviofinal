@@ -33,6 +33,12 @@
   /* ---------- custom cursor ---------- */
   const cursor = document.querySelector('.cursor');
   if (cursor && matchMedia('(pointer: fine)').matches && !prefersReducedMotion) {
+    // label chip that trails the cursor over [data-cursor] instruments
+    // (separate element: .cursor's mix-blend-mode would distort the text)
+    const chip = document.createElement('div');
+    chip.className = 'cursor-chip';
+    chip.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(chip);
     let x = 0, y = 0, tx = 0, ty = 0, visible = false;
     window.addEventListener('mousemove', e => {
       tx = e.clientX; ty = e.clientY;
@@ -43,6 +49,7 @@
       x += (tx - x) * 0.22;
       y += (ty - y) * 0.22;
       cursor.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+      chip.style.transform = `translate(${x + 16}px, ${y + 16}px)`;
       requestAnimationFrame(loop);
     };
     loop();
@@ -50,6 +57,13 @@
     document.querySelectorAll(hoverables).forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+    document.querySelectorAll('[data-cursor]').forEach(el => {
+      el.addEventListener('pointerenter', () => {
+        chip.textContent = el.dataset.cursor || '';
+        chip.classList.add('on');
+      });
+      el.addEventListener('pointerleave', () => chip.classList.remove('on'));
     });
   } else if (cursor) {
     cursor.style.display = 'none';
