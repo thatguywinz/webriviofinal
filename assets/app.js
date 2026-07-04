@@ -18,6 +18,13 @@
 
   const prefersReducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- availability: single source of truth ----------
+     Edit ONLY here. Every visible availability mention on every page
+     ([data-avail] month, [data-avail-slots] count) renders from this. */
+  const BOOKING = { label: 'July 2026', slots: 2 };
+  document.querySelectorAll('[data-avail]').forEach(el => { el.textContent = BOOKING.label; });
+  document.querySelectorAll('[data-avail-slots]').forEach(el => { el.textContent = String(BOOKING.slots); });
+
   /* ---------- scroll progress ---------- */
   const progress = document.querySelector('.progress');
   const onScroll = () => {

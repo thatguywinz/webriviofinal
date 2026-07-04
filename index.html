@@ -156,14 +156,14 @@
 
   <div class="hero-meta">
     <span class="tiny-mono">[ Webrivio Studio · Est. 2024 ]</span>
-    <!-- EDIT: availability is shown here, in the footer, and on contact.html -->
-    <span class="tiny-mono" style="text-align:right;"><span style="color: var(--accent-glow);">●</span> 2 slots remaining — July 2026</span>
+    <!-- availability renders from the BOOKING constant in app.js — edit it there only -->
+    <span class="tiny-mono" style="text-align:right;"><span style="color: var(--accent-glow);">●</span> <span data-avail-slots>2</span> slots remaining — <span data-avail>July 2026</span></span>
   </div>
 
   <div class="hero-headline">
     <h1 class="display">
       <span class="line reveal-mask"><span>Websites that</span></span>
-      <span class="line reveal-mask"><span><em class="it">earn</em> their keep.</span></span>
+      <span class="line reveal-mask"><span><em class="it sig-underline">earn<svg class="u" viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C 34 3, 86 3, 117 6" pathLength="1"/></svg></em> their keep.</span></span>
     </h1>
   </div>
 
@@ -670,7 +670,7 @@
 <section class="section-pad tight" data-atm="0.6" aria-labelledby="cta-title">
   <div class="container">
     <div class="cta-block" data-signal-anchor data-signal-align="top" data-signal-note="YOUR CUSTOMER'S PATH ENDS HERE. YOURS STARTS.">
-      <span class="eyebrow" style="color: var(--accent-glow); justify-content: center; margin-bottom: 32px;">Ready when you are · 2 slots — July 2026</span>
+      <span class="eyebrow" style="color: var(--accent-glow); justify-content: center; margin-bottom: 32px;">Ready when you are · <span data-avail-slots>2</span> slots — <span data-avail>July 2026</span></span>
       <h2 id="cta-title">
         <span class="reveal-mask"><span>Your next customer is</span></span><br/>
         <span class="reveal-mask"><span>already <em class="it">looking</em>.</span></span>
@@ -741,7 +741,7 @@
 
     <div class="foot-bottom">
       <span>© <span id="y2">2026</span> Webrivio Studio. All rights reserved.</span>
-      <span>Booking July 2026 — limited slots</span>
+      <span>Booking <span data-avail>July 2026</span> — limited slots</span>
     </div>
   </div>
 </footer>

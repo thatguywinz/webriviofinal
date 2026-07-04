@@ -85,6 +85,32 @@ html.lenis, html.lenis body { height: auto; }
   pointer-events: none;
 }
 
+/* ---------- Hero italic underline — the first hint of the signal line ---------- */
+.sig-underline { position: relative; display: inline-block; }
+.sig-underline .u {
+  position: absolute;
+  left: 0.02em; right: 0.06em;
+  bottom: -0.02em;
+  width: calc(100% - 0.08em);
+  height: 0.1em;
+  overflow: visible;
+}
+.sig-underline .u path {
+  fill: none;
+  stroke: var(--cyan);
+  stroke-width: 1.1; /* viewBox units; scales with the word */
+  stroke-linecap: round;
+  opacity: 0.5;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  /* draws once, 500ms, after the word reveal completes (~+1.4s) */
+  transition: stroke-dashoffset 0.6s var(--ease-out) 1.4s;
+}
+.reveal-mask.in .sig-underline .u path,
+html:not(.js) .sig-underline .u path {
+  stroke-dashoffset: 0;
+}
+
 /* ---------- Hero trust cue (honest signals, no invented numbers) ---------- */
 .trust-row {
   display: flex;
