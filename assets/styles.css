@@ -1292,6 +1292,28 @@ html:not(.js) .pkg-outline rect { stroke-dashoffset: 0; }
 }
 .phase-card h5 { font-size: 16px; font-weight: 500; margin-bottom: 6px; letter-spacing: -0.005em; }
 .phase-card p { color: var(--mute); font-size: 14px; }
+/* per-phase artifact schematic on the station (drawn on reveal) */
+.phase-schematic { display: block; width: 64px; height: 64px; margin-top: 26px; color: var(--accent-glow); opacity: 0.6; }
+.phase-schematic svg { width: 100%; height: 100%; }
+.phase-schematic svg path, .phase-schematic svg circle, .phase-schematic svg rect {
+  stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .6s var(--ease-out);
+}
+.phase-left.in .phase-schematic svg path,
+.phase-left.in .phase-schematic svg circle,
+.phase-left.in .phase-schematic svg rect { stroke-dashoffset: 0; }
+html:not(.js) .phase-schematic svg path,
+html:not(.js) .phase-schematic svg circle,
+html:not(.js) .phase-schematic svg rect { stroke-dashoffset: 0; }
+/* drawn checkbox on the "what we need from you" items */
+.bullet-check { display: block; width: 22px; height: 22px; margin-bottom: 12px; color: var(--accent-glow); }
+.bullet-check svg { width: 100%; height: 100%; }
+.bullet-check svg rect, .bullet-check svg path {
+  stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .3s var(--ease-out);
+}
+.bullet.in .bullet-check svg rect { stroke-dashoffset: 0; }
+.bullet.in .bullet-check svg path { stroke-dashoffset: 0; transition-delay: .2s; }
+html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { stroke-dashoffset: 0; }
+@media (max-width: 640px) { .phase-schematic { width: 52px; height: 52px; margin-top: 18px; } }
 
 /* ---------- Contact ---------- */
 .contact-wrap {
