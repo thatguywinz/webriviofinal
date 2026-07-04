@@ -287,11 +287,15 @@
     }, { passive: true });
   }
 
-  /* ---------- set active nav link ---------- */
-  const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  /* ---------- set active nav link (extensionless-aware) ---------- */
+  const pageKey = (u) => {
+    let p = (u || '').replace(/[#?].*$/, '').replace(/\/$/, '').toLowerCase();
+    p = p.substring(p.lastIndexOf('/') + 1);
+    return p.replace(/\.html$/, '') || 'index';
+  };
+  const cur = pageKey(location.pathname);
   document.querySelectorAll('.nav-links a, .nav-drawer a').forEach(a => {
-    const href = (a.getAttribute('href') || '').toLowerCase();
-    if (href === path || (path === '' && href === 'index.html')) a.classList.add('active');
+    if (pageKey(a.getAttribute('href')) === cur) a.classList.add('active');
   });
 
   /* ---------- update footer year ---------- */

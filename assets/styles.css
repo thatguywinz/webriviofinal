@@ -1656,6 +1656,9 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
   .nav-cta { display: none; }
   .nav-toggle { display: inline-flex; }
   .nav-inner { gap: 12px; padding: 8px 8px 8px 18px; }
+  /* footer link hit areas >= 44px on touch (DEF-03) */
+  .foot-grid a { display: inline-flex; align-items: center; min-height: 44px; line-height: 2.4; }
+  .foot-grid ul { gap: 2px; }
 }
 
 @media (max-width: 640px) {
