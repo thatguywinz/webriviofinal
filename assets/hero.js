@@ -73,30 +73,33 @@
                     fbm(st*1.4 + 2.4*q + vec2(8.3,2.8) - m*0.6));
       float f = fbm(st*1.6 + 3.0*r);
 
-      // palette (brand only)
-      vec3 bg     = vec3(0.020,0.043,0.094); // #050B18
+      // palette (brand only). `base` is a lifted navy, NOT near-black, so the
+      // field can never paint dark "holes" over the page — only blue → aurora.
+      vec3 base   = vec3(0.055,0.105,0.235);
       vec3 deep   = vec3(0.118,0.247,0.600); // #1E3F99
       vec3 accent = vec3(0.302,0.494,1.000); // #4D7EFF
       vec3 cyan   = vec3(0.498,0.890,1.000); // #7FE3FF
 
-      vec3 col = bg;
+      vec3 col = base;
       col = mix(col, deep,   smoothstep(0.25, 0.95, f));
       col = mix(col, accent, smoothstep(0.55, 1.05, f*f + 0.15*r.x));
       col = mix(col, cyan,   smoothstep(0.86, 1.18, f + 0.30*q.y));
 
-      // bias glow toward top-right, fade toward bottom for legibility
-      float corner = smoothstep(1.5, 0.1, distance(uv, vec2(0.82,0.86)));
-      float vfade  = smoothstep(0.0, 0.62, uv.y);
-      float intensity = corner * (0.35 + 0.65*vfade);
+      // spread the glow across the hero (centred, wide falloff) so the wisps
+      // reach the edges instead of bunching in one corner.
+      float corner = smoothstep(1.7, 0.2, distance(uv, vec2(0.7, 0.55)));
+      float vfade  = smoothstep(-0.1, 0.68, uv.y);
+      float intensity = clamp(corner * (0.5 + 0.5*vfade), 0.0, 1.0);
 
-      col = mix(bg, col, clamp(intensity*1.15, 0.0, 1.0));
+      col = mix(base, col, clamp(intensity*1.15, 0.0, 1.0));
 
       // subtle grain to avoid banding
       float g = (hash(gl_FragCoord.xy + u_time) - 0.5) * 0.025;
       col += g;
 
-      // alpha so the CSS fallback shows through where the field is dark
-      float a = clamp(intensity*1.25, 0.0, 1.0);
+      // alpha keeps a light field everywhere (floor) and is capped below 1 so
+      // the rich CSS field always shows through — no dark holes anywhere.
+      float a = clamp(intensity*1.15, 0.14, 0.9);
       gl_FragColor = vec4(col, a);
     }
   `;
