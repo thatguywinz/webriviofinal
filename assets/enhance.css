@@ -53,15 +53,21 @@ html.lenis, html.lenis body { height: auto; }
 .hero-field::before {
   content: '';
   position: absolute;
-  inset: -12%;
+  inset: -15%;
   background:
-    radial-gradient(46% 56% at 76% 30%, rgba(127,227,255,0.30), transparent 70%),
-    radial-gradient(58% 66% at 88% 16%, rgba(77,126,255,0.32), transparent 72%),
-    radial-gradient(74% 82% at 96% 2%, rgba(30,63,153,0.48), transparent 76%),
-    radial-gradient(52% 60% at 8% 86%, rgba(77,126,255,0.16), transparent 72%),
-    radial-gradient(40% 48% at 30% 108%, rgba(127,227,255,0.10), transparent 70%),
-    radial-gradient(95% 95% at 50% 125%, rgba(5,11,24,0), var(--bg) 82%);
-  filter: blur(44px);
+    /* bright top-right glow */
+    radial-gradient(50% 62% at 84% 20%, rgba(127,227,255,0.32), transparent 70%),
+    radial-gradient(64% 72% at 97% 3%, rgba(30,63,153,0.52), transparent 76%),
+    /* fill the left and centre (behind the headline) */
+    radial-gradient(58% 66% at 15% 24%, rgba(77,126,255,0.26), transparent 72%),
+    radial-gradient(56% 60% at 42% 58%, rgba(77,126,255,0.20), transparent 70%),
+    /* fill the whole bottom band so it never reads flat/dark */
+    radial-gradient(66% 60% at 12% 96%, rgba(77,126,255,0.24), transparent 72%),
+    radial-gradient(70% 58% at 68% 100%, rgba(127,227,255,0.16), transparent 72%),
+    radial-gradient(80% 60% at 95% 90%, rgba(30,63,153,0.30), transparent 74%),
+    /* base tint so no corner is ever pure black */
+    linear-gradient(150deg, rgba(30,63,153,0.34) 0%, rgba(14,27,51,0.14) 46%, rgba(30,63,153,0.24) 100%);
+  filter: blur(46px);
   animation: fieldDrift 24s ease-in-out infinite;
 }
 @keyframes fieldDrift {
@@ -82,7 +88,10 @@ html.lenis, html.lenis body { height: auto; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(5,11,24,0.35) 0%, rgba(5,11,24,0.05) 35%, rgba(5,11,24,0.55) 100%);
+  /* light readability scrim only — must not darken the bottom into a flat band */
+  background:
+    linear-gradient(180deg, rgba(5,11,24,0.22) 0%, rgba(5,11,24,0.0) 34%, rgba(5,11,24,0.0) 70%, rgba(5,11,24,0.14) 100%),
+    radial-gradient(90% 70% at 30% 55%, rgba(5,11,24,0.22), transparent 60%);
   pointer-events: none;
 }
 
