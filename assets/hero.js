@@ -73,31 +73,33 @@
                     fbm(st*1.4 + 2.4*q + vec2(8.3,2.8) - m*0.6));
       float f = fbm(st*1.6 + 3.0*r);
 
-      // palette — `base` is a lifted navy (never black) so the moving field
-      // reads as a rich "dark aurora", never as empty voids.
-      vec3 base   = vec3(0.047,0.092,0.215);
+      // palette (brand only) — the original black+blue "dark aurora"
+      vec3 bg     = vec3(0.020,0.043,0.094); // #050B18
       vec3 deep   = vec3(0.118,0.247,0.600); // #1E3F99
       vec3 accent = vec3(0.302,0.494,1.000); // #4D7EFF
       vec3 cyan   = vec3(0.498,0.890,1.000); // #7FE3FF
 
-      // dramatic, mouse-reactive nebula (the movement lives in q/r/f above)
-      vec3 col = base;
-      col = mix(col, deep,   smoothstep(0.18, 0.92, f));
-      col = mix(col, accent, smoothstep(0.52, 1.08, f*f + 0.15*r.x));
-      col = mix(col, cyan,   smoothstep(0.86, 1.20, f + 0.30*q.y));
+      vec3 col = bg;
+      col = mix(col, deep,   smoothstep(0.25, 0.95, f));
+      col = mix(col, accent, smoothstep(0.55, 1.05, f*f + 0.15*r.x));
+      col = mix(col, cyan,   smoothstep(0.86, 1.18, f + 0.30*q.y));
 
-      // a broad, soft bloom gives depth toward the upper-right — but the field
-      // FILLS the whole hero at ANY window size (the floor never drops to a
-      // void, and it's normalised in uv so it scales with the screen).
-      float bloom = smoothstep(1.55, 0.0, distance(uv, vec2(0.72, 0.58)));
-      col *= (0.62 + 0.5 * bloom);
+      // bias glow toward top-right, fade toward the rest — the navy/black look.
+      // uv-normalised, so it adapts to any window size; the CSS field fills the
+      // faint areas so the (now full-bleed) hero is covered edge to edge.
+      float corner = smoothstep(1.5, 0.1, distance(uv, vec2(0.82,0.86)));
+      float vfade  = smoothstep(0.0, 0.62, uv.y);
+      float intensity = corner * (0.35 + 0.65*vfade);
 
-      // grain to avoid banding
-      col += (hash(gl_FragCoord.xy + u_time) - 0.5) * 0.03;
+      col = mix(bg, col, clamp(intensity*1.15, 0.0, 1.0));
 
-      // FULL, opaque coverage: the moving field IS the background, edge to edge,
-      // at every resolution. The readability scrim lives in CSS (.hero-field::after).
-      gl_FragColor = vec4(col, 1.0);
+      // subtle grain to avoid banding
+      float g = (hash(gl_FragCoord.xy + u_time) - 0.5) * 0.025;
+      col += g;
+
+      // alpha so the CSS field shows through where the aurora is dark
+      float a = clamp(intensity*1.25, 0.0, 1.0);
+      gl_FragColor = vec4(col, a);
     }
   `;
 

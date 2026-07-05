@@ -95,11 +95,11 @@ html.lenis, html.lenis body { height: auto; }
   content: '';
   position: absolute;
   inset: 0;
-  /* readability scrim over the (now opaque) field — darkens just enough behind
-     the headline on the left; must not flatten the rest into a dark band */
+  /* light readability scrim — keeps the headline crisp without flattening the
+     aurora into a dark band */
   background:
-    radial-gradient(74% 80% at 24% 50%, rgba(5,11,24,0.42), transparent 66%),
-    linear-gradient(180deg, rgba(5,11,24,0.18) 0%, rgba(5,11,24,0.0) 32%, rgba(5,11,24,0.0) 72%, rgba(5,11,24,0.12) 100%);
+    radial-gradient(70% 78% at 24% 52%, rgba(5,11,24,0.28), transparent 64%),
+    linear-gradient(180deg, rgba(5,11,24,0.28) 0%, rgba(5,11,24,0.0) 38%, rgba(5,11,24,0.0) 76%, rgba(5,11,24,0.34) 100%);
   pointer-events: none;
 }
 
