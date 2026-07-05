@@ -19,11 +19,10 @@ html.lenis, html.lenis body { height: auto; }
   inset: -360px 0;
   z-index: -1;
   pointer-events: none;
+  /* calmed down: a barely-there depth grid, not a blueprint overlay */
   background-image:
-    repeating-linear-gradient(0deg,  rgba(123,164,255,0.04) 0 1px, transparent 1px 72px),
-    repeating-linear-gradient(90deg, rgba(123,164,255,0.04) 0 1px, transparent 1px 72px),
-    repeating-linear-gradient(0deg,  rgba(123,164,255,0.07) 0 1px, transparent 1px 360px),
-    repeating-linear-gradient(90deg, rgba(123,164,255,0.07) 0 1px, transparent 1px 360px);
+    repeating-linear-gradient(0deg,  rgba(123,164,255,0.018) 0 1px, transparent 1px 96px),
+    repeating-linear-gradient(90deg, rgba(123,164,255,0.018) 0 1px, transparent 1px 96px);
   will-change: transform;
 }
 /* layer 3: aurora wisps canvas (JS-initialized; sits under the grid) */
@@ -396,6 +395,198 @@ html:not(.js) .sig-underline .u path {
 .visit-link:hover::after { transform: scaleX(1); }
 .visit-link svg { width: 14px; height: 14px; transition: transform .3s var(--ease-out); }
 .visit-link:hover svg { transform: translate(3px,-3px); }
+
+/* ============================================================
+   HERO — auto-playing live preview (a real build scrolling behind glass)
+   ============================================================ */
+.hero-preview {
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 620px;
+}
+.hero-browser {
+  position: relative;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: 0 50px 110px -40px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.02), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+.hero-browser::after {
+  /* subtle glass sheen so it reads as a screen, not a flat image */
+  content: '';
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(127,227,255,0.05), transparent 22%);
+}
+.hero-browser-bar {
+  display: flex; align-items: center; gap: 8px;
+  height: 38px; padding: 0 14px;
+  background: rgba(8,16,32,0.96);
+  border-bottom: 1px solid var(--border);
+  position: relative; z-index: 2;
+}
+.hero-browser-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(123,164,255,0.28); }
+.hero-browser-bar .url {
+  margin-left: 10px; flex: 1; height: 20px; max-width: 70%;
+  border-radius: 999px;
+  background: rgba(5,11,24,0.6); border: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 12px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.04em; color: var(--mute);
+}
+.hero-browser-screen {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  overflow: hidden;
+}
+.hero-scroll-img {
+  width: 100%; height: auto; display: block;
+  will-change: transform;
+  /* slow, cinematic auto-scroll: down, hold, back up, loop */
+  animation: heroScroll 34s var(--ease) infinite;
+}
+@keyframes heroScroll {
+  0%, 7%   { transform: translateY(0); }
+  46%, 54% { transform: translateY(-73%); }
+  93%, 100% { transform: translateY(0); }
+}
+/* mobile preview = a legible real phone build (swapped in via styles.css breakpoint) */
+.hero-phone {
+  display: none;
+  width: 100%;
+  aspect-ratio: 9 / 19.5;
+  border-radius: 26px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  overflow: hidden;
+  box-shadow: 0 40px 90px -30px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.hero-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.hero-preview-tag {
+  position: absolute;
+  left: 16px; bottom: 14px;
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink);
+  padding: 6px 12px; border-radius: 999px;
+  background: rgba(5,11,24,0.72); border: 1px solid var(--border-strong);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  z-index: 3;
+}
+.hero-preview-tag .live-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #48e08a;
+  box-shadow: 0 0 0 0 rgba(72,224,138,0.6);
+  animation: livePulse 2.4s var(--ease) infinite;
+}
+@keyframes livePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(72,224,138,0.55); }
+  50%      { box-shadow: 0 0 0 6px rgba(72,224,138,0); }
+}
+
+/* ============================================================
+   SELECTED WORK — cinematic device-duo proof (no links, screenshots as proof)
+   ============================================================ */
+.proof {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: clamp(28px, 4.5vw, 72px);
+  align-items: center;
+  padding: clamp(40px, 6vh, 84px) 0;
+}
+.proof + .proof { border-top: 1px solid var(--border); }
+.proof.flip .proof-devices { order: 2; }
+.proof-devices {
+  position: relative;
+  padding: 2% 3% 6%;
+  perspective: 1400px;
+}
+.proof-devices::before {
+  content: '';
+  position: absolute; inset: 4% 2% 0;
+  background: radial-gradient(58% 60% at 50% 38%, rgba(77,126,255,0.26), transparent 70%);
+  filter: blur(52px);
+  z-index: 0;
+}
+.proof-browser {
+  position: relative;
+  z-index: 1;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  overflow: hidden;
+  box-shadow: 0 44px 100px -34px rgba(0,0,0,0.82), inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: transform .6s var(--ease-out), border-color .3s;
+}
+.proof-bar {
+  display: flex; align-items: center; gap: 9px;
+  height: 34px; padding: 0 14px;
+  background: rgba(8,16,32,0.95);
+  border-bottom: 1px solid var(--border);
+}
+.proof-bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(123,164,255,0.28); }
+.proof-bar .url {
+  margin-left: 10px; flex: 1; height: 18px; max-width: 60%;
+  border-radius: 999px;
+  background: rgba(5,11,24,0.6); border: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 12px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; color: var(--mute);
+}
+.proof-screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.proof-screen img {
+  width: 100%; height: 100%; object-fit: cover; object-position: top;
+  transition: transform 5.5s linear;
+}
+@media (hover: hover) {
+  .proof-devices:hover .proof-browser { border-color: var(--accent-glow); }
+  .proof-devices:hover .proof-screen img { transform: translateY(-14%); }
+}
+/* the floating phone holds a REAL phone screenshot at a legible size */
+.proof-phone {
+  position: absolute;
+  right: -1%; bottom: -3%;
+  width: 27%;
+  min-width: 128px;
+  aspect-ratio: 9 / 19.5;
+  border-radius: 20px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  overflow: hidden;
+  box-shadow: 0 34px 70px -22px rgba(0,0,0,0.88);
+  z-index: 3;
+}
+.proof.flip .proof-phone { right: auto; left: -1%; }
+.proof-phone img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.proof-info .work-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: var(--accent-glow);
+}
+.proof-info .work-tag::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-glow); box-shadow: 0 0 10px var(--accent); }
+.proof-info h3 {
+  font-family: var(--serif);
+  font-size: clamp(30px, 3.4vw, 54px);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin: 16px 0 14px;
+}
+.proof-info h3 .it { font-style: italic; color: var(--accent-glow); }
+.proof-info p { color: var(--ink-soft); font-size: 16px; max-width: 44ch; }
+.proof-points {
+  list-style: none;
+  margin-top: 22px;
+  display: flex; flex-direction: column; gap: 11px;
+}
+.proof-points li {
+  position: relative; padding-left: 22px;
+  color: var(--mute); font-size: 14px;
+}
+.proof-points li::before {
+  content: ''; position: absolute; left: 0; top: 8px;
+  width: 7px; height: 7px; border-radius: 50%;
+  border: 1px solid var(--accent-glow);
+}
 
 /* ---------- Before / after slider ---------- */
 .ba {
@@ -774,68 +965,7 @@ html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%)
 }
 
 /* ============================================================
-   SIGNAL LINE — the Living Blueprint signature (injected by signal.js)
-   ============================================================ */
-.signal {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: 2;
-  overflow: visible;
-}
-.signal .sig-path {
-  fill: none;
-  stroke: var(--cyan);
-  stroke-width: 1.5;
-  opacity: 0.55;
-}
-/* glow = duplicated wide low-alpha stroke (no SVG filter: Safari-safe, cheap) */
-.signal .sig-glow {
-  fill: none;
-  stroke: var(--cyan);
-  stroke-width: 6;
-  opacity: 0.12;
-}
-.signal .sig-node {
-  fill: var(--bg);
-  stroke: var(--cyan);
-  stroke-width: 1.5;
-  opacity: 0;
-  transition: opacity 0.3s var(--ease);
-}
-.signal .sig-node.on { opacity: 0.9; }
-.signal .sig-note {
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  fill: var(--mute-2);
-  opacity: 0;
-  transition: opacity 0.6s var(--ease);
-}
-.signal .sig-note.on { opacity: 1; }
-/* reduced-motion / no-ScrollTrigger: pre-drawn, quiet */
-.signal.static .sig-path { opacity: 0.35; }
-.signal.static .sig-glow { opacity: 0.07; }
-@media (max-width: 860px) {
-  .signal .sig-note { display: none; }
-}
-/* arrival: one 600ms pulse, then a 2s breathing hold on the primary CTA */
-@keyframes sigPulse {
-  0%   { box-shadow: 0 0 0 0 rgba(127,227,255,0.55), 0 10px 40px -10px rgba(77,126,255,0.55); }
-  100% { box-shadow: 0 0 0 26px rgba(127,227,255,0), 0 10px 40px -10px rgba(77,126,255,0.55); }
-}
-@keyframes sigBreathe {
-  0%, 100% { box-shadow: 0 10px 40px -10px rgba(77,126,255,0.55), inset 0 1px 0 rgba(255,255,255,0.2); }
-  50%      { box-shadow: 0 6px 48px -6px rgba(127,227,255,0.65), inset 0 1px 0 rgba(255,255,255,0.2); }
-}
-.sig-arrive { animation: sigPulse 0.6s var(--ease-out) 1; }
-.sig-breathe { animation: sigBreathe 2s var(--ease) infinite 0.6s; }
-.sig-breathe.paused { animation-play-state: paused; }
-
-/* ============================================================
-   PROCESS — left rail (the signal line is the timeline now)
+   PROCESS — timeline rail
    ============================================================ */
 .proc-timeline { position: relative; }
 @media (min-width: 1025px) {
@@ -853,12 +983,23 @@ html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%)
   .compare { grid-template-columns: 1fr; }
   .work-feature { grid-template-columns: 1fr; }
   .work-feature.flip { direction: ltr; }
+  .proof { grid-template-columns: 1fr; gap: clamp(28px, 6vw, 44px); }
+  .proof.flip .proof-devices { order: 0; }
   .founder { grid-template-columns: 1fr; text-align: center; }
   .founder-mark { max-width: 160px; margin: 0 auto; }
 }
 /* frames read straight-on below the touch breakpoint (tilt is a fine-pointer affordance) */
 @media (max-width: 860px) {
   .mockup { transform: none; }
+  /* hero preview: swap the desktop browser for a legible real phone build
+     (defined here so it wins over the base rules in this same file) */
+  .hero-browser { display: none; }
+  .hero-phone { display: block; }
+  .hero-preview { width: min(290px, 80vw); max-width: none; justify-self: center; margin: 6px auto 0; }
+  /* keep the real phone build prominent and legible on small screens */
+  .proof-devices { padding: 1% 0 8%; }
+  .proof-phone { width: 30%; min-width: 118px; right: 2%; }
+  .proof.flip .proof-phone { left: 2%; }
 }
 @media (max-width: 640px) {
   .proof-gauges { grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -866,6 +1007,8 @@ html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%)
   .gauge { width: 96px; height: 96px; }
   .work-stage { padding: 2% 2% 10%; }
   .mockup-phone { width: 28%; right: -1%; }
+  .proof-phone { width: 33%; min-width: 112px; }
+  .proof-info h3 { font-size: clamp(28px, 8vw, 40px); }
   .leak-amount { font-size: clamp(48px, 14vw, 80px); }
   .compare-col.mid { order: -1; }
   .trust-row { gap: 8px 14px; }
@@ -882,5 +1025,5 @@ html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%)
   .mockup { transform: none; }
   .compare-col:not(.mid) { opacity: 1; }
   .mid-outline rect { stroke-dashoffset: 0; }
-  .sig-arrive, .sig-breathe { animation: none; }
+  .hero-scroll-img { animation: none; }
 }

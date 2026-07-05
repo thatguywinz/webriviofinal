@@ -172,40 +172,46 @@
     });
   }
 
-  /* ---------------- mockup 3D tilt ---------------- */
+  /* ---------------- proof device 3D tilt (subtle, fine-pointer only) ---------------- */
   if (fine && !reduce) {
-    document.querySelectorAll('.work-stage').forEach((stage) => {
-      const mock = stage.querySelector('.mockup');
+    document.querySelectorAll('.proof-devices').forEach((stage) => {
+      const mock = stage.querySelector('.proof-browser');
       if (!mock) return;
+      mock.style.transition = 'transform .5s var(--ease-out), border-color .3s';
       stage.addEventListener('pointermove', (e) => {
         const r = stage.getBoundingClientRect();
         const px = (e.clientX - r.left) / r.width - 0.5;
         const py = (e.clientY - r.top) / r.height - 0.5;
-        mock.style.setProperty('--ry', (-9 - px * 8).toFixed(2) + 'deg');
-        mock.style.setProperty('--rx', (7 - py * 8).toFixed(2) + 'deg');
+        mock.style.transform = `perspective(1400px) rotateY(${(px * 5).toFixed(2)}deg) rotateX(${(-py * 5).toFixed(2)}deg)`;
       });
-      stage.addEventListener('pointerleave', () => {
-        mock.style.removeProperty('--ry'); mock.style.removeProperty('--rx');
-      });
+      stage.addEventListener('pointerleave', () => { mock.style.transform = ''; });
     });
   }
 
-  /* ---------------- GSAP scroll choreography (extra polish) ---------------- */
+  /* ---------------- GSAP scroll choreography (cinematic polish) ---------------- */
   if (hasGSAP && window.ScrollTrigger && !reduce) {
-    // gentle parallax on work stages
-    gsap.utils.toArray('.work-stage').forEach((stage) => {
-      gsap.fromTo(stage, { y: 40 }, {
+    // gentle parallax lift on each proof block's devices
+    gsap.utils.toArray('.proof-devices').forEach((stage) => {
+      gsap.fromTo(stage, { y: 46 }, {
+        y: -46, ease: 'none',
+        scrollTrigger: { trigger: stage.closest('.proof') || stage, start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    });
+    // the floating phone drifts a touch faster than its browser frame for depth
+    gsap.utils.toArray('.proof-phone').forEach((ph) => {
+      gsap.fromTo(ph, { y: 30 }, {
+        y: -30, ease: 'none',
+        scrollTrigger: { trigger: ph.closest('.proof') || ph, start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    });
+    // hero preview drifts up subtly as you leave the hero (parallax depth)
+    const heroPrev = document.querySelector('.hero-preview');
+    if (heroPrev) {
+      gsap.fromTo(heroPrev, { y: 0 }, {
         y: -40, ease: 'none',
-        scrollTrigger: { trigger: stage, start: 'top bottom', end: 'bottom top', scrub: true }
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
       });
-    });
-    // phone floats a touch faster than the browser frame
-    gsap.utils.toArray('.mockup-phone').forEach((ph) => {
-      gsap.fromTo(ph, { y: 26 }, {
-        y: -26, ease: 'none',
-        scrollTrigger: { trigger: ph.closest('.work-stage') || ph, start: 'top bottom', end: 'bottom top', scrub: true }
-      });
-    });
+    }
   }
 
   /* ---------------- sticky mobile CTA reveal ---------------- */

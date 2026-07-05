@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/work", "destination": "/", "permanent": true },
+    { "source": "/work.html", "destination": "/", "permanent": true }
+  ],
   "headers": [
     {
       "source": "/(.*)",

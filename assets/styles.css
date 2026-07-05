@@ -42,8 +42,8 @@
   --r-lg: 22px;
   --r-xl: 32px;
 
-  --sect-lg: clamp(96px, 12vw, 180px);
-  --sect-sm: clamp(64px, 8vw, 120px);
+  --sect-lg: clamp(72px, 8vw, 124px);
+  --sect-sm: clamp(52px, 6vw, 88px);
   --btn-h: 48px;
 
   --ease: cubic-bezier(.2, .7, .2, 1);
@@ -517,58 +517,60 @@ html:not(.js) .cursor-chip { display: none; }
 
 /* ---------- HERO (home) ---------- */
 .hero {
-  min-height: 100vh;
-  min-height: 100svh;
-  /* top/bottom only — inline gutters come from .container and must survive */
-  padding-top: clamp(120px, 22vh, 200px);
-  padding-bottom: clamp(40px, 7vh, 80px);
+  /* sized to content + breathing room (not a forced 100vh) so there's no
+     dead band above the headline — the exact "blank space" to avoid */
+  min-height: auto;
+  padding-top: clamp(116px, 15vh, 152px);
+  padding-bottom: clamp(52px, 8vh, 88px);
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  align-items: center;
   position: relative;
   overflow: hidden;
 }
-.hero-meta {
-  position: absolute;
-  top: clamp(88px, 13vh, 140px);
-  left: var(--gutter);
-  right: var(--gutter);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 20px;
+/* two-column: copy on the left, an auto-playing live preview on the right */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
 }
-.hero-meta .tiny-mono { max-width: 280px; line-height: 1.6; }
-.hero-headline {
-  margin-bottom: clamp(28px, 5vh, 60px);
+.hero-copy { max-width: 660px; }
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(13,33,71,0.35);
+  margin-bottom: clamp(20px, 3vh, 30px);
 }
-.hero-headline h1 {
+.hero-pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent-glow); box-shadow: 0 0 10px var(--accent); }
+.hero-copy h1 {
   font-family: var(--serif);
-  font-size: clamp(48px, 13.5vw, 232px);
-  line-height: 0.9;
+  font-size: clamp(44px, 5.6vw, 92px);
+  line-height: 0.95;
   letter-spacing: -0.025em;
   font-weight: 400;
 }
-.hero-headline .line { display: block; overflow: hidden; }
-.hero-headline .line > span { display: inline-block; }
-/* the two hero lines are single lines by design; nowrap on desktop stops the
-   font-swap fallback from wrapping to an extra line (the homepage CLS source) */
-@media (min-width: 861px) { .hero-headline .line { white-space: nowrap; } }
-.hero-footer {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 60px;
-  align-items: end;
-  padding-top: 48px;
-  border-top: 1px solid var(--border);
-}
-.hero-footer .lede { max-width: 52ch; }
+.hero-copy h1 .line { display: block; overflow: hidden; }
+.hero-copy h1 .line > span { display: inline-block; }
+.hero-copy .lede { max-width: 46ch; margin-top: clamp(18px, 2.6vh, 28px); }
 .hero-actions {
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+  margin-top: clamp(24px, 3.4vh, 36px);
 }
+.hero-copy .trust-row { margin-top: clamp(24px, 3.4vh, 36px); }
 
 .hero-orb {
   position: absolute;
@@ -1096,22 +1098,23 @@ footer {
 
 /* ---------- Page Header (non-home) ---------- */
 .page-head {
-  min-height: 100vh;
-  min-height: 100svh;
-  padding-top: clamp(110px, 18vh, 180px);
-  padding-bottom: clamp(48px, 8vh, 100px);
+  /* sized to content (not a full empty viewport) so the first section
+     comes up sooner and the page never reads as blank on arrival */
+  min-height: auto;
+  padding-top: clamp(128px, 20vh, 208px);
+  padding-bottom: clamp(36px, 6vh, 72px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   overflow: hidden;
 }
 .page-head h1 {
   font-family: var(--serif);
-  font-size: clamp(40px, 9vw, 152px);
-  line-height: 0.92;
+  font-size: clamp(40px, 8vw, 128px);
+  line-height: 0.94;
   letter-spacing: -0.025em;
-  margin: 20px 0 40px;
+  margin: 16px 0 28px;
   width: 100%;
 }
 .page-head h1 .it { font-style: italic; color: var(--accent-glow); }
@@ -1119,8 +1122,8 @@ footer {
 .page-head-meta {
   display: flex;
   justify-content: space-between;
-  padding-top: 60px;
-  margin-top: 60px;
+  padding-top: 40px;
+  margin-top: 40px;
   border-top: 1px solid var(--border);
   flex-wrap: wrap;
   gap: 30px;
@@ -1663,7 +1666,8 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
   .work-grid { grid-template-columns: 1fr; }
   .pkg-grid { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 1fr; gap: 30px; padding: 40px 0; }
-  .hero-footer { grid-template-columns: 1fr; text-align: left; }
+  .hero-grid { grid-template-columns: 1fr; gap: clamp(36px, 6vw, 56px); }
+  .hero-copy { max-width: none; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
 }
 @media (max-width: 860px) {
@@ -1671,6 +1675,9 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
   .nav-cta { display: none; }
   .nav-toggle { display: inline-flex; }
   .nav-inner { gap: 12px; padding: 8px 8px 8px 18px; }
+  /* mobile hero preview (browser→phone swap + sizing live in enhance.css so they
+     win the cascade; only the tag re-centering is page-level) */
+  .hero-preview-tag { left: 50%; transform: translateX(-50%); bottom: 12px; }
   /* footer link hit areas >= 44px on touch (DEF-03) */
   .foot-grid a { display: inline-flex; align-items: center; min-height: 44px; line-height: 2.4; }
   .foot-grid ul { gap: 2px; }
@@ -1684,9 +1691,6 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
   .stats-grid { grid-template-columns: 1fr; }
   .stat-cell { padding: 28px 22px; }
   .section-label { flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 36px; }
-  .hero-meta { gap: 10px; }
-  .hero-meta .tiny-mono { max-width: none; line-height: 1.5; font-size: 10px; }
-  .hero-footer { padding-top: 32px; gap: 28px; }
   .page-head-meta { padding-top: 32px; margin-top: 32px; gap: 18px; }
   .case-study .case-stats { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
   .case-study .case-stats .n { font-size: 22px; }
@@ -1743,7 +1747,7 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
   .nav-inner { gap: 8px; padding: 8px 8px 8px 14px; }
   .nav-brand { font-size: 19px; gap: 8px; }
   .nav-brand .mark { width: 22px; height: 22px; }
-  .hero-meta .tiny-mono { font-size: 9px; letter-spacing: 0.16em; }
+  .hero-pill { font-size: 10px; letter-spacing: 0.12em; }
   h2.display { font-size: clamp(36px, 10vw, 84px); }
   .cta-block h2 { font-size: clamp(38px, 11vw, 80px); }
   .split-heading { font-size: clamp(32px, 9vw, 64px); }
@@ -1770,7 +1774,6 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
   }
   .hero { padding-top: clamp(96px, 18vh, 140px); padding-bottom: clamp(32px, 6vh, 56px); }
   .page-head { padding-top: clamp(96px, 16vh, 140px); padding-bottom: clamp(32px, 6vh, 56px); }
-  .hero-headline { margin-bottom: clamp(20px, 3vh, 32px); }
 }
 
 /* mobile performance: lighter blurs/orbs on small viewports */
