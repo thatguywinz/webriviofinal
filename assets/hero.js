@@ -73,34 +73,31 @@
                     fbm(st*1.4 + 2.4*q + vec2(8.3,2.8) - m*0.6));
       float f = fbm(st*1.6 + 3.0*r);
 
-      // palette (brand only). `base` is a lifted navy, NOT near-black, so the
-      // field can never paint dark "holes" over the page — only blue → aurora.
-      vec3 base   = vec3(0.055,0.105,0.235);
+      // palette — `base` is a lifted navy (never black) so the moving field
+      // reads as a rich "dark aurora", never as empty voids.
+      vec3 base   = vec3(0.047,0.092,0.215);
       vec3 deep   = vec3(0.118,0.247,0.600); // #1E3F99
       vec3 accent = vec3(0.302,0.494,1.000); // #4D7EFF
       vec3 cyan   = vec3(0.498,0.890,1.000); // #7FE3FF
 
+      // dramatic, mouse-reactive nebula (the movement lives in q/r/f above)
       vec3 col = base;
-      col = mix(col, deep,   smoothstep(0.25, 0.95, f));
-      col = mix(col, accent, smoothstep(0.55, 1.05, f*f + 0.15*r.x));
-      col = mix(col, cyan,   smoothstep(0.86, 1.18, f + 0.30*q.y));
+      col = mix(col, deep,   smoothstep(0.18, 0.92, f));
+      col = mix(col, accent, smoothstep(0.52, 1.08, f*f + 0.15*r.x));
+      col = mix(col, cyan,   smoothstep(0.86, 1.20, f + 0.30*q.y));
 
-      // spread the glow across the hero (centred, wide falloff) so the wisps
-      // reach the edges instead of bunching in one corner.
-      float corner = smoothstep(1.7, 0.2, distance(uv, vec2(0.7, 0.55)));
-      float vfade  = smoothstep(-0.1, 0.68, uv.y);
-      float intensity = clamp(corner * (0.5 + 0.5*vfade), 0.0, 1.0);
+      // a broad, soft bloom gives depth toward the upper-right — but the field
+      // FILLS the whole hero at ANY window size (the floor never drops to a
+      // void, and it's normalised in uv so it scales with the screen).
+      float bloom = smoothstep(1.55, 0.0, distance(uv, vec2(0.72, 0.58)));
+      col *= (0.62 + 0.5 * bloom);
 
-      col = mix(base, col, clamp(intensity*1.15, 0.0, 1.0));
+      // grain to avoid banding
+      col += (hash(gl_FragCoord.xy + u_time) - 0.5) * 0.03;
 
-      // subtle grain to avoid banding
-      float g = (hash(gl_FragCoord.xy + u_time) - 0.5) * 0.025;
-      col += g;
-
-      // alpha keeps a light field everywhere (floor) and is capped below 1 so
-      // the rich CSS field always shows through — no dark holes anywhere.
-      float a = clamp(intensity*1.15, 0.14, 0.9);
-      gl_FragColor = vec4(col, a);
+      // FULL, opaque coverage: the moving field IS the background, edge to edge,
+      // at every resolution. The readability scrim lives in CSS (.hero-field::after).
+      gl_FragColor = vec4(col, 1.0);
     }
   `;
 
@@ -130,16 +127,19 @@
   const uTime  = gl.getUniformLocation(prog, 'u_time');
   const uMouse = gl.getUniformLocation(prog, 'u_mouse');
 
-  // Render at a capped, slightly-reduced resolution for performance.
+  // Render at a capped, slightly-reduced resolution for performance. The canvas
+  // ELEMENT always fills the hero (CSS width/height:100%), so this internal
+  // buffer just upscales to cover any window size — even a maximized 4K/ultrawide.
   const dprCap = (lowMem || lowCpu) ? 1.0 : 1.5;
+  const MAX_W = 2400, MAX_H = 1600; // cap the buffer; CSS stretches it to fill
   let w = 0, h = 0;
   function resize(){
     const dpr = Math.min(window.devicePixelRatio || 1, dprCap);
     const scale = 0.85; // internal render scale; CSS upscales — cheap & soft
     const cw = canvas.clientWidth || canvas.offsetWidth || window.innerWidth;
     const ch = canvas.clientHeight || canvas.offsetHeight || Math.round(window.innerHeight * 0.9);
-    w = Math.max(1, Math.floor(cw * dpr * scale));
-    h = Math.max(1, Math.floor(ch * dpr * scale));
+    w = Math.max(1, Math.min(MAX_W, Math.floor(cw * dpr * scale)));
+    h = Math.max(1, Math.min(MAX_H, Math.floor(ch * dpr * scale)));
     if (canvas.width !== w || canvas.height !== h) {
       canvas.width = w; canvas.height = h;
       gl.viewport(0, 0, w, h);
@@ -147,6 +147,11 @@
   }
   resize();
   window.addEventListener('resize', resize, { passive: true });
+  // ResizeObserver catches maximise / layout / DPR changes that a window
+  // 'resize' event can miss — guarantees the field re-fits any window size.
+  if ('ResizeObserver' in window) {
+    try { new ResizeObserver(resize).observe(canvas); } catch (e) { /* noop */ }
+  }
 
   // pointer (smoothed)
   const mouse = { x: 0.5, y: 0.5, tx: 0.5, ty: 0.5 };

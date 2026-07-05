@@ -59,14 +59,17 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: var(--bg); color: var(--ink); }
-html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+/* overflow-x: clip contains the full-bleed hero field (100vw can exceed the
+   content width by the scrollbar) without creating a scroll container — safe
+   for vertical/smooth scroll. */
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; overflow-x: clip; }
 
 body {
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.55;
   letter-spacing: -0.005em;
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   position: relative;
@@ -525,7 +528,8 @@ html:not(.js) .cursor-chip { display: none; }
   display: flex;
   align-items: center;
   position: relative;
-  overflow: hidden;
+  /* no overflow:hidden here — it would clip the full-bleed .hero-field back to
+     the 1440 container. The field clips its own blur internally. */
 }
 .hero-copy {
   position: relative;

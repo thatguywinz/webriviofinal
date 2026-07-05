@@ -41,10 +41,17 @@ html.lenis, html.lenis body { height: auto; }
   #atm-canvas { display: none; }
 }
 
-/* ---------- Hero living field (WebGL canvas + CSS fallback) ---------- */
+/* ---------- Hero living field (WebGL canvas + CSS fallback) ----------
+   Full-bleed: the hero itself is a max-width:1440 .container, but the field
+   must cover the WHOLE viewport width (any screen size, incl. maximized 4K /
+   ultrawide) — otherwise the aurora becomes a centred band with dark side
+   bars. The content stays in the container; only this background breaks out. */
 .hero-field {
   position: absolute;
-  inset: 0;
+  top: 0; bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
@@ -88,10 +95,11 @@ html.lenis, html.lenis body { height: auto; }
   content: '';
   position: absolute;
   inset: 0;
-  /* light readability scrim only — must not darken the bottom into a flat band */
+  /* readability scrim over the (now opaque) field — darkens just enough behind
+     the headline on the left; must not flatten the rest into a dark band */
   background:
-    linear-gradient(180deg, rgba(5,11,24,0.22) 0%, rgba(5,11,24,0.0) 34%, rgba(5,11,24,0.0) 70%, rgba(5,11,24,0.14) 100%),
-    radial-gradient(90% 70% at 30% 55%, rgba(5,11,24,0.22), transparent 60%);
+    radial-gradient(74% 80% at 24% 50%, rgba(5,11,24,0.42), transparent 66%),
+    linear-gradient(180deg, rgba(5,11,24,0.18) 0%, rgba(5,11,24,0.0) 32%, rgba(5,11,24,0.0) 72%, rgba(5,11,24,0.12) 100%);
   pointer-events: none;
 }
 
