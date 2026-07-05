@@ -212,6 +212,39 @@
         scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
       });
     }
+
+    /* ---- PROCESS: cinematic 2D storytelling ---- */
+    // each giant phase number drifts across the screen as its phase scrolls
+    // through — alternating left/right for a filmic, moving-set-piece feel.
+    gsap.utils.toArray('.phase').forEach((phase, i) => {
+      const num = phase.querySelector('.phase-num');
+      if (num) {
+        const dir = i % 2 === 0 ? 1 : -1;
+        gsap.fromTo(num,
+          { xPercent: 16 * dir, opacity: 0.55 },
+          { xPercent: -16 * dir, opacity: 1, ease: 'none',
+            scrollTrigger: { trigger: phase, start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
+      }
+      // the phase title lifts a touch as the phase settles into view
+      const title = phase.querySelector('.phase-title');
+      if (title) {
+        gsap.fromTo(title, { y: 26 }, {
+          y: -18, ease: 'none',
+          scrollTrigger: { trigger: phase, start: 'top bottom', end: 'bottom top', scrub: true }
+        });
+      }
+    });
+    // the timeline spine draws downward as you move through the whole story
+    const timeline = document.querySelector('.proc-timeline');
+    if (timeline) {
+      gsap.to(timeline, {
+        ease: 'none',
+        scrollTrigger: {
+          trigger: timeline, start: 'top 70%', end: 'bottom 80%', scrub: 0.5,
+          onUpdate: (self) => timeline.style.setProperty('--proc-progress', self.progress.toFixed(3))
+        }
+      });
+    }
   }
 
   /* ---------------- sticky mobile CTA reveal ---------------- */

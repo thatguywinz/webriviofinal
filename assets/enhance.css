@@ -53,14 +53,16 @@ html.lenis, html.lenis body { height: auto; }
 .hero-field::before {
   content: '';
   position: absolute;
-  inset: -10% -10% -10% -10%;
+  inset: -12%;
   background:
-    radial-gradient(38% 50% at 82% 22%, rgba(127,227,255,0.30), transparent 70%),
-    radial-gradient(50% 60% at 70% 30%, rgba(77,126,255,0.28), transparent 72%),
-    radial-gradient(60% 70% at 88% 8%, rgba(30,63,153,0.45), transparent 75%),
-    radial-gradient(80% 80% at 50% 120%, rgba(5,11,24,0.0), var(--bg) 78%);
-  filter: blur(40px);
-  animation: fieldDrift 22s ease-in-out infinite;
+    radial-gradient(46% 56% at 76% 30%, rgba(127,227,255,0.30), transparent 70%),
+    radial-gradient(58% 66% at 88% 16%, rgba(77,126,255,0.32), transparent 72%),
+    radial-gradient(74% 82% at 96% 2%, rgba(30,63,153,0.48), transparent 76%),
+    radial-gradient(52% 60% at 8% 86%, rgba(77,126,255,0.16), transparent 72%),
+    radial-gradient(40% 48% at 30% 108%, rgba(127,227,255,0.10), transparent 70%),
+    radial-gradient(95% 95% at 50% 125%, rgba(5,11,24,0), var(--bg) 82%);
+  filter: blur(44px);
+  animation: fieldDrift 24s ease-in-out infinite;
 }
 @keyframes fieldDrift {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -532,14 +534,41 @@ html:not(.js) .sig-underline .u path {
   display: flex; align-items: center; padding: 0 12px;
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.06em; color: var(--mute);
 }
-.proof-screen { position: relative; aspect-ratio: 16 / 10; overflow: hidden; }
+.proof-screen { position: relative; aspect-ratio: 16 / 10.5; overflow: hidden; }
 .proof-screen img {
   width: 100%; height: 100%; object-fit: cover; object-position: top;
-  transition: transform 5.5s linear;
+}
+/* the browser plays the real build live, scrolling slowly behind the glass */
+.proof-screen img.proof-scroll-img {
+  height: auto;
+  object-fit: unset;
+  will-change: transform;
+  animation: proofScroll 32s var(--ease) infinite;
+}
+@keyframes proofScroll {
+  0%, 7%    { transform: translateY(0); }
+  47%, 53%  { transform: translateY(-76%); }
+  93%, 100% { transform: translateY(0); }
 }
 @media (hover: hover) {
   .proof-devices:hover .proof-browser { border-color: var(--accent-glow); }
-  .proof-devices:hover .proof-screen img { transform: translateY(-14%); }
+}
+/* LIVE tag on each build's browser */
+.proof-live-tag {
+  position: absolute;
+  left: 14px; bottom: 12px;
+  display: inline-flex; align-items: center; gap: 7px;
+  z-index: 4;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--ink);
+  padding: 6px 12px; border-radius: 999px;
+  background: rgba(5,11,24,0.72); border: 1px solid var(--border-strong);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.proof-live-tag .live-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #48e08a;
+  box-shadow: 0 0 0 0 rgba(72,224,138,0.6);
+  animation: livePulse 2.4s var(--ease) infinite;
 }
 /* the floating phone holds a REAL phone screenshot at a legible size */
 .proof-phone {
@@ -686,8 +715,10 @@ html:not(.js) .sig-underline .u path {
   overflow: visible;
 }
 .funnel-svg { width: 100%; height: auto; display: block; overflow: visible; }
-.funnel-outline { fill: rgba(77,126,255,0.05); stroke: url(#funnelG); stroke-width: 1.5; stroke-linejoin: round; }
-.funnel-divider { stroke: rgba(127,227,255,0.28); stroke-width: 1; stroke-dasharray: 3 4; }
+.funnel-fill { fill: url(#funnelFill); }
+.funnel-outline { fill: none; stroke: url(#funnelG); stroke-width: 1.75; stroke-linejoin: round; stroke-linecap: round; }
+.funnel-divider { stroke: rgba(127,227,255,0.26); stroke-width: 1; stroke-dasharray: 2 5; stroke-linecap: round; }
+.funnel-drain { fill: rgba(127,227,255,0.55); }
 .funnel-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em; fill: var(--mute); }
 .funnel-drips { position: absolute; inset: 0; pointer-events: none; overflow: visible; }
 .drip {
@@ -965,11 +996,38 @@ html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%)
 }
 
 /* ============================================================
-   PROCESS — timeline rail
+   PROCESS — cinematic timeline (2D lateral storytelling on scroll)
    ============================================================ */
 .proc-timeline { position: relative; }
 @media (min-width: 1025px) {
   .proc-timeline { padding-left: calc(var(--gutter) + var(--safe-l) + 38px); }
+  /* a thin spine the phases hang off; it draws down as you scroll (JS) */
+  .proc-timeline::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--gutter) + var(--safe-l) + 6px);
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--border-strong) 8%, var(--border-strong) 92%, transparent);
+    transform-origin: top center;
+    transform: scaleY(var(--proc-progress, 0));
+    opacity: 0.7;
+  }
+}
+/* the giant phase number reads as a moving set-piece, not static type */
+.phase-num { will-change: transform; }
+.phase-num .pn-mark {
+  display: inline-block;
+  will-change: transform;
+}
+/* lateral slide-in: the left column enters from the left, the right from the right,
+   so the story literally moves across the screen as you scroll (2D, no 3D) */
+@media (min-width: 861px) {
+  .phase-left.reveal { transform: translateX(-52px); }
+  .phase-left.reveal.in { transform: translateX(0); }
+  .phase-right .reveal { transform: translateX(52px); }
+  .phase-right .reveal.in { transform: translateX(0); }
+  .phase-right .reveal { transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
 }
 
 /* ============================================================
@@ -1025,5 +1083,6 @@ html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%)
   .mockup { transform: none; }
   .compare-col:not(.mid) { opacity: 1; }
   .mid-outline rect { stroke-dashoffset: 0; }
-  .hero-scroll-img { animation: none; }
+  .hero-scroll-img, .proof-scroll-img { animation: none !important; transform: none !important; }
+  .phase-left.reveal, .phase-right .reveal { transform: none !important; }
 }
