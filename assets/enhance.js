@@ -188,6 +188,23 @@
     });
   }
 
+  /* ---------------- proof previews: auto-scroll only while on screen ----------------
+     Each build's screenshot glides top-to-bottom behind the browser glass. Start
+     that from the top when the frame actually enters view — not on page load, or
+     it would have already scrolled to the bottom by the time the visitor gets
+     here. Two thresholds so the reset never flickers: begin once the frame is
+     ~35% visible, and only clear it (which snaps back to the top) once the frame
+     has fully left, so it replays from the top on the way back. */
+  if (!reduce && 'IntersectionObserver' in window) {
+    const proofIO = new IntersectionObserver((ents) => {
+      ents.forEach((e) => {
+        if (e.intersectionRatio >= 0.35) e.target.classList.add('is-playing');
+        else if (!e.isIntersecting) e.target.classList.remove('is-playing');
+      });
+    }, { threshold: [0, 0.35] });
+    document.querySelectorAll('.proof-screen').forEach((s) => proofIO.observe(s));
+  }
+
   /* ---------------- GSAP scroll choreography (cinematic polish) ---------------- */
   if (hasGSAP && window.ScrollTrigger && !reduce) {
     // gentle parallax lift on each proof block's devices

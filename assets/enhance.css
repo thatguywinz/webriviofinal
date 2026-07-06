@@ -555,11 +555,16 @@ html:not(.js) .sig-underline .u path {
 .proof-screen img {
   width: 100%; height: 100%; object-fit: cover; object-position: top;
 }
-/* the browser plays the real build live, scrolling slowly behind the glass */
+/* the browser plays the real build live, scrolling slowly behind the glass —
+   but only once the build is actually on screen (see enhance.js). Left idle it
+   would loop through on page load and be sitting at the bottom by the time you
+   reach it; .is-playing starts the scroll from the top when the frame enters view. */
 .proof-screen img.proof-scroll-img {
   height: auto;
   object-fit: unset;
   will-change: transform;
+}
+.proof-screen.is-playing img.proof-scroll-img {
   animation: proofScroll 32s var(--ease) infinite;
 }
 @keyframes proofScroll {
