@@ -145,7 +145,7 @@
     <!-- progress (enhanced only) -->
     <div class="q-progress" data-enh aria-hidden="true">
       <div class="q-progress-bar"><span></span></div>
-      <div class="q-count"><b class="cur">01</b> <span class="sep">/</span> <span class="tot">07</span></div>
+      <div class="q-count"><b class="cur">01</b> <span class="sep">/</span> <span class="tot">06</span></div>
     </div>
 
     <!-- plain-form heading (no-JS only) -->
@@ -167,7 +167,7 @@
 
       <!-- 01 · email -->
       <div class="q-step" data-name="email">
-        <span class="q-index">Your email <span class="q-sr">— step 1 of 7</span></span>
+        <span class="q-index">Your email <span class="q-sr">— step 1 of 6</span></span>
         <label class="q-q" for="q-email">What's your <em class="it">email?</em></label>
         <div class="q-field">
           <input class="q-input" id="q-email" name="email" type="email" required inputmode="email" autocomplete="email" placeholder="you@business.com" data-err="We need an email to reply to." />
@@ -182,7 +182,7 @@
 
       <!-- 02 · name -->
       <div class="q-step" data-name="name">
-        <span class="q-index">Your name <span class="q-sr">— step 2 of 7</span></span>
+        <span class="q-index">Your name <span class="q-sr">— step 2 of 6</span></span>
         <label class="q-q" for="q-name">And your <em class="it">name?</em></label>
         <div class="q-field">
           <input class="q-input" id="q-name" name="name" type="text" required autocomplete="name" placeholder="Jordan Reyes" data-err="A first name is plenty." />
@@ -195,9 +195,24 @@
         </div>
       </div>
 
-      <!-- 03 · business -->
+      <!-- 03 · phone -->
+      <div class="q-step" data-name="phone">
+        <span class="q-index">Your phone <span class="q-sr">— step 3 of 6</span></span>
+        <label class="q-q" for="q-phone">Best <em class="it">number</em> to reach you?</label>
+        <div class="q-field">
+          <input class="q-input" id="q-phone" name="phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="(555) 123-4567" data-err="Enter a phone number first." />
+        </div>
+        <p class="q-error" role="alert"></p>
+        <p class="q-help">The best number to reach you — we'll only call to set up your fit call.</p>
+        <div class="q-controls" data-enh>
+          <button type="button" class="btn btn-primary q-next"><span class="label">OK</span><svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg></button>
+          <span class="q-enter">press <b>Enter</b> <kbd>↵</kbd></span>
+        </div>
+      </div>
+
+      <!-- 04 · business -->
       <div class="q-step" data-name="business">
-        <span class="q-index">Your business <span class="q-sr">— step 3 of 7</span></span>
+        <span class="q-index">Your business <span class="q-sr">— step 4 of 6</span></span>
         <label class="q-q" for="q-business">What's the <em class="it">business</em> called?</label>
         <div class="q-field">
           <input class="q-input" id="q-business" name="business" type="text" required autocomplete="organization" placeholder="Reyes Roofing Co." data-err="Even a working name is fine." />
@@ -210,9 +225,9 @@
         </div>
       </div>
 
-      <!-- 04 · industry (chips) -->
+      <!-- 05 · industry (chips) -->
       <div class="q-step" data-name="industry">
-        <span class="q-index">Your industry <span class="q-sr">— step 4 of 7</span></span>
+        <span class="q-index">Your industry <span class="q-sr">— step 5 of 6</span></span>
         <span class="q-q" id="q-industry-label">What kind of <em class="it">business</em> is it? <span class="opt">optional</span></span>
         <div class="q-chips" role="radiogroup" aria-labelledby="q-industry-label">
           <button type="button" class="q-opt" role="radio" aria-checked="false">Roofing</button>
@@ -229,39 +244,9 @@
         </div>
       </div>
 
-      <!-- 05 · message (textarea) -->
-      <div class="q-step" data-name="message">
-        <span class="q-index">The project <span class="q-sr">— step 5 of 7</span></span>
-        <label class="q-q" for="q-message">What are you trying to <em class="it">fix?</em> <span class="opt">optional</span></label>
-        <div class="q-field">
-          <textarea class="q-textarea" id="q-message" name="message" rows="1" placeholder="Who you're trying to reach, and what's frustrating about the current site. Anything is useful."></textarea>
-        </div>
-        <p class="q-help">A sentence or two is plenty — we'll dig in on the call.</p>
-        <div class="q-controls" data-enh>
-          <button type="button" class="btn btn-primary q-next"><span class="label">OK</span><svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg></button>
-          <span class="q-enter"><b>⌘ / Ctrl + Enter</b> to continue</span>
-          <button type="button" class="q-skip">Skip this</button>
-        </div>
-      </div>
-
-      <!-- 06 · phone -->
-      <div class="q-step" data-name="phone">
-        <span class="q-index">Your phone <span class="q-sr">— step 6 of 7</span></span>
-        <label class="q-q" for="q-phone">Best <em class="it">number</em> to reach you? <span class="opt">optional</span></label>
-        <div class="q-field">
-          <input class="q-input" id="q-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="(555) 123-4567" />
-        </div>
-        <p class="q-help">Only if you'd rather we call. Email works just as well.</p>
-        <div class="q-controls" data-enh>
-          <button type="button" class="btn btn-primary q-next"><span class="label">OK</span><svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg></button>
-          <span class="q-enter">press <b>Enter</b> <kbd>↵</kbd></span>
-          <button type="button" class="q-skip">Skip this</button>
-        </div>
-      </div>
-
-      <!-- 07 · review + send -->
+      <!-- 06 · review + send -->
       <div class="q-step q-step--send" data-name="send">
-        <span class="q-index">Last step <span class="q-sr">— step 7 of 7</span></span>
+        <span class="q-index">Last step <span class="q-sr">— step 6 of 6</span></span>
         <h2 class="q-q">Ready when <em class="it">you are.</em></h2>
         <div class="q-review" data-enh></div>
         <p class="q-help">A human reads this today. Reply within one business day — with next steps, or an honest referral if we're not the right fit.</p>

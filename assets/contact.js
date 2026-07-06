@@ -175,10 +175,9 @@
   const REVIEW = [
     ['email', 'Email'],
     ['name', 'Name'],
+    ['phone', 'Phone'],
     ['business', 'Business'],
     ['industry', 'Type'],
-    ['message', 'Project'],
-    ['phone', 'Phone'],
   ];
   function buildReview() {
     const box = quote.querySelector('.q-review');
