@@ -667,6 +667,9 @@ html:not(.js) .cursor-chip { display: none; }
   color: var(--accent-glow);
   padding-top: 8px;
 }
+/* h3 and h4 both accepted: the heading LEVEL is chosen to keep the document
+   outline valid on each page; the look is carried by .bullet, not by the tag. */
+.bullet h3,
 .bullet h4 { font-size: 20px; font-weight: 500; letter-spacing: -0.01em; margin-bottom: 6px; }
 .bullet p { color: var(--mute); font-size: 15px; }
 
@@ -1070,9 +1073,14 @@ footer {
   gap: 60px;
   margin-bottom: 80px;
 }
+/* Footer column headings are <h2>: they sit inside the contentinfo landmark and
+   must not skip levels from the page's h2s (h2 -> h5 was an a11y heading-order
+   violation on every page). h5 kept for backwards compatibility. */
+.foot-grid h2,
 .foot-grid h5 {
   font-family: var(--mono);
   font-size: 11px;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.2em;
   color: var(--mute);

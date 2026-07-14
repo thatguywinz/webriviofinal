@@ -1,9 +1,15 @@
 User-agent: *
 Allow: /
-Disallow: /404.html
+
+# /404 carries <meta name="robots" content="noindex, follow">.
+# It is deliberately NOT disallowed here: a disallowed URL can never be crawled,
+# so its noindex directive would never actually be read.
 
 # AI / LLM crawlers — explicitly permitted (GEO)
 User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
@@ -19,6 +25,9 @@ User-agent: ClaudeBot
 Allow: /
 
 User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
 Allow: /
 
 User-agent: CCBot

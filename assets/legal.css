@@ -1,0 +1,241 @@
+/* ============================================================
+   Webrivio — legal.css
+   Long-form prose for legal pages (privacy).
+   Loaded AFTER styles.css and enhance.css. Tokens only — no new colours.
+   Cascade note: the generic .legal-prose rules come FIRST; the component
+   blocks (.legal-summary, .legal-fields, .legal-note, .legal-contact) come
+   after so they win at equal specificity.
+   ============================================================ */
+
+.legal-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 96px);
+  align-items: start;
+  padding-bottom: var(--sect-lg);
+}
+
+/* ---------- on-this-page rail ---------- */
+.legal-toc {
+  position: sticky;
+  top: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 6px;
+}
+.legal-toc h2 {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--mute);
+}
+.legal-toc ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.legal-toc a {
+  display: block;
+  padding: 7px 0 7px 16px;
+  font-size: 14px;
+  color: var(--mute);
+  border-left: 1px solid var(--border);
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.legal-toc a:hover,
+.legal-toc a:focus-visible { color: var(--ink); border-left-color: var(--accent-glow); }
+
+/* ---------- generic prose ---------- */
+.legal-prose { max-width: 72ch; }
+.legal-prose section + section { margin-top: clamp(44px, 5vw, 68px); }
+
+.legal-prose h2 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 18px;
+  scroll-margin-top: 140px;
+}
+.legal-prose h2 .h-num {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-glow);
+  margin-bottom: 12px;
+}
+
+.legal-prose p {
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+.legal-prose p:last-child { margin-bottom: 0; }
+.legal-prose p strong,
+.legal-prose li strong { color: var(--ink); font-weight: 500; }
+.legal-prose em { font-style: italic; }
+
+.legal-prose a:not(.btn) {
+  color: var(--ink);
+  border-bottom: 1px solid var(--border-strong);
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.legal-prose a:not(.btn):hover { color: var(--accent-glow); border-bottom-color: var(--accent-glow); }
+
+.legal-prose ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0 0 20px;
+}
+.legal-prose ul li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.7;
+}
+.legal-prose ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 12px;
+  width: 5px; height: 5px;
+  border-radius: 1px;
+  background: var(--accent-glow);
+  transform: rotate(45deg);
+  opacity: 0.85;
+}
+
+/* ---------- summary card (must come after the generic list rules) ---------- */
+.legal-summary {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg-soft) 100%);
+  padding: clamp(26px, 3vw, 36px);
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+.legal-summary h2 {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-style: italic;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 20px;
+}
+.legal-summary ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+}
+.legal-summary ul li {
+  position: relative;
+  padding-left: 30px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.legal-summary ul li::before {
+  content: '';
+  position: absolute;
+  left: 2px; top: 8px;
+  width: 9px; height: 5px;
+  border-radius: 0;
+  border-left: 1.5px solid var(--accent-glow);
+  border-bottom: 1.5px solid var(--accent-glow);
+  background: none;
+  transform: rotate(-45deg);
+  opacity: 1;
+}
+
+/* ---------- what-we-collect definition rows ---------- */
+.legal-fields {
+  border-top: 1px solid var(--border);
+  margin: 0 0 24px;
+}
+.legal-fields > div {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+}
+.legal-fields dt {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+}
+.legal-fields dd {
+  margin: 0;
+  color: var(--mute);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+/* ---------- callout for the third-party disclosure ---------- */
+.legal-note {
+  border: 1px solid var(--border);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+  background: rgba(77,126,255,0.05);
+  padding: 22px 26px;
+  margin: 24px 0;
+}
+.legal-note p { margin-bottom: 0; font-size: 16px; color: var(--ink-soft); }
+
+/* ---------- closing contact panel ---------- */
+.legal-contact {
+  margin-top: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface);
+  padding: clamp(24px, 3vw, 32px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 48px;
+}
+.legal-contact > div { display: flex; flex-direction: column; gap: 8px; }
+.legal-contact .v {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-style: italic;
+  color: var(--ink);
+  border-bottom: 0;
+}
+.legal-contact a.v:hover { color: var(--accent-glow); }
+
+@media (max-width: 1024px) {
+  .legal-layout { grid-template-columns: 1fr; gap: 40px; }
+  .legal-toc {
+    position: static;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 28px;
+  }
+  .legal-toc ol {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 4px 24px;
+  }
+  .legal-prose { max-width: 68ch; }
+}
+
+@media (max-width: 640px) {
+  .legal-prose p, .legal-prose ul li { font-size: 16px; }
+  .legal-fields > div { grid-template-columns: 1fr; gap: 6px; padding: 14px 0; }
+  .legal-note { padding: 18px 20px; }
+  .legal-contact { gap: 18px 32px; }
+}
