@@ -7,47 +7,111 @@
 <meta name="theme-color" content="#050B18" />
 <meta name="color-scheme" content="dark" />
 
-<title>Webrivio - Premium Websites That Earn Their Keep</title>
-<meta name="description" content="Webrivio designs premium, high-converting websites for businesses in every niche — from roofing to cafés and beyond. Launched in ~4 weeks and built to grow your bookings." />
-<meta name="keywords" content="web design agency, custom website design, high-converting websites, premium web design, small business websites, website redesign, conversion optimization, restaurant website design, roofing website design" />
+<title>Web Design Toronto — Custom Sites in 48 Hours from $499 | Webrivio</title>
+<meta name="description" content="Toronto web design studio. Custom small-business websites from $499, live in 48 hours once we have your content and payment. Serving Toronto &amp; the GTA." />
 <link rel="canonical" href="https://webrivio.com/" />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Webrivio" />
 <meta property="og:url" content="https://webrivio.com/" />
-<meta property="og:title" content="Webrivio — Premium websites that earn their keep" />
-<meta property="og:description" content="High-converting websites for businesses in every niche. Launched in ~4 weeks. Built to turn visitors into customers." />
+<meta property="og:title" content="Web design in Toronto — custom sites in 48 hours, from $499" />
+<meta property="og:description" content="Webrivio is a Toronto web design studio for small businesses. Custom sites from $499, live in 48 hours once we have your content and payment." />
 <meta property="og:image" content="https://webrivio.com/assets/og-image.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Webrivio — premium websites for every niche" />
-<meta property="og:locale" content="en_US" />
+<meta property="og:image:alt" content="Webrivio — web design studio in Toronto" />
+<meta property="og:locale" content="en_CA" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Webrivio — Premium websites that earn their keep" />
-<meta name="twitter:description" content="High-converting websites for businesses in every niche. Launched in ~4 weeks." />
+<meta name="twitter:title" content="Web design in Toronto — custom sites in 48 hours, from $499" />
+<meta name="twitter:description" content="A Toronto web design studio for small businesses. Custom sites from $499, live in 48 hours once we have your content and payment." />
 <meta name="twitter:image" content="https://webrivio.com/assets/og-image.png" />
-<meta name="twitter:image:alt" content="Webrivio — premium websites for every niche" />
+<meta name="twitter:image:alt" content="Webrivio — web design studio in Toronto" />
 
 <!-- Icons & manifest -->
 <link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
-<link rel="manifest" href="site.webmanifest" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
 
-<!-- Performance -->
+<!-- Fonts + CSS -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
-<link rel="stylesheet" href="assets/styles.css" />
-<link rel="stylesheet" href="assets/enhance.css" />
+<link rel="stylesheet" href="/assets/styles.css" />
+<link rel="stylesheet" href="/assets/enhance.css" />
 
-<!-- Structured data: Organization + WebSite + ProfessionalService -->
+<!-- Page-local CSS. Two jobs only:
+     1. LCP — the hero no longer waits on app.js. Its entrance is pure CSS and the
+        H1 itself never animates opacity, so it paints on first frame (and with JS off).
+     2. Heading order — this page uses h3 inside .bullet / .compare-col to keep
+        h1 -> h2 -> h3 intact; styles.css only styles the h4 variants. -->
+<style>
+  .hero-copy .hero-eyebrow,
+  .hero-copy .lede,
+  .hero-copy .hero-actions,
+  .hero-copy .trust-row,
+  .hero-copy .hero-note { animation: heroRise .8s var(--ease-out) both; }
+  .hero-copy .hero-eyebrow { animation-delay: .04s; }
+  .hero-copy .lede        { animation-delay: .16s; }
+  .hero-copy .hero-actions{ animation-delay: .24s; }
+  .hero-copy .trust-row   { animation-delay: .32s; }
+  .hero-copy .hero-note   { animation-delay: .40s; }
+  @keyframes heroRise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+  /* the H1 is the LCP element — no opacity gate, no JS dependency */
+  .hero-copy h1 { opacity: 1; }
+
+  /* signature underline draws on its own timer now that the mask class is gone */
+  .hero-copy .sig-underline .u path {
+    transition: none;
+    animation: heroDraw .7s var(--ease-out) 1s both;
+  }
+  @keyframes heroDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+
+  .hero-copy .hero-note { margin-top: 20px; }
+
+  .bullet h3 {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+  .compare-col h3 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1;
+  }
+  .compare-col.mid h3 { color: var(--accent-glow); }
+  .compare-note { margin-top: 18px; }
+
+  .founder .sig a { color: var(--accent-glow); text-decoration: underline; text-underline-offset: 3px; }
+  .founder .sig a:hover { color: var(--cyan); }
+
+  @media (max-width: 860px) {
+    .bullet h3 { font-size: 18px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-copy .hero-eyebrow,
+    .hero-copy .lede,
+    .hero-copy .hero-actions,
+    .hero-copy .trust-row,
+    .hero-copy .hero-note { animation: none; }
+    .hero-copy .sig-underline .u path { animation: none; stroke-dashoffset: 0; }
+  }
+</style>
+
+<!-- Canonical entity graph — this page owns Organization / ProfessionalService / WebSite / the two Persons -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -57,19 +121,48 @@
       "@id": "https://webrivio.com/#organization",
       "name": "Webrivio",
       "url": "https://webrivio.com/",
-      "logo": "https://webrivio.com/assets/icon-512.png",
-      "description": "Webrivio is a premium website design studio building high-converting sites for businesses in every niche.",
+      "logo": { "@type": "ImageObject", "url": "https://webrivio.com/assets/icon-512.png", "width": 512, "height": 512 },
+      "image": "https://webrivio.com/assets/og-image.png",
+      "description": "Webrivio is a Toronto web design studio that builds custom, high-converting websites for small businesses, starting at $499 CAD and delivered in 48 hours once the client provides their content and payment.",
       "email": "hello@webrivio.com",
       "telephone": "+1-437-494-1295",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+1-437-494-1295",
-        "email": "hello@webrivio.com",
-        "contactType": "sales",
-        "areaServed": ["US", "CA", "GB", "AU"],
-        "availableLanguage": "English"
-      },
-      "sameAs": []
+      "slogan": "Agency-quality websites without agency prices.",
+      "knowsAbout": ["Web design","Website development","Conversion optimization","Local SEO","Small business websites","Toronto web design"],
+      "founder": [ { "@id": "https://webrivio.com/#rudra" }, { "@id": "https://webrivio.com/#ayzah" } ],
+      "sameAs": [ "https://www.linkedin.com/company/webrivio/" ]
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://webrivio.com/#localbusiness",
+      "name": "Webrivio",
+      "url": "https://webrivio.com/",
+      "parentOrganization": { "@id": "https://webrivio.com/#organization" },
+      "image": "https://webrivio.com/assets/og-image.png",
+      "telephone": "+1-437-494-1295",
+      "email": "hello@webrivio.com",
+      "priceRange": "$$",
+      "currenciesAccepted": "CAD",
+      "address": { "@type": "PostalAddress", "addressLocality": "Toronto", "addressRegion": "ON", "addressCountry": "CA" },
+      "areaServed": [
+        { "@type": "City", "name": "Toronto" }, { "@type": "City", "name": "North York" },
+        { "@type": "City", "name": "Scarborough" }, { "@type": "City", "name": "Etobicoke" },
+        { "@type": "City", "name": "Mississauga" }, { "@type": "City", "name": "Brampton" },
+        { "@type": "City", "name": "Markham" }, { "@type": "City", "name": "Vaughan" },
+        { "@type": "City", "name": "Richmond Hill" }
+      ],
+      "serviceType": ["Website design","Website development","Conversion optimization","Local SEO","Website hosting"],
+      "makesOffer": {
+        "@type": "Offer",
+        "name": "Custom small-business website",
+        "priceSpecification": {
+          "@type": "PriceSpecification",
+          "price": 499, "priceCurrency": "CAD",
+          "minPrice": 499,
+          "valueAddedTaxIncluded": false
+        },
+        "availability": "https://schema.org/InStock",
+        "url": "https://webrivio.com/services"
+      }
     },
     {
       "@type": "WebSite",
@@ -77,17 +170,25 @@
       "url": "https://webrivio.com/",
       "name": "Webrivio",
       "publisher": { "@id": "https://webrivio.com/#organization" },
-      "inLanguage": "en-US"
+      "inLanguage": "en-CA"
     },
     {
-      "@type": "ProfessionalService",
-      "@id": "https://webrivio.com/#service",
-      "name": "Webrivio — Website Design for Local Businesses",
-      "description": "Custom premium websites for businesses in every niche — from roofing to cafés and beyond. Mobile optimization, lead capture, SEO, hosting and support.",
-      "provider": { "@id": "https://webrivio.com/#organization" },
-      "areaServed": ["United States", "Canada", "United Kingdom", "Australia"],
-      "priceRange": "$$ – $$$",
-      "serviceType": ["Website design", "Website development", "Conversion optimization", "Local SEO", "Website hosting"]
+      "@type": "Person",
+      "@id": "https://webrivio.com/#rudra",
+      "name": "Rudra Garg",
+      "jobTitle": "Founder & Designer",
+      "worksFor": { "@id": "https://webrivio.com/#organization" },
+      "image": "https://webrivio.com/assets/team/rudra-garg.jpg",
+      "sameAs": ["https://www.linkedin.com/in/rudgarg/"]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://webrivio.com/#ayzah",
+      "name": "Ayzah Ashraf",
+      "jobTitle": "Co-founder, Client Relations & Outreach",
+      "worksFor": { "@id": "https://webrivio.com/#organization" },
+      "image": "https://webrivio.com/assets/team/ayzah-ashraf.jpg",
+      "sameAs": ["https://www.linkedin.com/in/ayzah-ashraf-91668937a/"]
     }
   ]
 }
@@ -120,24 +221,25 @@
 <nav class="nav" aria-label="Primary">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="Webrivio home">
-      <img class="mark" src="assets/logo.png" alt="" width="24" height="24" />
+      <img class="mark" src="/assets/logo.png" alt="" width="24" height="24" />
       <em>Webrivio</em>
     </a>
     <div class="nav-links">
       <a href="/services">Services</a>
       <a href="/process">Process</a>
+      <a href="/about">About</a>
       <a href="/contact">Contact</a>
     </div>
-    <a class="nav-cta" href="/contact">Start a project <span aria-hidden="true">→</span></a>
+    <a class="nav-cta" href="/contact">Start a project <span aria-hidden="true">&rarr;</span></a>
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
-
 <div class="nav-drawer" id="nav-drawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
   <a href="/services">Services</a>
   <a href="/process">Process</a>
+  <a href="/about">About</a>
   <a href="/contact">Contact</a>
   <a class="drawer-cta" href="/contact">Start a project</a>
   <span class="drawer-meta">hello@webrivio.com</span>
@@ -146,6 +248,7 @@
 <main id="main">
 
 <!-- ============ HERO ============ -->
+<!-- No .reveal / .reveal-mask in here on purpose: the hero must paint without JS. -->
 <header class="hero container" data-atm="0">
   <!-- living field: WebGL aurora on top of an always-painted CSS fallback -->
   <div class="hero-field" aria-hidden="true">
@@ -153,18 +256,18 @@
   </div>
 
   <div class="hero-copy">
-    <span class="hero-eyebrow reveal">Premium web design studio</span>
+    <span class="hero-eyebrow">Web design studio · Toronto &amp; the GTA</span>
 
     <h1 class="display">
-      <span class="line reveal-mask"><span>Websites that</span></span>
-      <span class="line reveal-mask"><span><em class="it sig-underline">earn<svg class="u" viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C 34 3, 86 3, 117 6" pathLength="1"/></svg></em> their keep.</span></span>
+      <span class="line"><span>Websites that</span></span>
+      <span class="line"><span><em class="it sig-underline">earn<svg class="u" viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C 34 3, 86 3, 117 6" pathLength="1"/></svg></em> their keep.</span></span>
     </h1>
 
-    <p class="lede reveal">
-      Premium websites for businesses in every niche — built to convert the traffic you're already paying for.
+    <p class="lede">
+      Toronto web design for small businesses that are tired of being overcharged — built to convert the traffic you're already paying for.
     </p>
 
-    <div class="hero-actions reveal">
+    <div class="hero-actions">
       <a class="btn btn-primary" href="/contact" data-magnetic="0.25">
         <span>Start a project</span>
         <svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg>
@@ -174,7 +277,7 @@
       </a>
     </div>
 
-    <div class="trust-row reveal" role="list" aria-label="What you get">
+    <div class="trust-row" role="list" aria-label="What you get">
       <span class="trust-item" role="listitem">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         You own the code
@@ -182,14 +285,16 @@
       <span class="trust-sep" aria-hidden="true"></span>
       <span class="trust-item" role="listitem">
         <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-        Live in ~4 weeks
+        Live in 48 hours
       </span>
       <span class="trust-sep" aria-hidden="true"></span>
       <span class="trust-item" role="listitem">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>
-        Replies within 1 business day
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12.6 3H5a2 2 0 0 0-2 2v7.6a2 2 0 0 0 .6 1.4l7 7a2 2 0 0 0 2.8 0l6.6-6.6a2 2 0 0 0 0-2.8l-7-7A2 2 0 0 0 12.6 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="8.2" cy="8.2" r="1.4" stroke="currentColor" stroke-width="1.7"/></svg>
+        From $499
       </span>
     </div>
+
+    <p class="tiny-mono hero-note">The 48-hour clock starts once we have your content and payment</p>
   </div>
 </header>
 
@@ -222,66 +327,66 @@
     <h2 class="display reveal" id="work-title" style="max-width: 26ch; margin-bottom: 18px;">
       See it <span class="it">for yourself.</span>
     </h2>
-    <p class="lede reveal" style="max-width: 48ch;">
-      Two recent builds in very different niches — a roofing crew and a tea shop — real, live, and yours to judge. Whatever you do, this is the standard your site ships to.
+    <p class="lede reveal" style="max-width: 52ch;">
+      Two concept builds in very different niches — a roofing crew and a tea shop. We built them to show exactly what we ship, not to fill a portfolio. They're live, they're fully working, and they're yours to click through and judge.
     </p>
 
-    <!-- Build 01 — Aviva Roofing (real, PII-free capture) -->
+    <!-- Build 01 — Northline Roofing (fictional brand; concept build) -->
     <article class="proof reveal">
       <div class="proof-devices" data-cursor="build 01">
         <div class="proof-browser">
-          <div class="proof-bar"><i></i><i></i><i></i><span class="url">avivaroofingdemo.vercel.app</span></div>
+          <div class="proof-bar"><i></i><i></i><i></i><span class="url">northlineroofing.demo</span></div>
           <div class="proof-screen">
             <picture>
-              <source srcset="assets/work/aviva-scroll.webp" type="image/webp" />
-              <img class="proof-scroll-img" src="assets/work/aviva-scroll.jpg" alt="Aviva Roofing — a real build, playing live" width="1024" height="2914" loading="lazy" />
+              <source srcset="/assets/work/northline-scroll.webp" type="image/webp" />
+              <img class="proof-scroll-img" src="/assets/work/northline-scroll.jpg" alt="A concept build for a Toronto roofing company, shown scrolling live" width="1024" height="2914" loading="lazy" />
             </picture>
           </div>
-          <span class="proof-live-tag"><span class="live-dot" aria-hidden="true"></span> Live build</span>
+          <span class="proof-live-tag"><span class="live-dot" aria-hidden="true"></span> Concept build · live</span>
         </div>
         <div class="proof-phone">
           <picture>
-            <source srcset="assets/work/aviva-phone.webp" type="image/webp" />
-            <img src="assets/work/aviva-phone.jpg" alt="The same roofing site on a phone — a legible mobile build" width="390" height="844" loading="lazy" />
+            <source srcset="/assets/work/northline-phone.webp" type="image/webp" />
+            <img src="/assets/work/northline-phone.jpg" alt="The same roofing concept build on a phone — a legible mobile layout" width="390" height="844" loading="lazy" />
           </picture>
         </div>
       </div>
       <div class="proof-info">
-        <span class="work-tag">Roofing · North York &amp; Toronto</span>
+        <span class="work-tag">Concept · Roofing · Toronto</span>
         <h3>The obvious local <span class="it">choice</span>.</h3>
-        <p>A referral-only roofer, rebuilt as the obvious local choice — real crews, homeowner language, and a quote path that never leaves the screen.</p>
+        <p>How we'd rebuild a referral-only roofer into the obvious local choice — homeowner language, crew-first photography, and a quote path that never leaves the screen.</p>
         <ul class="proof-points">
-          <li>Split hero with real jobsite photography</li>
+          <li>Split hero built for full-bleed jobsite photography</li>
           <li>Persistent tap-to-call rail on mobile</li>
           <li>Local-SEO structure baked in</li>
         </ul>
       </div>
     </article>
 
-    <!-- Build 02 — Luxe Tea (real, PII-free capture) -->
+    <!-- Build 02 — Luxe Tea (concept build, live on Vercel) -->
     <article class="proof flip reveal">
       <div class="proof-devices" data-cursor="build 02">
         <div class="proof-browser">
           <div class="proof-bar"><i></i><i></i><i></i><span class="url">luxetea.vercel.app</span></div>
           <div class="proof-screen">
             <picture>
-              <source srcset="assets/work/luxe-scroll.webp" type="image/webp" />
-              <img class="proof-scroll-img" src="assets/work/luxe-scroll.jpg" alt="Luxe Tea — a real build, playing live" width="1024" height="2914" loading="lazy" />
+              <source srcset="/assets/work/luxe-scroll.webp" type="image/webp" />
+              <img class="proof-scroll-img" src="/assets/work/luxe-scroll.jpg" alt="A concept build for a Toronto tea shop, shown scrolling live" width="1024" height="2914" loading="lazy" />
             </picture>
           </div>
-          <span class="proof-live-tag"><span class="live-dot" aria-hidden="true"></span> Live build</span>
+          <span class="proof-live-tag"><span class="live-dot" aria-hidden="true"></span> Concept build · live</span>
         </div>
         <div class="proof-phone">
           <picture>
-            <source srcset="assets/work/luxe-phone.webp" type="image/webp" />
-            <img src="assets/work/luxe-phone.jpg" alt="The same tea shop on a phone — a legible mobile build" width="390" height="844" loading="lazy" />
+            <source srcset="/assets/work/luxe-phone.webp" type="image/webp" />
+            <img src="/assets/work/luxe-phone.jpg" alt="The same tea shop concept build on a phone — a legible mobile layout" width="390" height="844" loading="lazy" />
           </picture>
         </div>
       </div>
       <div class="proof-info">
-        <span class="work-tag">Tea &amp; Coffee · Midtown Toronto</span>
+        <span class="work-tag">Concept · Tea &amp; Coffee · Toronto</span>
         <h3>Leads with <span class="it">appetite</span>.</h3>
-        <p>A Midtown tea shop that leads with appetite — real drinks, honest menu pricing, and the details people ask about pinned right onto the photography.</p>
+        <p>How we'd give a Midtown tea shop an appetite-first storefront — menu photographed and honestly priced, with the details people actually ask about pinned to the page.</p>
         <ul class="proof-points">
           <li>Serif personality on a warm cream palette</li>
           <li>Menu as photographed, honestly-priced categories</li>
@@ -331,7 +436,7 @@
           <div class="funnel-drips" aria-hidden="true"></div>
         </div>
         <div class="leak-exit">
-          <div class="leak-amount"><span class="cur">$</span><span data-count-to="1840" data-count-comma="1" data-count-dur="2200">0</span><span class="per">/mo*</span></div>
+          <div class="leak-amount"><span class="cur">$</span><span data-count-to="1840" data-count-comma="1" data-count-dur="2200">1,840</span><span class="per">/mo*</span></div>
           <p class="leak-sub">A rough estimate of the leads a slow, unconvincing site lets slip each month — money you already paid to attract.</p>
         </div>
         <p class="leak-disc">*Illustrative estimate. Your number depends on traffic and close rate.</p>
@@ -347,7 +452,7 @@
             <span class="bullet-num">—01</span>
             <div>
               <span class="bullet-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle pathLength="1" cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path pathLength="1" d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-              <h4>Visitors leave in under 8 seconds</h4>
+              <h3>Visitors decide before they read a word</h3>
               <p>Slow load times, cluttered layouts, and stock-photo energy teach prospects — in three blinks — that you're not the serious choice in town.</p>
             </div>
           </div>
@@ -355,7 +460,7 @@
             <span class="bullet-num">—02</span>
             <div>
               <span class="bullet-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path pathLength="1" d="M3 5h18l-7 8v5l-4 2v-7L3 5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
-              <h4>Ad spend leaks straight through</h4>
+              <h3>Ad spend leaks straight through</h3>
               <p>Every Google click costs real money. A site that doesn't convert is a funnel with a hole in the bucket — and the business next door collects what spills out.</p>
             </div>
           </div>
@@ -363,7 +468,7 @@
             <span class="bullet-num">—03</span>
             <div>
               <span class="bullet-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path pathLength="1" d="M3 12l4-4 4 3 3-3 4 3 3-2M3 12v4l4 3 4-2 3 2 4-3 3 1v-3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <h4>You lose the trust war before hello</h4>
+              <h3>You lose the trust war before hello</h3>
               <p>In service industries the website is the first handshake. If it looks cheap, the quote feels expensive. If it looks premium, the quote feels fair.</p>
             </div>
           </div>
@@ -371,7 +476,7 @@
             <span class="bullet-num">—04</span>
             <div>
               <span class="bullet-glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path pathLength="1" d="M4 10v4h3l7 4V6l-7 4H4Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path pathLength="1" d="M18 9a4 4 0 0 1 0 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
-              <h4>Your reputation outgrows your presence</h4>
+              <h3>Your reputation outgrows your presence</h3>
               <p>You've earned the reviews, the referrals, the work. Your website should be the proof — not the thing customers quietly forgive.</p>
             </div>
           </div>
@@ -389,9 +494,12 @@
       <span class="kind">What we build</span>
     </div>
 
-    <h2 class="display reveal" id="services-title" style="max-width: 18ch; margin-bottom: 60px;">
-      Premium websites, <span class="it">purpose-built</span> to convert.
+    <h2 class="display reveal" id="services-title" style="max-width: 19ch; margin-bottom: 26px;">
+      Toronto web design, <span class="it">purpose-built</span> to convert.
     </h2>
+    <p class="lede reveal" style="max-width: 54ch; margin-bottom: 60px;">
+      One flat price — from $499 — and your site goes live in 48 hours, once we have your content and payment.
+    </p>
 
     <div class="services-grid">
       <article class="service-card wide reveal">
@@ -435,7 +543,7 @@
         <div>
           <span class="service-num">— 03 / Mobile</span>
           <h3 style="margin-top: 24px;"><span class="it">Phone-first</span> build</h3>
-          <p>70% of your traffic reads the site on a phone. We design for the thumb — then scale up.</p>
+          <p>Most of your traffic reads the site on a phone. We design for the thumb — then scale up.</p>
         </div>
         <span class="card-schematic" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none">
           <rect pathLength="1" x="33" y="14" width="30" height="60" rx="6" stroke="currentColor" stroke-width="1.6"/>
@@ -453,7 +561,7 @@
         <div>
           <span class="service-num">— 04 / SEO</span>
           <h3 style="margin-top: 24px;">Local <span class="it">SEO</span> foundation</h3>
-          <p>Clean semantics, schema, and Core Web Vitals in the green — so Google takes you seriously in your area.</p>
+          <p>Clean semantics, schema, and Core Web Vitals in the green — so Google takes you seriously across Toronto and the GTA.</p>
         </div>
         <span class="card-schematic" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none">
           <path pathLength="1" d="M48 16c8 0 12 6 12 13 0 9-12 21-12 21S36 38 36 29c0-7 4-13 12-13Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
@@ -469,7 +577,7 @@
       <article class="service-card reveal">
         <div>
           <span class="service-num">— 05 / Care</span>
-          <h3 style="margin-top: 24px;">Hosting<br/>& <span class="it">support</span></h3>
+          <h3 style="margin-top: 24px;">Hosting<br/>&amp; <span class="it">support</span></h3>
           <p>Managed hosting, security, monthly updates, and a human who answers when something breaks.</p>
         </div>
         <span class="card-schematic" aria-hidden="true"><svg viewBox="0 0 96 96" fill="none">
@@ -485,7 +593,7 @@
 
     <div style="margin-top: 48px; display: flex; justify-content: flex-end;">
       <a class="btn btn-ghost reveal" href="/services">
-        <span>All services &amp; packages</span>
+        <span>All services &amp; pricing</span>
         <svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>
     </div>
@@ -508,7 +616,7 @@
       <div class="gauge-card reveal">
         <div class="gauge" data-gauge="97">
           <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/><circle class="val" cx="60" cy="60" r="54"/></svg>
-          <div class="gauge-center"><span class="n"><span data-count-to="97" data-count-dur="1700">0</span><span class="u">/100</span></span></div>
+          <div class="gauge-center"><span class="n"><span data-count-to="97" data-count-dur="1700">97</span><span class="u">/100</span></span></div>
         </div>
         <div class="g-label">Lighthouse target</div>
         <div class="g-note">What we build to (≥95)</div>
@@ -517,7 +625,7 @@
       <div class="gauge-card reveal">
         <div class="gauge" data-gauge="99.9">
           <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/><circle class="val" cx="60" cy="60" r="54"/></svg>
-          <div class="gauge-center"><span class="n"><span data-count-to="99.9" data-count-dec="1" data-count-dur="1700">0</span><span class="u">%</span></span></div>
+          <div class="gauge-center"><span class="n"><span data-count-to="99.9" data-count-dec="1" data-count-dur="1700">99.9</span><span class="u">%</span></span></div>
         </div>
         <div class="g-label">Uptime target</div>
         <div class="g-note">Hosting SLA target</div>
@@ -526,10 +634,10 @@
       <div class="gauge-card reveal">
         <div class="gauge">
           <svg viewBox="0 0 120 120" aria-hidden="true"><circle class="track" cx="60" cy="60" r="54"/></svg>
-          <div class="glyph">&lt;7</div>
+          <div class="glyph">48h</div>
         </div>
-        <div class="g-label">Polish window</div>
-        <div class="g-note">After payment</div>
+        <div class="g-label">Live in</div>
+        <div class="g-note">From content + payment</div>
       </div>
 
       <div class="gauge-card reveal">
@@ -544,7 +652,7 @@
 
     <!-- Niches marquee (honest: a few categories we design for, not client logos) -->
     <div class="logo-strip reveal" aria-hidden="true">
-      <p class="logo-strip-head">A few of the niches we design for — yours fits right in</p>
+      <p class="logo-strip-head">Who we build for across Toronto and the GTA — yours fits right in</p>
       <div class="logo-track">
         <span class="logo-chip"><svg viewBox="0 0 24 24" fill="none"><path d="m3 11 9-7 9 7M5 10v10h14V10" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>Roofing</span></span>
         <span class="logo-chip"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5V8Zm12 1h2a2 2 0 0 1 0 4h-2M6 3v2M10 3v2M14 3v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cafés &amp; Tea</span></span>
@@ -557,20 +665,20 @@
       </div>
     </div>
 
-    <!-- Honest stand-in until real client words exist -->
+    <!-- Honest stand-in until real client words exist. DO NOT fill with invented testimonials. -->
     <div class="proof-invite reveal">
-      <p>Client words will sit here when our first cohort goes live.</p>
-      <p class="mut">Until then, judge the work above.</p>
+      <p>We're new, so there are no client quotes here yet.</p>
+      <p class="mut">We'd rather show you the work than borrow someone else's words. Judge the builds above.</p>
     </div>
 
     <!-- Founder / human moment (photo-free: the brand mark is the visual) -->
     <div class="founder reveal">
       <div class="founder-mark" aria-hidden="true">
-        <img src="assets/logo.png" alt="" width="88" height="88" />
+        <img src="/assets/logo.png" alt="" width="88" height="88" />
       </div>
       <div>
-        <blockquote>“We take a handful of clients at a time, on purpose. When something breaks, a <span class="it">human answers</span> — and it's the same person who built your site.”</blockquote>
-        <div class="sig">— The founder, Webrivio</div>
+        <blockquote>“We're new, and we take a handful of projects at a time on purpose. When something breaks, a <span class="it">human answers</span> — and it's the same person who built your site.”</blockquote>
+        <div class="sig">— Rudra Garg, Founder &amp; Designer · <a href="/about">Meet the studio</a></div>
       </div>
     </div>
   </div>
@@ -590,14 +698,15 @@
         Not a <span class="it">template mill.</span>
       </h2>
       <p class="lede reveal">
-        We live in a narrow middle: the taste and polish of a brand studio, with the
-        speed and price of someone who actually understands what makes a business money.
+        We live in a narrow middle: the taste and polish of a brand studio, at a price a Toronto
+        small business can actually say yes to. That's the whole reason we started — we watched
+        designers charge five figures and hand back a template.
       </p>
     </div>
 
     <div class="compare reveal">
       <div class="compare-col">
-        <h4>The cheap guy</h4>
+        <h3>The cheap guy</h3>
         <span class="compare-price">$ · template builder</span>
         <ul class="compare-list">
           <li class="no"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Looks like everyone else</li>
@@ -608,20 +717,20 @@
       </div>
       <div class="compare-col mid">
         <svg class="mid-outline" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="22" ry="22" pathLength="1"/></svg>
-        <h4>Webrivio</h4>
-        <span class="compare-price">$$ · bespoke, fast</span>
+        <h3>Webrivio</h3>
+        <span class="compare-price">From $499 · bespoke, fast</span>
         <ul class="compare-list">
           <li class="yes"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Designed from scratch for you</li>
           <li class="yes"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Engineered to convert</li>
-          <li class="yes"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Live in ~4 weeks</li>
+          <li class="yes"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Live in 48 hours*</li>
           <li class="yes"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>You own the code, forever</li>
         </ul>
       </div>
       <div class="compare-col">
-        <h4>The big agency</h4>
+        <h3>The big agency</h3>
         <span class="compare-price">$$$$ · 6-month timeline</span>
         <ul class="compare-list">
-          <li class="no"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>$40k invoices</li>
+          <li class="no"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Five-figure invoices</li>
           <li class="no"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Endless meetings</li>
           <li class="no"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>You're the smallest account</li>
           <li class="no"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Built for enterprise, not Main St.</li>
@@ -629,8 +738,10 @@
       </div>
     </div>
 
-    <p class="lede reveal" style="color: var(--mute); margin-top: 36px;">
-      We work with a handful of businesses at a time. On purpose.
+    <p class="tiny-mono compare-note reveal">*48 hours from the moment we have your content and payment</p>
+
+    <p class="lede reveal" style="color: var(--mute); margin-top: 30px;">
+      We take a handful of projects at a time. On purpose.
     </p>
   </div>
 </section>
@@ -644,7 +755,7 @@
         <span class="reveal-mask"><span>Your next customer is</span></span><br/>
         <span class="reveal-mask"><span>already <em class="it">looking</em>.</span></span>
       </h2>
-      <p class="lede reveal">Give them a website worth choosing.</p>
+      <p class="lede reveal">Give them a website worth choosing — from $499, live in 48 hours.</p>
       <div class="cta-actions reveal">
         <a class="btn btn-primary" href="/contact" data-magnetic="0.25">
           <span>Start a project</span>
@@ -654,7 +765,7 @@
           <span>See the process</span>
         </a>
       </div>
-      <p class="tiny-mono reveal" style="margin-top:28px; color:var(--mute);">No decks, no pressure. Replies within one business day.</p>
+      <p class="tiny-mono reveal" style="margin-top:28px; color:var(--mute);">Once we have your content and payment · Replies within one business day</p>
     </div>
   </div>
 </section>
@@ -667,45 +778,44 @@
     <div class="foot-grid">
       <div>
         <div class="foot-brand-row">
-          <img class="mark" src="assets/logo.png" alt="Webrivio" width="30" height="30" />
+          <img class="mark" src="/assets/logo.png" alt="Webrivio" width="30" height="30" />
           <span class="wordmark"><em>Webrivio</em></span>
         </div>
         <p style="color: var(--ink-soft); max-width: 38ch;">
-          A small, focused website studio for businesses that want to look — and perform — like the best in their market.
+          A Toronto web design studio for small businesses that want to look — and perform — like the best in their market.
         </p>
-        <p class="tiny-mono" style="margin-top: 24px;">Made carefully · 2024–<span id="y"></span></p>
+        <p class="tiny-mono" style="margin-top: 24px;">Toronto &amp; the GTA · Backed by Summer Company (Ontario)</p>
       </div>
       <div>
-        <h5>Sitemap</h5>
+        <h2>Sitemap</h2>
         <ul>
           <li><a href="/">Home</a></li>
           <li><a href="/services">Services</a></li>
           <li><a href="/process">Process</a></li>
+          <li><a href="/about">About</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
       </div>
       <div>
-        <h5>Niches</h5>
+        <h2>Guides</h2>
         <ul>
-          <li><a href="/services">Roofing &amp; trades</a></li>
-          <li><a href="/services">Cafés &amp; restaurants</a></li>
-          <li><a href="/services">Dental &amp; medspa</a></li>
-          <li><a href="/services">Fitness &amp; studios</a></li>
-          <li><a href="/services">Retail &amp; more</a></li>
+          <li><a href="/roofing-website-design-toronto">Roofing website design</a></li>
+          <li><a href="/website-cost-toronto">What a website costs in Toronto</a></li>
+          <li><a href="/services">Services &amp; pricing</a></li>
         </ul>
       </div>
       <div>
-        <h5>Elsewhere</h5>
+        <h2>Elsewhere</h2>
         <ul>
           <li><a href="mailto:hello@webrivio.com">hello@webrivio.com</a></li>
+          <li><a href="tel:+14374941295">(437) 494-1295</a></li>
+          <li><a href="https://www.linkedin.com/company/webrivio/" rel="noopener">LinkedIn</a></li>
         </ul>
       </div>
     </div>
-
     <div class="foot-big reveal" aria-hidden="true"><em class="it">Web</em>rivio<span style="color: var(--accent-glow);">.</span></div>
-
     <div class="foot-bottom">
-      <span>© <span id="y2">2026</span> Webrivio Studio. All rights reserved.</span>
+      <span>&copy; <span id="y2">2026</span> Webrivio · <a href="/privacy">Privacy</a></span>
       <span>Currently taking on new projects</span>
     </div>
   </div>
@@ -722,16 +832,16 @@
 <script>document.getElementById('y2').textContent=new Date().getFullYear();</script>
 
 <!-- baseline interactions (works with no libs) -->
-<script src="assets/app.js" defer></script>
+<script src="/assets/app.js" defer></script>
 <!-- atmosphere engine (self-skips; inits after first paint) -->
-<script src="assets/atmosphere.js" defer></script>
+<script src="/assets/atmosphere.js" defer></script>
 <!-- motion libraries (vendored, ownable) + enhancement layer -->
-<script src="assets/vendor/lenis.min.js" defer></script>
-<script src="assets/vendor/gsap.min.js" defer></script>
-<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
-<script src="assets/enhance.js" defer></script>
+<script src="/assets/vendor/lenis.min.js" defer></script>
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/enhance.js" defer></script>
 <!-- lazy WebGL hero (self-skips on reduced-motion / low-power / no-WebGL) -->
-<script src="assets/hero.js" defer></script>
+<script src="/assets/hero.js" defer></script>
 
 <!-- Vercel Speed Insights (static site) -->
 <script>window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments);};</script>

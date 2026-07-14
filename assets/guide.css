@@ -1,0 +1,336 @@
+/* ============================================================
+   Webrivio — guide layer
+   Long-form editorial reading for the guide pages.
+   Loads AFTER styles.css and enhance.css. Brand tokens only.
+   ============================================================ */
+
+/* atmosphere orb placement for guide pages (matches the styles.css pattern) */
+body[data-page="guide"] { --atm-orb1-x: 14%; --atm-orb1-y: 14%; --atm-orb2-x: 86%; --atm-orb2-y: 66%; }
+
+/* ---------- Layout: sticky contents rail + a single reading column ---------- */
+.guide-wrap {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 100px);
+  align-items: start;
+}
+
+.guide-toc {
+  position: sticky;
+  top: 130px;
+  border-left: 1px solid var(--border);
+  padding-left: 20px;
+}
+.guide-toc h2 {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--mute);
+  margin-bottom: 18px;
+}
+.guide-toc ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  counter-reset: toc;
+}
+.guide-toc li { counter-increment: toc; }
+.guide-toc a {
+  display: block;
+  padding: 7px 0;
+  font-size: 14px;
+  line-height: 1.35;
+  color: var(--mute);
+  transition: color .2s var(--ease);
+}
+.guide-toc a::before {
+  content: '0' counter(toc);
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--mute);
+  margin-right: 10px;
+}
+.guide-toc a:hover { color: var(--ink); }
+.guide-toc a:hover::before { color: var(--accent-glow); }
+
+/* ---------- Prose ---------- */
+/* min-width:0 lets the grid column shrink below the table's min-width, so the
+   table scrolls inside .table-scroll instead of widening the whole page. */
+.guide-prose { max-width: 72ch; min-width: 0; }
+
+.guide-prose > section { scroll-margin-top: 110px; }
+.guide-prose > section + section { margin-top: clamp(56px, 7vw, 88px); }
+
+.guide-prose h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 3.4vw, 46px);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  margin-bottom: 22px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.guide-prose h2 .it { font-style: italic; color: var(--accent-glow); }
+
+.guide-prose h3 {
+  font-family: var(--sans);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 32px 0 8px;
+}
+
+.guide-prose p {
+  color: var(--ink-soft);
+  font-size: 17px;
+  line-height: 1.68;
+  margin-bottom: 18px;
+}
+.guide-prose p strong { color: var(--ink); font-weight: 500; }
+.guide-prose p a,
+.guide-prose li a {
+  color: var(--ink);
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 1px;
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.guide-prose p a:hover,
+.guide-prose li a:hover { color: var(--accent-glow); border-color: var(--accent-glow); }
+
+.guide-prose ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0 0 22px;
+}
+.guide-prose ul li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.guide-prose ul li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 10px;
+  width: 6px; height: 6px;
+  border-radius: 999px;
+  background: var(--accent-glow);
+}
+
+/* ---------- The answer, up front ---------- */
+.answer-card {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--r-lg);
+  padding: clamp(26px, 3.4vw, 40px);
+  margin-bottom: clamp(40px, 5vw, 64px);
+  background:
+    radial-gradient(120% 130% at 0% 0%, rgba(30,63,153,0.30), transparent 62%),
+    linear-gradient(180deg, var(--surface) 0%, var(--bg-soft) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.answer-card .a-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent-glow);
+  display: block;
+  margin-bottom: 16px;
+}
+.answer-card p {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.5vw, 31px);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+.answer-card p + p {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+  color: var(--ink-soft);
+  margin-top: 18px;
+}
+.answer-card em { font-style: italic; color: var(--accent-glow); }
+
+/* ---------- Cost table ---------- */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  margin-bottom: 16px;
+  background: var(--bg-soft);
+}
+.cost-table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+  text-align: left;
+}
+.cost-table caption {
+  caption-side: top;
+  text-align: left;
+  padding: 18px 22px 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--mute);
+}
+.cost-table th,
+.cost-table td {
+  padding: 18px 22px;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+.cost-table thead th {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--mute);
+  white-space: nowrap;
+}
+.cost-table tbody th {
+  font-family: var(--serif);
+  font-size: 21px;
+  font-weight: 400;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.cost-table td {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.cost-table .price {
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.cost-table tbody tr:last-child th,
+.cost-table tbody tr:last-child td { border-bottom: none; }
+.cost-table tbody tr.us { background: linear-gradient(90deg, rgba(77,126,255,0.12), rgba(77,126,255,0.03)); }
+.cost-table tbody tr.us th { color: var(--accent-glow); font-style: italic; }
+.cost-table tbody tr.us .price { color: var(--cyan); }
+
+.table-note {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--mute);
+  max-width: 62ch;
+  margin-bottom: 28px;
+}
+
+/* the table scrolls inside its own box on narrow screens — say so */
+.scroll-hint {
+  display: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--mute);
+  margin-bottom: 20px;
+}
+@media (max-width: 760px) {
+  .scroll-hint { display: block; }
+}
+
+/* ---------- Price-driver rows ---------- */
+.drivers {
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+}
+.driver {
+  display: grid;
+  grid-template-columns: 1fr 168px;
+  gap: 20px 32px;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+.driver h3 { margin: 0 0 6px; }
+.driver p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--mute); }
+.driver .impact {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-glow);
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* ---------- FAQ inside the prose column ----------
+   The questions are real <h3>s for document structure, but they must keep the
+   shared .faq-list summary look (serif italic), not the prose h3 look. */
+.guide-prose .faq-list summary h3 {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  margin: 0;
+  display: inline;
+}
+.guide-prose .faq-list { margin-top: 8px; }
+
+/* ---------- Aside / honest note ---------- */
+.guide-aside {
+  border-left: 2px solid var(--accent);
+  padding: 6px 0 6px 24px;
+  margin: 32px 0;
+}
+.guide-aside p {
+  font-family: var(--serif);
+  font-size: clamp(19px, 2vw, 24px);
+  line-height: 1.4;
+  color: var(--ink);
+  margin: 0;
+}
+.guide-aside p em { font-style: italic; color: var(--accent-glow); }
+.guide-aside cite {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--mute);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  /* minmax(0,1fr), not 1fr — a bare 1fr refuses to shrink below the table's
+     min-width and would push the whole column off screen */
+  .guide-wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .guide-toc {
+    position: static;
+    border-left: none;
+    border-top: 1px solid var(--border);
+    padding-left: 0;
+    padding-top: 24px;
+  }
+  .guide-toc ol { flex-direction: row; flex-wrap: wrap; gap: 8px 24px; }
+  .guide-prose { max-width: none; }
+}
+@media (max-width: 640px) {
+  .driver { grid-template-columns: 1fr; gap: 8px; }
+  .driver .impact { text-align: left; }
+  .guide-prose p { font-size: 16px; }
+}

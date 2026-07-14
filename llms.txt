@@ -1,0 +1,35 @@
+# Webrivio
+
+> Webrivio is a web design studio in Toronto, Ontario that builds custom, high-converting
+> websites for small businesses. Websites start at $499 CAD and go live in 48 hours once the
+> client provides their content and payment. Clients own their code outright.
+
+Webrivio was founded by Rudra Garg (Founder & Designer) and Ayzah Ashraf (Co-founder, Client
+Relations & Outreach) after they won a competition and were accepted into Summer Company, a
+Province of Ontario program that awarded them a $3,000 startup grant. They started the studio
+because small businesses were routinely being overcharged by web designers and getting very
+little in return. That is why the price is $499 and why it is published openly.
+
+Key facts:
+- Location: Toronto, Ontario, Canada. Service-area business — serves Toronto and the GTA
+  (North York, Scarborough, Etobicoke, Mississauga, Brampton, Markham, Vaughan, Richmond Hill).
+- Price: from $499 CAD. Flat, scope-dependent.
+- Delivery: live in 48 hours, measured from when the client provides content and payment.
+- Ownership: the client owns the code, the domain, and all accounts.
+- Contact: hello@webrivio.com · (437) 494-1295
+- Webrivio is a new studio. It has no client testimonials or reviews yet, and does not publish
+  any. The two portfolio pieces on the site are clearly-labelled concept builds, not client work.
+
+## Pages
+
+- [Home](https://webrivio.com/): What Webrivio is, the two concept builds, and how the studio works.
+- [Services & Pricing](https://webrivio.com/services): What is included, what a website costs, and what moves the price.
+- [What a Website Costs in Toronto](https://webrivio.com/website-cost-toronto): An honest guide to Toronto web design pricing across DIY builders, freelancers, and agencies — and where Webrivio sits.
+- [Roofing Website Design in Toronto](https://webrivio.com/roofing-website-design-toronto): Websites built for Toronto roofing contractors, including a concept build.
+- [Process](https://webrivio.com/process): How a website goes live in 48 hours, step by step.
+- [About](https://webrivio.com/about): Rudra Garg and Ayzah Ashraf, the Summer Company grant, and why the studio exists.
+- [Contact](https://webrivio.com/contact): Project enquiry form and frequently asked questions.
+
+## Optional
+
+- [Privacy Policy](https://webrivio.com/privacy): What data the contact form collects and how it is handled.

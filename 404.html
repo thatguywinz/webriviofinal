@@ -6,26 +6,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#050B18" />
 <meta name="color-scheme" content="dark" />
-<title>Page Not Found - Webrivio</title>
-<meta name="description" content="That page isn't here — but the rest of Webrivio is. Find your way back to services, process, work, or contact." />
+
+<title>Page Not Found — Webrivio</title>
+<meta name="description" content="That page isn't here — but the rest of Webrivio is. Head back home, or jump to services, process, about, or contact." />
 <meta name="robots" content="noindex, follow" />
-<link rel="canonical" href="https://webrivio.com/404" />
 
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Webrivio" />
+<meta property="og:url" content="https://webrivio.com/404" />
+<meta property="og:title" content="Page Not Found — Webrivio" />
+<meta property="og:description" content="That page isn't here — but the rest of Webrivio is." />
+<meta property="og:image" content="https://webrivio.com/assets/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Webrivio — web design studio in Toronto" />
+<meta property="og:locale" content="en_CA" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Page Not Found — Webrivio" />
+<meta name="twitter:description" content="That page isn't here — but the rest of Webrivio is." />
+<meta name="twitter:image" content="https://webrivio.com/assets/og-image.png" />
+<meta name="twitter:image:alt" content="Webrivio — web design studio in Toronto" />
+
+<!-- Icons & manifest -->
 <link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
-<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
-<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
 
+<!-- Fonts + CSS -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
-<link rel="stylesheet" href="assets/styles.css" />
+<link rel="stylesheet" href="/assets/styles.css" />
+<link rel="stylesheet" href="/assets/enhance.css" />
+
 <style>
   .err-wrap {
-    min-height: 100vh;
+    min-height: 100svh;
     display: grid;
     place-items: center;
-    padding: 120px var(--gutter) 80px;
+    padding: 140px var(--gutter) 100px;
     position: relative;
     overflow: hidden;
   }
@@ -41,6 +67,7 @@
   }
   .err-inner { position: relative; z-index: 1; text-align: center; max-width: 720px; }
   .err-mono {
+    display: block;
     font-family: var(--mono);
     font-size: 12px;
     letter-spacing: 0.22em;
@@ -57,64 +84,194 @@
     -webkit-background-clip: text; background-clip: text; color: transparent;
     margin: 20px 0 30px;
   }
-  .err-h2 {
+  .err-h1 {
     font-family: var(--serif);
     font-size: clamp(32px, 5vw, 56px);
     line-height: 1;
     letter-spacing: -0.02em;
+    font-weight: 400;
     margin-bottom: 20px;
   }
-  .err-h2 .it { font-style: italic; color: var(--accent-glow); }
+  .err-h1 .it { font-style: italic; color: var(--accent-glow); }
   .err-underline { position: relative; display: inline-block; }
   .err-underline svg { position: absolute; left: 0; bottom: -0.04em; width: 100%; height: 0.14em; overflow: visible; }
   .err-underline svg path { fill: none; stroke: var(--cyan); stroke-width: 2; opacity: 0.5; stroke-dasharray: 1; stroke-dashoffset: 1; animation: errDraw .6s var(--ease-out) .5s forwards; }
   @keyframes errDraw { to { stroke-dashoffset: 0; } }
-  @media (prefers-reduced-motion: reduce) { .err-underline svg path { animation: none; stroke-dashoffset: 0; } }
+  @media (prefers-reduced-motion: reduce) {
+    .err-underline svg path { animation: none; stroke-dashoffset: 0; }
+    .err-wrap .orb { animation: none; }
+  }
   .err-p { color: var(--ink-soft); font-size: 18px; max-width: 48ch; margin: 0 auto 40px; }
   .err-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  .err-elsewhere {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .err-elsewhere h2 {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute);
+    margin-bottom: 22px;
+  }
+  .err-links {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px 12px;
+    margin: 0;
+    padding: 0;
+  }
+  .err-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--ink-soft);
+    font-size: 14px;
+    transition: color .18s var(--ease), border-color .18s var(--ease), transform .18s var(--ease);
+  }
+  .err-links a:hover,
+  .err-links a:focus-visible {
+    color: var(--ink);
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
+  }
+  .err-help { margin-top: 26px; color: var(--mute); font-size: 14px; }
+  .err-help a { color: var(--ink-soft); border-bottom: 1px solid var(--border-strong); }
+  .err-help a:hover { color: var(--accent-glow); }
+  @media (max-width: 640px) {
+    .err-wrap { padding: 120px var(--gutter) 72px; }
+    .err-p { font-size: 16px; }
+    .err-elsewhere { margin-top: 48px; }
+  }
 </style>
 
 <!-- Vercel Web Analytics -->
 <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
 </head>
 <body data-page="404">
+<a class="skip-link" href="#main">Skip to content</a>
 <div class="progress" aria-hidden="true"></div>
+<div class="cursor" aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Primary">
   <div class="nav-inner">
     <a class="nav-brand" href="/" aria-label="Webrivio home">
-      <img class="mark" src="assets/logo.png" alt="Webrivio" width="24" height="24" />
+      <img class="mark" src="/assets/logo.png" alt="" width="24" height="24" />
       <em>Webrivio</em>
     </a>
     <div class="nav-links">
       <a href="/services">Services</a>
       <a href="/process">Process</a>
+      <a href="/about">About</a>
       <a href="/contact">Contact</a>
     </div>
-    <a class="nav-cta" href="/contact">Start a project <span aria-hidden="true">→</span></a>
+    <a class="nav-cta" href="/contact">Start a project <span aria-hidden="true">&rarr;</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-drawer">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+<div class="nav-drawer" id="nav-drawer" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+  <a href="/services">Services</a>
+  <a href="/process">Process</a>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <a class="drawer-cta" href="/contact">Start a project</a>
+  <span class="drawer-meta">hello@webrivio.com</span>
+</div>
 
-<main class="err-wrap">
+<main id="main" class="err-wrap">
   <div class="orb" aria-hidden="true"></div>
   <div class="err-inner">
     <span class="err-mono">Error 404 — Lost signal</span>
-    <div class="err-huge">404</div>
-    <h1 class="err-h2">This page <span class="it err-underline">wandered off<svg viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C 34 3, 86 3, 117 6" pathLength="1"/></svg></span>.</h1>
-    <p class="err-p">The link you followed is out of date, or the page has moved. Everything else is fine — head home, or reach out and we'll help you find it.</p>
+    <div class="err-huge" aria-hidden="true">404</div>
+    <h1 class="err-h1">This page <span class="it err-underline">wandered off<svg viewBox="0 0 120 10" preserveAspectRatio="none" aria-hidden="true"><path d="M3 7 C 34 3, 86 3, 117 6" pathLength="1"/></svg></span>.</h1>
+    <p class="err-p">The link you followed is out of date, or the page has moved. Everything else is right where you left it — start from the home page, or pick up one of the paths below.</p>
     <div class="err-actions">
       <a class="btn btn-primary" href="/">
         <span>Back to home</span>
         <svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg>
       </a>
       <a class="btn btn-ghost" href="/contact">
-        <span>Get in touch</span>
+        <span>Start a project</span>
       </a>
     </div>
+
+    <section class="err-elsewhere">
+      <h2>Where to next</h2>
+      <ul class="err-links">
+        <li><a href="/services">Services &amp; pricing</a></li>
+        <li><a href="/process">How we work</a></li>
+        <li><a href="/about">About Webrivio</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/roofing-website-design-toronto">Roofing website design</a></li>
+        <li><a href="/website-cost-toronto">What a website costs in Toronto</a></li>
+      </ul>
+      <p class="err-help">Still stuck? Email <a href="mailto:hello@webrivio.com">hello@webrivio.com</a> or call <a href="tel:+14374941295">(437) 494-1295</a> and we'll point you to the right page.</p>
+    </section>
   </div>
 </main>
 
-<script src="assets/app.js" defer></script>
+<footer role="contentinfo">
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand-row">
+          <img class="mark" src="/assets/logo.png" alt="Webrivio" width="30" height="30" />
+          <span class="wordmark"><em>Webrivio</em></span>
+        </div>
+        <p style="color: var(--ink-soft); max-width: 38ch;">
+          A Toronto web design studio for small businesses that want to look — and perform — like the best in their market.
+        </p>
+        <p class="tiny-mono" style="margin-top: 24px;">Toronto &amp; the GTA · Backed by Summer Company (Ontario)</p>
+      </div>
+      <div>
+        <h2>Sitemap</h2>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/process">Process</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Guides</h2>
+        <ul>
+          <li><a href="/roofing-website-design-toronto">Roofing website design</a></li>
+          <li><a href="/website-cost-toronto">What a website costs in Toronto</a></li>
+          <li><a href="/services">Services &amp; pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="mailto:hello@webrivio.com">hello@webrivio.com</a></li>
+          <li><a href="tel:+14374941295">(437) 494-1295</a></li>
+          <li><a href="https://www.linkedin.com/company/webrivio/" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-big reveal" aria-hidden="true"><em class="it">Web</em>rivio<span style="color: var(--accent-glow);">.</span></div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="y2">2026</span> Webrivio · <a href="/privacy">Privacy</a></span>
+      <span>Currently taking on new projects</span>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById('y2').textContent=new Date().getFullYear();</script>
+<script src="/assets/app.js" defer></script>
 <!-- Vercel Speed Insights (static site) -->
 <script>window.si=window.si||function(){(window.siq=window.siq||[]).push(arguments);};</script>
 <script defer src="https://cdn.vercel-insights.com/v1/speed-insights/script.js"></script>

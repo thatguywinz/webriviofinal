@@ -19,3 +19,13 @@
 /qa-*.jpeg
 /p1-*.png
 /live-*.jpeg
+
+# Internal engineering docs — must never deploy
+/Repository info.md
+
+# SEO audit output — internal only, must never deploy
+/webrivio.com-audit/
+
+# Unused local logo source files — keep locally, do not deploy
+/assets/W_logo_profile.png
+/assets/W_logo_shine_centered_1024.gif
