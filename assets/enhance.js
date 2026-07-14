@@ -31,7 +31,7 @@
       const t = document.querySelector(id);
       if (t) { e.preventDefault(); lenis.scrollTo(t, { offset: -90 }); }
     });
-    // Honor an initial URL hash (e.g. arriving at /work#aviva from the homepage).
+    // Honor an initial URL hash (e.g. arriving at /work#northline from the homepage).
     // Lenis resets scroll on init and drops the browser's native jump; fonts,
     // reveals, the injected signal SVG and lazy images then keep shifting the
     // target for ~1s. Re-apply the scroll across that settle window, but stop
