@@ -29,3 +29,6 @@
 # Unused local logo source files — keep locally, do not deploy
 /assets/W_logo_profile.png
 /assets/W_logo_shine_centered_1024.gif
+
+# IndexNow helper (the public key file itself IS deployed)
+/.indexnow-key
