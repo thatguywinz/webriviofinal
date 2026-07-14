@@ -1,0 +1,9 @@
+# Files kept in git but NEVER deployed to the web.
+# This exists because "Repository info.md" was once publicly served at
+# https://webrivio.com/Repository%20info.md — 30KB of internal notes, indexable.
+# Anything that is not part of the public site belongs here.
+
+tools/
+webrivio.com-audit/
+*.md
+.indexnow-key
