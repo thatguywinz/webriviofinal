@@ -26,7 +26,7 @@
   --ink:           #EEF3FC;
   --ink-soft:      #C2CEE4;
   --mute:          #7E8EA9;
-  --mute-2:        #56658A;
+  --mute-2:        #7586A6; /* floor: 4.5:1 on --surface — this colours the honesty qualifiers */
 
   --accent:        #4D7EFF;
   --accent-glow:   #7BA4FF;
@@ -203,6 +203,7 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
   letter-spacing: 0.18em;
   color: var(--mute);
 }
+.hero-note { color: #93A2BD; /* brighter than --mute: must hold 4.5:1 over the hero glow, not flat --bg */ }
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -227,7 +228,7 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
 .btn:hover .arrow { transform: translateX(6px); }
 
 .btn-primary {
-  background: linear-gradient(180deg, #5A8BFF 0%, #3E6EEF 100%);
+  background: linear-gradient(180deg, #3F6BE2 0%, #2D55C8 100%);
   color: white;
   box-shadow: 0 10px 40px -10px rgba(77,126,255,0.55), inset 0 1px 0 rgba(255,255,255,0.2);
 }
@@ -354,7 +355,7 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
   font-style: normal;
   font-family: var(--sans);
   font-size: 14px;
-  background: linear-gradient(180deg, #5A8BFF 0%, #3E6EEF 100%);
+  background: linear-gradient(180deg, #3F6BE2 0%, #2D55C8 100%);
   color: white;
   display: inline-flex; align-items: center;
   height: var(--btn-h);
@@ -1487,7 +1488,7 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
 }
 .chip:hover { border-color: var(--border-strong); color: var(--ink); background: rgba(77,126,255,0.08); }
 .chip.active {
-  background: linear-gradient(180deg, #5A8BFF 0%, #3E6EEF 100%);
+  background: linear-gradient(180deg, #3F6BE2 0%, #2D55C8 100%);
   border-color: var(--accent);
   color: white;
   box-shadow: 0 6px 20px -6px rgba(77,126,255,0.5);

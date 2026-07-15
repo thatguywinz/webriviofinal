@@ -221,7 +221,7 @@
   transform: translateY(-2px);
 }
 .q-opt.is-on {
-  background: linear-gradient(180deg, #5A8BFF 0%, #3E6EEF 100%);
+  background: linear-gradient(180deg, #3F6BE2 0%, #2D55C8 100%);
   border-color: var(--accent);
   color: #fff;
   box-shadow: 0 10px 26px -8px rgba(77,126,255,0.55);

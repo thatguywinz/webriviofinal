@@ -205,7 +205,7 @@ html:not(.js) .sig-underline .u path {
 }
 .mobile-cta .m-call svg { width: 18px; height: 18px; }
 .mobile-cta .m-start {
-  background: linear-gradient(180deg, #5A8BFF 0%, #3E6EEF 100%);
+  background: linear-gradient(180deg, #3F6BE2 0%, #2D55C8 100%);
   color: #fff;
 }
 @media (max-width: 860px) {
@@ -912,7 +912,7 @@ html:not(.js) .bullet-glyph svg path, html:not(.js) .bullet-glyph svg circle { s
   transform: translateX(-50%) translateY(-6px) scale(0.9);
   transform-origin: center top;
   font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em;
-  color: #fff; background: linear-gradient(180deg,#5A8BFF,#3E6EEF);
+  color: #fff; background: linear-gradient(180deg,#3F6BE2,#2D55C8);
   padding: 5px 14px; border-radius: 999px; white-space: nowrap;
   opacity: 0; z-index: 3;
   transition: opacity .3s var(--ease-out) .9s, transform .3s var(--ease-out) .9s;
@@ -951,7 +951,7 @@ html:not(.js) .compare-col.mid::before { opacity: 1; transform: translateX(-50%)
   display: inline-flex; align-items: center; gap: 10px;
   height: var(--btn-h); padding: 0 26px; margin-top: 26px;
   border-radius: 999px;
-  background: linear-gradient(180deg, #5A8BFF 0%, #3E6EEF 100%);
+  background: linear-gradient(180deg, #3F6BE2 0%, #2D55C8 100%);
   color: #fff; font-size: 14px; font-weight: 500;
   box-shadow: 0 10px 40px -10px rgba(77,126,255,0.55);
   transition: transform .3s var(--ease-out);

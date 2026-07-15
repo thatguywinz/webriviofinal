@@ -1,6 +1,13 @@
 .vercel
 
 # Local QA / test artifacts (not part of the site)
+# Backstop: NO loose images at the repo root, ever — screenshots keep landing here
+# and the site references no root-level images (favicon.ico is the only root asset).
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+/*.gif
 .playwright-mcp/
 /home-*.png
 /m-*.png

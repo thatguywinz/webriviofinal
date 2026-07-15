@@ -7,3 +7,11 @@ tools/
 webrivio.com-audit/
 *.md
 .indexnow-key
+
+# Backstop: loose root-level images are QA artifacts, never part of the site.
+# Real site imagery lives under /assets/ (favicon.ico is the only root-level asset).
+/*.png
+/*.jpg
+/*.jpeg
+/*.webp
+/*.gif
