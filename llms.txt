@@ -32,4 +32,6 @@ Key facts:
 
 ## Optional
 
-- [Privacy Policy](https://webrivio.com/privacy): What data the contact form collects and how it is handled.
+- [Privacy Policy](https://webrivio.com/privacy): What the website contact form, the Facebook/Instagram lead
+  form and the booking page each collect, the five companies that handle it (Meta, HubSpot, Google, FormSubmit,
+  Vercel), where it is processed, how long it is kept, and how to have it deleted.
