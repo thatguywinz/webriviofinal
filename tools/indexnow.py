@@ -22,8 +22,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 HOST = "webrivio.com"
-ALL = ["/", "/services", "/process", "/contact", "/about", "/privacy",
-       "/website-cost-toronto", "/roofing-website-design-toronto"]
+ALL = ["/", "/services", "/process", "/case-studies", "/contact", "/about",
+       "/privacy", "/website-cost-toronto", "/roofing-website-design-toronto"]
 
 keyfile = ROOT / ".indexnow-key"
 if not keyfile.exists():
