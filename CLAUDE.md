@@ -1,0 +1,87 @@
+# Webrivio — project rules
+
+Static site. No build step. `git push` to `master` deploys to Vercel automatically.
+
+**Before you finish any change to this repo, run:**
+
+```bash
+python tools/seo-check.py     # exits 1 if something is broken — do not deploy on a failure
+```
+
+**After the change is deployed:**
+
+```bash
+python tools/indexnow.py      # re-pings Bing/Yandex. Google is separate (Search Console).
+```
+
+---
+
+## The facts. Do not contradict these, do not invent beyond them.
+
+- **Webrivio** is a web design studio in **Toronto, Ontario**. Service-area business — **no public street address**. Serves Toronto + the GTA (North York, Scarborough, Etobicoke, Mississauga, Brampton, Markham, Vaughan, Richmond Hill).
+- **Price: from $499 CAD.** Never print any other price as ours. Never $449 or $649.
+- **Delivery: live in 48 hours — *once the client provides their content and payment*.** That condition is what makes the claim honest. **Never state 48 hours unconditionally**, including in schema.
+- **Phone:** `+1-437-494-1295` (display `(437) 494-1295`) · **Email:** `hello@webrivio.com`
+- **Founders:** Rudra Garg (Founder & Designer) · Ayzah Ashraf (Co-founder, Client Relations & Outreach)
+- **Credential:** backed by a $3,000 Summer Company grant, Province of Ontario. It is a startup grant, **not** a government endorsement of the work.
+
+## Hard prohibitions
+
+- **Webrivio has ZERO clients.** No testimonials, no client names, no logos, no "trusted by N", no client counts. If a real client ever exists, they go on the site **with their name and their permission** — never invented.
+- **Never add `AggregateRating` or `Review` schema.** Google disallows self-serving review markup on `LocalBusiness`/`Organization`; it risks a manual action. **Reviews live on the Google Business Profile**, where stars appear in the map pack with no markup at all.
+- **Never invent a statistic, percentage, result, award, or certification.** The on-page figures (97/100 Lighthouse, 99.9% uptime, $1,840/mo) are **targets and illustrative estimates** and already carry those qualifiers — keep them.
+- The two original portfolio pieces are **concept builds**, not client work: **Northline Roofing** (a fictional brand) and **Luxe Tea**. Never imply they were commissioned. Never put a real company's name on them — the original carried a real Toronto roofer's identity and had to be scrubbed.
+- `/case-studies` (added Aug 2026) also shows **demo builds** and one **Studio build**, screenshotted from `Documents/Webrivio/client-sites`. The rule there: real business names may appear **inside screenshots only** — never in copy, alt text, meta, schema, or asset filenames (filenames are industry-neutral: `cpg-*`, `nailstudio-*`, `cafe-*`, `noodlestall-*`, `salon-*`, `roofing-muskoka-*`, `lawfirm-*`). URL-bar chrome uses fake `*.demo` domains. Never use the `avivar2` demo (that is the scrubbed roofer).
+
+---
+
+## Changing the VISUALS (safe — go wild)
+
+Layout, colours, spacing, type, animation, imagery, a full redesign — **none of it affects SEO.** Google does not rank aesthetics. You may freely edit:
+
+- `assets/styles.css`, `assets/enhance.css`, `assets/about.css`, `assets/guide.css`, `assets/legal.css`
+- any page-local `<style>` block
+- `assets/app.js`, `enhance.js`, `hero.js`, `atmosphere.js`
+
+**The two things that would actually break something:**
+
+1. **Never hide content behind JavaScript.** `.reveal` starts at `opacity: 0` and only `app.js` adds `.in`. The rescue is `html:not(.js) .reveal { opacity: 1 !important }` in `styles.css` — that is what keeps 100% of the copy visible to crawlers that don't run JS. **Do not remove it**, and do not invent a new JS-gated hiding mechanism.
+2. **Do not re-gate the hero.** The `<h1>` on `index.html` deliberately has **no** `.reveal`/`.reveal-mask` class — it is the LCP element and must paint on the first frame, without JS. Its entrance is pure CSS.
+
+Design system tokens live in `:root` in `styles.css` (`--bg`, `--ink`, `--accent`, `--serif`, `--sans`, `--mono`, …). Use them; don't hardcode hex.
+
+## Changing the COPY (careful — one real trap)
+
+Editing wording is fine. **But several strings exist in TWO places** — the visible page *and* the JSON-LD. Change one without the other and the structured data contradicts the page, which is a violation:
+
+| If you edit… | You must also update… |
+|---|---|
+| an FAQ answer (`<details>`/`<summary>`) | the matching `FAQPage` `acceptedAnswer` in that page's JSON-LD, **verbatim** |
+| the price | `priceSpecification` / `Offer` in `index.html` + `services.html` |
+| the 48-hour wording | the `HowTo` on `process.html` and the Organization `description` on `index.html` |
+| the phone or email | every `tel:`/`mailto:` **and** the schema **and** the Google Business Profile (NAP must match exactly) |
+
+`tools/seo-check.py` catches all of these. Run it.
+
+## Never do these
+
+- **Change a page's URL/slug.** It destroys the indexing that was earned. If you truly must, add a 301 in `vercel.json`.
+- Delete a page, remove an `<h1>`, or ship a page with more than one.
+- Skip heading levels (`h2` → `h4`). The footer columns are `<h2>` for exactly this reason.
+- Ship an `<img>` without `alt`.
+- Add `<meta name="keywords">` (obsolete; hands competitors your target list).
+- **Commit anything internal to the deploy.** `Repository info.md` was once publicly served at `webrivio.com/Repository%20info.md` — 30KB of internal notes, indexable. `.vercelignore` now keeps `tools/`, `*.md`, and the audit dir out of the deployment. Keep it that way.
+
+---
+
+## Files
+
+- `index.html` **owns the canonical schema graph** — `Organization`, `ProfessionalService`, `WebSite`, and both `Person` nodes. Every other page references them by `@id`. **Never re-declare them elsewhere.**
+- `llms.txt` — the map for AI crawlers (`robots.txt` explicitly invites GPTBot, ClaudeBot, PerplexityBot et al). Update it when pages change.
+- `sitemap.xml` — must list exactly the 9 live pages. `seo-check.py` enforces this.
+- `tools/` — never deployed. `seo-check.py` (pre-deploy guard) and `indexnow.py` (post-deploy ping).
+- `tools/gbp-photos/` — Google Business Profile upload pack at Google's exact dimensions.
+
+## The honest strategic picture
+
+The code is in good shape. **What limits ranking now is off-site: zero reviews and zero backlinks.** No schema, keyword, or code change moves that. Real reviews on the Google Business Profile and real clients are the whole game. Don't let anyone (including an AI) tell you a code change will fix it.

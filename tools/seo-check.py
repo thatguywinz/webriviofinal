@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent.parent
 PAGES = [
     "index.html", "services.html", "process.html", "contact.html", "about.html",
     "privacy.html", "website-cost-toronto.html", "roofing-website-design-toronto.html",
-    "404.html",
+    "case-studies.html", "404.html",
 ]
 
 # Facts that must never drift. If the business genuinely changes, change them HERE,
@@ -166,7 +166,7 @@ for page in PAGES:
 sm = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
 listed = set(re.findall(r"<loc>https://webrivio\.com/?([^<]*)</loc>", sm))
 expected = {"", "services", "process", "contact", "about", "privacy",
-            "website-cost-toronto", "roofing-website-design-toronto"}
+            "website-cost-toronto", "roofing-website-design-toronto", "case-studies"}
 for missing in expected - listed:
     errors.append(f"sitemap.xml: /{missing} is live but not in the sitemap")
 for extra in listed - expected:

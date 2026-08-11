@@ -18,11 +18,14 @@ Key facts:
 - Ownership: the client owns the code, the domain, and all accounts.
 - Contact: hello@webrivio.com · (437) 494-1295
 - Webrivio is a new studio. It has no client testimonials or reviews yet, and does not publish
-  any. The two portfolio pieces on the site are clearly-labelled concept builds, not client work.
+  any. The portfolio pieces on the site are clearly-labelled demo builds (designed around real
+  local businesses on the studio's own initiative) and concept builds (fictional brands) — none
+  are presented as commissioned client work, and no business is named without permission.
 
 ## Pages
 
-- [Home](https://webrivio.com/): What Webrivio is, the two concept builds, and how the studio works.
+- [Home](https://webrivio.com/): What Webrivio is, two featured builds, and how the studio works.
+- [Case Studies](https://webrivio.com/case-studies): Before-and-after rebuilds, demo builds for real local businesses, and the original concept builds — with honest labels on every card.
 - [Services & Pricing](https://webrivio.com/services): What is included, what a website costs, and what moves the price.
 - [What a Website Costs in Toronto](https://webrivio.com/website-cost-toronto): An honest guide to Toronto web design pricing across DIY builders, freelancers, and agencies — and where Webrivio sits.
 - [Roofing Website Design in Toronto](https://webrivio.com/roofing-website-design-toronto): Websites built for Toronto roofing contractors, including a concept build.

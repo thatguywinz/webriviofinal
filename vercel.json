@@ -2,8 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/work", "destination": "/", "permanent": true },
-    { "source": "/work.html", "destination": "/", "permanent": true }
+    { "source": "/work", "destination": "/case-studies", "permanent": true },
+    { "source": "/work.html", "destination": "/case-studies", "permanent": true }
   ],
   "headers": [
     {
