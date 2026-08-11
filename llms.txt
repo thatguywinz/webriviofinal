@@ -17,15 +17,15 @@ Key facts:
 - Delivery: live in 48 hours, measured from when the client provides content and payment.
 - Ownership: the client owns the code, the domain, and all accounts.
 - Contact: hello@webrivio.com · (437) 494-1295
-- Webrivio is a new studio. It has no client testimonials or reviews yet, and does not publish
-  any. The portfolio pieces on the site are clearly-labelled demo builds (designed around real
-  local businesses on the studio's own initiative) and concept builds (fictional brands) — none
-  are presented as commissioned client work, and no business is named without permission.
+- Webrivio is a young studio. It publishes no testimonials or reviews. The case-studies page
+  labels every build honestly: two client builds (one live, one nearing launch — unnamed until
+  the owners approve), demo builds designed around real local businesses on the studio's own
+  initiative, and concept builds. No business is named without its owner's permission.
 
 ## Pages
 
 - [Home](https://webrivio.com/): What Webrivio is, two featured builds, and how the studio works.
-- [Case Studies](https://webrivio.com/case-studies): Before-and-after rebuilds, demo builds for real local businesses, and the original concept builds — with honest labels on every card.
+- [Case Studies](https://webrivio.com/case-studies): Before-and-after rebuilds, client builds, demo builds for real local businesses, and the original concept builds — with honest labels on every card.
 - [Services & Pricing](https://webrivio.com/services): What is included, what a website costs, and what moves the price.
 - [What a Website Costs in Toronto](https://webrivio.com/website-cost-toronto): An honest guide to Toronto web design pricing across DIY builders, freelancers, and agencies — and where Webrivio sits.
 - [Roofing Website Design in Toronto](https://webrivio.com/roofing-website-design-toronto): Websites built for Toronto roofing contractors, including a concept build.

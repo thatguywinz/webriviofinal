@@ -27,7 +27,7 @@ python tools/indexnow.py      # re-pings Bing/Yandex. Google is separate (Search
 
 ## Hard prohibitions
 
-- **Webrivio has ZERO clients.** No testimonials, no client names, no logos, no "trusted by N", no client counts. If a real client ever exists, they go on the site **with their name and their permission** — never invented.
+- **Client status (owner-confirmed 2026-08-11): two real engagements** — Mane Obsession (delivered, live at maneobsessionsalon.ca) and Milestone Roofing (rebuild nearing launch). The site may describe them as client builds but **still never names them** — names go on the site only **with the owner's written permission**. Everything else stands: no testimonials, no logos, no "trusted by N", no client counts, nothing invented.
 - **Never add `AggregateRating` or `Review` schema.** Google disallows self-serving review markup on `LocalBusiness`/`Organization`; it risks a manual action. **Reviews live on the Google Business Profile**, where stars appear in the map pack with no markup at all.
 - **Never invent a statistic, percentage, result, award, or certification.** The on-page figures (97/100 Lighthouse, 99.9% uptime, $1,840/mo) are **targets and illustrative estimates** and already carry those qualifiers — keep them.
 - The two original portfolio pieces are **concept builds**, not client work: **Northline Roofing** (a fictional brand) and **Luxe Tea**. Never imply they were commissioned. Never put a real company's name on them — the original carried a real Toronto roofer's identity and had to be scrubbed.
