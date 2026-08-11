@@ -90,12 +90,19 @@
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Webrivio website packages",
+        "name": "Webrivio service packages",
         "itemListElement": [
           {
             "@type": "Offer",
             "name": "Foundation",
-            "description": "A focused custom site: up to 3 pages, mobile-first build, contact form, basic SEO structure, 2 rounds of revisions, and a 30-day post-launch warranty. This is the $499 starting point.",
+            "description": "Smaller jobs on a site you already have: adding a page, refreshing copy and photos, and small design fixes, built to match your current site. 2 rounds of revisions and a 30-day warranty. Quoted on the job.",
+            "url": "https://webrivio.com/contact",
+            "availability": "https://schema.org/InStock"
+          },
+          {
+            "@type": "Offer",
+            "name": "Flagship",
+            "description": "The $499 build: 5 custom pages, conversion architecture, mobile-first build, local SEO foundation, lead capture and booking flow, 2 rounds of revisions, 30-day warranty.",
             "url": "https://webrivio.com/contact",
             "availability": "https://schema.org/InStock",
             "priceSpecification": {
@@ -108,21 +115,8 @@
           },
           {
             "@type": "Offer",
-            "name": "Flagship",
-            "description": "5 custom pages, conversion architecture, mobile-first build, local SEO foundation, lead capture and booking flow, 2 rounds of revisions, 30-day warranty. Quoted on scope, above the $499 starting price.",
-            "url": "https://webrivio.com/contact",
-            "availability": "https://schema.org/InStock",
-            "priceSpecification": {
-              "@type": "PriceSpecification",
-              "minPrice": 499,
-              "priceCurrency": "CAD",
-              "valueAddedTaxIncluded": false
-            }
-          },
-          {
-            "@type": "Offer",
             "name": "Flagship+",
-            "description": "Everything in Flagship plus brand refinement, copywriting for all pages, on-site content photography, and 3 months of hosting and care. Quoted on scope, above the $499 starting price.",
+            "description": "Everything in Flagship plus brand refinement, copywriting for all pages, on-site content photography, 3 months of hosting and care, priority support, and a launch strategy session. Quoted on scope, from $499.",
             "url": "https://webrivio.com/contact",
             "availability": "https://schema.org/InStock",
             "priceSpecification": {
@@ -403,36 +397,35 @@
       Three ways to <span class="it">start</span>.
     </h2>
     <p class="lede reveal" style="max-width: 56ch; margin-bottom: 48px; color: var(--mute);">
-      Foundation is the $499 starting point. Flagship and Flagship+ are bigger builds — we quote them on the scope you actually need, using the list above, before a single hour is billed.
+      Flagship is the $499 build — the full five-page site most businesses come for. Foundation is for smaller jobs on a site you already have, and Flagship+ goes further; both are quoted on the scope you actually need, using the list above, before a single hour is billed.
     </p>
 
     <div class="pkg-grid">
       <div class="pkg reveal">
-        <span class="tiny-mono" style="color: var(--accent-glow);">— The starting point</span>
+        <span class="tiny-mono" style="color: var(--accent-glow);">— For existing sites</span>
         <h3 class="pkg-name"><em>Foundation</em></h3>
-        <div class="pkg-price">$499<span class="s">CAD</span></div>
-        <p style="color: var(--mute); font-size: 14px;">For a business that needs a modern, professional site — live this week, not this quarter.</p>
+        <div class="pkg-price">Quoted<span class="s">on the job</span></div>
+        <p style="color: var(--mute); font-size: 14px;">For a site you already have — a new page added, a stale one refreshed, small fixes done properly. Need a full site? That's Flagship.</p>
         <ul class="pkg-list">
-          <li>Up to 3 custom pages</li>
-          <li>Mobile-first build</li>
-          <li>Contact form &amp; Google Maps</li>
-          <li>Basic SEO structure</li>
+          <li>Add a page to your existing site</li>
+          <li>Copy, photo &amp; pricing updates</li>
+          <li>Small design and layout fixes</li>
+          <li>Built to match your current design</li>
           <li>2 rounds of revisions</li>
           <li>30-day warranty</li>
-          <li class="muted">Multi-page services section</li>
-          <li class="muted">Booking / quote flow</li>
+          <li class="muted">Full site build</li>
         </ul>
         <a class="btn btn-ghost" href="/contact">
-          <span>Start at $499</span>
+          <span>Get a quick quote</span>
           <svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg>
         </a>
       </div>
 
       <div class="pkg feature reveal">
         <svg class="pkg-outline" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="100%" height="100%" rx="22" ry="22" pathLength="1"/></svg>
-        <span class="tiny-mono" style="color: var(--cyan);">— Most complete</span>
+        <span class="tiny-mono" style="color: var(--cyan);">— The $499 build</span>
         <h3 class="pkg-name"><em>Flagship</em></h3>
-        <div class="pkg-price">Quoted<span class="s">from $499</span></div>
+        <div class="pkg-price">$499<span class="s">CAD</span></div>
         <p style="color: var(--ink-soft); font-size: 14px;">A full five-page site built to convert, not just to look good in a screenshot.</p>
         <ul class="pkg-list">
           <li>5 custom pages</li>
@@ -444,7 +437,7 @@
           <li>30-day warranty</li>
         </ul>
         <a class="btn btn-primary" href="/contact">
-          <span>Get a fixed quote</span>
+          <span>Start at $499</span>
           <svg class="arrow" viewBox="0 0 18 10" fill="none" aria-hidden="true"><path d="M1 5h16m-5-4 5 4-5 4" stroke="currentColor" stroke-width="1.4"/></svg>
         </a>
       </div>
@@ -471,7 +464,7 @@
     </div>
 
     <p class="tiny-mono reveal" style="margin-top: 32px; color: var(--mute-2);">
-      * Photography is shot across Toronto and the GTA. Travel outside the GTA is invoiced separately. Every build includes 2 rounds of revisions — the same policy on all three tiers.
+      * Photography is shot across Toronto and the GTA. Travel outside the GTA is invoiced separately. 2 rounds of revisions come standard — the same policy on all three packages.
     </p>
   </div>
 </section>
