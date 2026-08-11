@@ -1650,6 +1650,15 @@ html:not(.js) .bullet-check svg rect, html:not(.js) .bullet-check svg path { str
   color: var(--ink);
   padding-block: 12px; /* >=44px hit area (DEF-05) */
 }
+.faq-list summary h3 {
+  /* Questions are real <h3>s for the document outline, but keep the shared
+     summary look (serif italic) — mirrors .guide-prose variant in guide.css. */
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  margin: 0;
+  display: inline;
+}
 .faq-list details p {
   color: var(--mute);
   font-size: 15px;

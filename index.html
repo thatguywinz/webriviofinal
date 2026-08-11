@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-CA">
 <head>
 <meta charset="utf-8" />
 <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('wv-pt')){sessionStorage.removeItem('wv-pt');document.documentElement.classList.add('pt-enter');}}catch(e){}</script>
@@ -45,7 +45,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
 <link rel="stylesheet" href="/assets/styles.css" />
 <link rel="stylesheet" href="/assets/enhance.css" />
 
@@ -344,7 +345,7 @@
           <div class="proof-screen">
             <picture>
               <source srcset="/assets/work/northline-scroll.webp" type="image/webp" />
-              <img class="proof-scroll-img" src="/assets/work/northline-scroll.jpg" alt="A concept build for a Toronto roofing company, shown scrolling live" width="1024" height="2914" loading="lazy" />
+              <img class="proof-scroll-img" src="/assets/work/northline-scroll.jpg" alt="A concept build for a Toronto roofing company, shown scrolling live" width="1024" height="2914" loading="lazy" decoding="async" />
             </picture>
           </div>
           <span class="proof-live-tag"><span class="live-dot" aria-hidden="true"></span> Concept build · live</span>
@@ -352,7 +353,7 @@
         <div class="proof-phone">
           <picture>
             <source srcset="/assets/work/northline-phone.webp" type="image/webp" />
-            <img src="/assets/work/northline-phone.jpg" alt="The same roofing concept build on a phone — a legible mobile layout" width="390" height="844" loading="lazy" />
+            <img src="/assets/work/northline-phone.jpg" alt="The same roofing concept build on a phone — a legible mobile layout" width="390" height="844" loading="lazy" decoding="async" />
           </picture>
         </div>
       </div>
@@ -376,7 +377,7 @@
           <div class="proof-screen">
             <picture>
               <source srcset="/assets/work/roofing-muskoka-scroll.webp" type="image/webp" />
-              <img class="proof-scroll-img" src="/assets/work/roofing-muskoka-scroll.jpg" alt="A client rebuild for a Muskoka roofing company, shown scrolling live" width="1024" height="2914" loading="lazy" />
+              <img class="proof-scroll-img" src="/assets/work/roofing-muskoka-scroll.jpg" alt="A client rebuild for a Muskoka roofing company, shown scrolling live" width="1024" height="2914" loading="lazy" decoding="async" />
             </picture>
           </div>
           <span class="proof-live-tag"><span class="live-dot" aria-hidden="true"></span> Client rebuild</span>
@@ -384,7 +385,7 @@
         <div class="proof-phone">
           <picture>
             <source srcset="/assets/work/roofing-muskoka-phone.webp" type="image/webp" />
-            <img src="/assets/work/roofing-muskoka-phone.jpg" alt="The same roofing client rebuild on a phone — a legible mobile layout" width="390" height="844" loading="lazy" />
+            <img src="/assets/work/roofing-muskoka-phone.jpg" alt="The same roofing client rebuild on a phone — a legible mobile layout" width="390" height="844" loading="lazy" decoding="async" />
           </picture>
         </div>
       </div>
@@ -493,6 +494,7 @@
             </div>
           </div>
         </div>
+        <p class="reveal" style="margin-top: 32px; color: var(--mute);">Want the actual numbers behind this? Read <a href="/website-cost-toronto" style="color: var(--accent-glow);">what a website really costs in Toronto</a>.</p>
       </div>
     </div>
   </div>

@@ -81,9 +81,10 @@ for page in PAGES:
     text = strip_tags(src).lower()
     for phrase in ("trusted by", "our clients say", "5-star", "five-star", "rated 5"):
         if phrase in text:
-            warn(page, f'copy contains "{phrase}" — Webrivio has no clients yet. Is this true?')
+            warn(page, f'copy contains "{phrase}" — testimonials/social proof are prohibited on-site '
+                       "(reviews live on the GBP). Is this true and owner-approved?")
     if re.search(r"\b\d+\+?\s+(happy\s+)?(clients|customers|businesses)\s+served", text):
-        err(page, "claims a client count — Webrivio has no clients yet")
+        err(page, "claims a client count — client counts are never published on-site")
 
     # ---- 4. the 48-hour promise always carries its condition ---------------------
     if "48 hour" in text or "48-hour" in text:

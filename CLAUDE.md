@@ -70,6 +70,7 @@ Editing wording is fine. **But several strings exist in TWO places** — the vis
 - Skip heading levels (`h2` → `h4`). The footer columns are `<h2>` for exactly this reason.
 - Ship an `<img>` without `alt`.
 - Add `<meta name="keywords">` (obsolete; hands competitors your target list).
+- **Overwrite an `/assets` image in place.** Images ship with a 1-year `immutable` cache (`vercel.json`) — returning visitors would keep the stale file for up to a year. To replace one (e.g. swapping a case-studies screenshot after a client site launches), save it under a new name (`…-v2.jpg`) and update the references.
 - **Commit anything internal to the deploy.** `Repository info.md` was once publicly served at `webrivio.com/Repository%20info.md` — 30KB of internal notes, indexable. `.vercelignore` now keeps `tools/`, `*.md`, and the audit dir out of the deployment. Keep it that way.
 
 ---
