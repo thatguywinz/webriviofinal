@@ -49,7 +49,7 @@
 <link rel="stylesheet" href="/assets/styles.css" />
 <link rel="stylesheet" href="/assets/enhance.css" />
 
-<!-- Page-local CSS: the rebuild sliders, the concept strip, and small fit-and-finish.
+<!-- Page-local CSS: the rebuild sliders and small fit-and-finish.
      Everything else reuses the proof/FAQ/CTA systems from styles.css + enhance.css. -->
 <style>
   /* ---- (01) before/after rebuild rows ---- */
@@ -72,17 +72,6 @@
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em;
     color: var(--mute);
   }
-  /* ---- (03) concept strip ---- */
-  .concept-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: clamp(24px, 3.5vw, 48px);
-    margin-top: 12px;
-  }
-  .concept-card .proof-browser { margin-bottom: 20px; }
-  /* concept cards borrow .proof-info typography at a half-width-friendly size */
-  .concept-card .proof-info h3 { font-size: clamp(24px, 2.4vw, 34px); margin: 12px 0 8px; }
-  .concept-card .proof-info p { font-size: 15px; }
   /* ---- honesty line under the page head ---- */
   .head-honesty {
     margin-top: 22px; max-width: 68ch;
@@ -91,7 +80,6 @@
   @media (max-width: 960px) {
     .case-ba { grid-template-columns: 1fr; }
     .case-ba.flip .case-ba-media { order: 0; }
-    .concept-grid { grid-template-columns: 1fr; }
   }
 </style>
 
@@ -131,7 +119,7 @@
           "name": "Are these real client projects?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Two are — the builds marked Client: one live for a salon in BC, one rebuild nearing launch for a roofing firm. The rest are demo builds — complete, working websites we designed around real local businesses on our own initiative, to show the standard we ship at — and concept builds on fictional or concept brands. Either way, we don't name a business here without the owner's permission."
+            "text": "Two are — the builds marked Client: one live for a salon in BC, one rebuild nearing launch for a roofing firm. The rest are demo builds — complete, working websites we designed around real local businesses on our own initiative, to show the standard we ship at. Either way, we don't name a business here without the owner's permission."
           }
         },
         {
@@ -203,13 +191,13 @@
   <div class="hero-orb" style="left:-14%; right:auto; top:18%;" data-parallax="0.12" aria-hidden="true"></div>
   <span class="eyebrow">Case studies · Proof, not promises</span>
   <h1 class="reveal-mask"><span>The work,<br/><em class="it">up close.</em></span></h1>
-  <p class="lede reveal">Eight full builds, captured exactly as they ship. Two are before-and-afters. Four replaced no website at all. Every screen on this page is a site we actually designed and built.</p>
-  <p class="tiny-mono head-honesty reveal">Every card is labelled for what it is: client builds we were hired to ship, demos we designed on our own initiative around real businesses, and concept brands. We never publish a business's name without its owner's permission.</p>
+  <p class="lede reveal">Five full builds, captured exactly as they ship. Two are before-and-afters. Three replaced no website at all. Every screen on this page is a site we actually designed and built.</p>
+  <p class="tiny-mono head-honesty reveal">Every card is labelled for what it is: client builds we were hired to ship, and demos we designed on our own initiative around real businesses. We never publish a business's name without its owner's permission.</p>
 
   <div class="page-head-meta">
-    <div><span class="tiny-mono">Builds on this page</span><span class="v">08</span></div>
+    <div><span class="tiny-mono">Builds on this page</span><span class="v">05</span></div>
     <div><span class="tiny-mono">Before &amp; afters</span><span class="v">02</span></div>
-    <div><span class="tiny-mono">Built from zero</span><span class="v">04</span></div>
+    <div><span class="tiny-mono">Built from zero</span><span class="v">03</span></div>
     <div><span class="tiny-mono">Every build</span><span class="v">From $499</span></div>
   </div>
 </header>
@@ -310,47 +298,15 @@
     </div>
 
     <h2 class="display reveal" id="demos-title" style="max-width: 22ch; margin-bottom: 18px;">
-      Four niches, four <span class="it">signatures</span>.
+      Three niches, three <span class="it">signatures</span>.
     </h2>
     <p class="lede reveal" style="max-width: 54ch;">
       None of these businesses had a website — just booking links, map pins and camera rolls. Each build is designed from the business's real material — its photography, its menu, its room — because the same design twice isn't custom.
     </p>
 
-    <!-- Demo 01 — Hamilton nail studio -->
+    <!-- Build 01 — North York café -->
     <article class="proof reveal">
       <div class="proof-devices" data-cursor="build 01">
-        <div class="proof-browser">
-          <div class="proof-bar"><i></i><i></i><i></i><span class="url">nailstudio.demo</span></div>
-          <div class="proof-screen">
-            <picture>
-              <source srcset="/assets/work/nailstudio-scroll.webp" type="image/webp" />
-              <img class="proof-scroll-img" src="/assets/work/nailstudio-scroll.jpg" alt="Demo build for a Hamilton nail studio — the full home page, shown scrolling live" width="1024" height="2914" loading="lazy" />
-            </picture>
-          </div>
-          <span class="proof-live-tag"><span class="live-dot" aria-hidden="true"></span> Demo build · live</span>
-        </div>
-        <div class="proof-phone">
-          <picture>
-            <source srcset="/assets/work/nailstudio-phone.webp" type="image/webp" />
-            <img src="/assets/work/nailstudio-phone.jpg" alt="The same nail-studio demo on a phone" width="390" height="844" loading="lazy" />
-          </picture>
-        </div>
-      </div>
-      <div class="proof-info">
-        <span class="work-tag">Demo build · Nail studio · Hamilton · No website before</span>
-        <h3>Fine work, <span class="it">close up</span>.</h3>
-        <p>A salon doing hand-painted nail art had no website. Just a booking link and a camera roll full of proof. The demo treats that proof like jewellery: macro photography in almond-arch frames, gold hairlines on ivory, a gallery that scrolls sideways like a wall of art.</p>
-        <ul class="proof-points">
-          <li>Almond-arch image masks shaped like the work itself</li>
-          <li>A pinned horizontal art wall, scrubbed by scroll</li>
-          <li>Booking within reach at every depth of the page</li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- Demo 02 — North York café -->
-    <article class="proof flip reveal">
-      <div class="proof-devices" data-cursor="build 02">
         <div class="proof-browser">
           <div class="proof-bar"><i></i><i></i><i></i><span class="url">espressobar.demo</span></div>
           <div class="proof-screen">
@@ -380,9 +336,9 @@
       </div>
     </article>
 
-    <!-- Build 03 — BC interior hair salon (live client build) -->
-    <article class="proof reveal">
-      <div class="proof-devices" data-cursor="build 03">
+    <!-- Build 02 — BC interior hair salon (live client build) -->
+    <article class="proof flip reveal">
+      <div class="proof-devices" data-cursor="build 02">
         <div class="proof-browser">
           <div class="proof-bar"><i></i><i></i><i></i><span class="url">live · launched aug 2026</span></div>
           <div class="proof-screen">
@@ -412,9 +368,9 @@
       </div>
     </article>
 
-    <!-- Demo 04 — Alberta market kitchen -->
-    <article class="proof flip reveal">
-      <div class="proof-devices" data-cursor="build 04">
+    <!-- Build 03 — Alberta market kitchen -->
+    <article class="proof reveal">
+      <div class="proof-devices" data-cursor="build 03">
         <div class="proof-browser">
           <div class="proof-bar"><i></i><i></i><i></i><span class="url">noodlestall.demo</span></div>
           <div class="proof-screen">
@@ -446,63 +402,10 @@
   </div>
 </section>
 
-<!-- ============================ 03 · WHERE IT STARTED ============================ -->
-<section class="section-pad tight" id="concepts" data-atm="0.25" aria-labelledby="concepts-title">
-  <div class="container">
-    <div class="section-label">
-      <span class="num">(03)</span>
-      <span class="kind">Where it started</span>
-    </div>
-
-    <h2 class="display reveal" id="concepts-title" style="max-width: 22ch; margin-bottom: 18px;">
-      The concept <span class="it">builds</span>.
-    </h2>
-    <p class="lede reveal" style="max-width: 54ch; margin-bottom: 48px;">
-      Before the demos there were two concept builds — a fictional roofing crew and a Midtown tea shop — made to prove the studio's standard with no client attached. They still hold up.
-    </p>
-
-    <div class="concept-grid">
-      <article class="concept-card reveal">
-        <div class="proof-browser">
-          <div class="proof-bar"><i></i><i></i><i></i><span class="url">northlineroofing.demo</span></div>
-          <div class="proof-screen">
-            <picture>
-              <source srcset="/assets/work/northline-scroll.webp" type="image/webp" />
-              <img class="proof-scroll-img" src="/assets/work/northline-scroll.jpg" alt="Concept build for a fictional Toronto roofing company, shown scrolling live" width="1024" height="2914" loading="lazy" />
-            </picture>
-          </div>
-        </div>
-        <div class="proof-info">
-          <span class="work-tag">Concept build · Roofing · Fictional brand</span>
-          <h3>The obvious local <span class="it">choice</span>.</h3>
-          <p>How we'd rebuild a referral-only roofer into the obvious local choice — homeowner language, crew-first photography, and a quote path that never leaves the screen.</p>
-        </div>
-      </article>
-
-      <article class="concept-card reveal">
-        <div class="proof-browser">
-          <div class="proof-bar"><i></i><i></i><i></i><span class="url">luxetea.demo</span></div>
-          <div class="proof-screen">
-            <picture>
-              <source srcset="/assets/work/luxe-scroll.webp" type="image/webp" />
-              <img class="proof-scroll-img" src="/assets/work/luxe-scroll.jpg" alt="Concept build for a Toronto tea shop, shown scrolling live" width="1024" height="2914" loading="lazy" />
-            </picture>
-          </div>
-        </div>
-        <div class="proof-info">
-          <span class="work-tag">Concept build · Tea &amp; coffee · Toronto</span>
-          <h3>Leads with <span class="it">appetite</span>.</h3>
-          <p>How we'd give a Midtown tea shop an appetite-first storefront — menu photographed and honestly priced, with the details people actually ask about pinned to the page.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ 04 · FAQ ============================ -->
+<!-- ============================ 03 · FAQ ============================ -->
 <section class="container faq-section section-pad tight" aria-labelledby="faq-title">
   <div class="section-label">
-    <span class="num">(04)</span>
+    <span class="num">(03)</span>
     <span class="kind">Straight answers</span>
   </div>
   <div class="faq-grid">
@@ -512,7 +415,7 @@
     <div class="faq-list reveal">
       <details>
         <summary>Are these real client projects?</summary>
-        <p>Two are — the builds marked Client: one live for a salon in BC, one rebuild nearing launch for a roofing firm. The rest are demo builds — complete, working websites we designed around real local businesses on our own initiative, to show the standard we ship at — and concept builds on fictional or concept brands. Either way, we don't name a business here without the owner's permission.</p>
+        <p>Two are — the builds marked Client: one live for a salon in BC, one rebuild nearing launch for a roofing firm. The rest are demo builds — complete, working websites we designed around real local businesses on our own initiative, to show the standard we ship at. Either way, we don't name a business here without the owner's permission.</p>
       </details>
       <details>
         <summary>Why don't you name the businesses in the demos?</summary>
