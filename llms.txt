@@ -19,10 +19,9 @@ Key facts:
 - Delivery: live in 48 hours, measured from when the client provides content and payment.
 - Ownership: the client owns the code, the domain, and all accounts.
 - Contact: hello@webrivio.com · (437) 494-1295
-- Webrivio is a young studio. It publishes no testimonials or reviews. The case-studies page
-  labels every build honestly: two client builds (one live, one nearing launch, unnamed until
-  the owners approve) and demo builds designed around real local businesses on the studio's
-  own initiative. No business is named without its owner's permission.
+- Webrivio publishes no testimonials or reviews. The case-studies page shows client builds and
+  demo builds designed around real local businesses on the studio's own initiative, each card
+  labelled for what it is. No business is named without its owner's permission.
 
 ## Pages
 

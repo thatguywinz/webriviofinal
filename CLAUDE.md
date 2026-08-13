@@ -70,6 +70,7 @@ Editing wording is fine. **But several strings exist in TWO places** — the vis
 - **Price language:** "from $499" or "$499", never "flat $499" or "flat, scope-dependent" (they contradict). The formula: *from $499, a fixed number agreed before we start.*
 - **The funnel promise, identical everywhere:** form reply within one business day → free 15-20 minute fit call → price in writing at the call. Never "demo" for the first call, never a price promised in the email reply.
 - **en-CA:** inquiry (not enquiry), postal codes (not postcodes); colour/neighbourhood/centre stay Canadian.
+- **Evergreen only (owner directive, 2026-08-13):** never state the studio's age ("new", "young", "still earning"), build counts ("five builds", "two clients so far"), or launch status ("nearing launch") anywhere — pages, metas, schema, or llms.txt. The site must not need editing as the studio grows. The quiet card labels (Client build / Demo build / Concept build) and the Northline fictional-brand note are the honesty mechanism and **stay** — they satisfy the never-imply-commissioned rule above without dating the site. The work-page FAQ asks normal customer questions, not meta questions about the portfolio.
 
 ## Never do these
 
