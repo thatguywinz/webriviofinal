@@ -78,7 +78,7 @@
     const v = f.value.trim();
     if (!v) { showErr(step, f.dataset.err || 'This one’s required.'); f.focus(); return false; }
     if (f.type === 'email' && !f.checkValidity()) {
-      showErr(step, 'That email looks off — mind checking it?'); f.focus(); return false;
+      showErr(step, 'That email looks off. Mind checking it?'); f.focus(); return false;
     }
     clearErr(step);
     return true;
@@ -189,7 +189,7 @@
       const gi = stepEl ? steps.indexOf(stepEl) : -1;
       return '<div class="q-review-row">' +
         '<span class="k">' + label + '</span>' +
-        '<span class="v' + (val ? '' : ' empty') + '">' + (val ? escapeHtml(val) : '—') + '</span>' +
+        '<span class="v' + (val ? '' : ' empty') + '">' + (val ? escapeHtml(val) : '·') + '</span>' +
         (gi >= 0 ? '<button type="button" class="edit" data-goto="' + gi + '">Edit</button>' : '') +
         '</div>';
     }).join('');
@@ -229,7 +229,7 @@
       done();
     } catch (err) {
       if (btn) { btn.disabled = false; btn.style.opacity = '1'; setLabel(btn, 'Send inquiry'); }
-      setStatus('Couldn’t send right now. Email hello@webrivio.com — we’ll get straight back to you.', 'err');
+      setStatus('Couldn’t send right now. Email hello@webrivio.com and we’ll get straight back to you.', 'err');
     }
   });
 })();

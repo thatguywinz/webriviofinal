@@ -1,8 +1,8 @@
 # Webrivio
 
-> Webrivio is a web design studio in Toronto, Ontario that builds custom, high-converting
-> websites for small businesses. Websites start at $499 CAD and go live in 48 hours once the
-> client provides their content and payment. Clients own their code outright.
+> Webrivio is a web design studio in Toronto, Ontario that builds custom websites for small
+> businesses. Websites start at $499 CAD and go live in 48 hours once the client provides their
+> content and payment. Clients own their code outright.
 
 Webrivio was founded by Rudra Garg (Founder & Designer) and Ayzah Ashraf (Co-founder, Client
 Relations & Outreach) after they won a competition and were accepted into Summer Company, a
@@ -11,27 +11,29 @@ because small businesses were routinely being overcharged by web designers and g
 little in return. That is why the price is $499 and why it is published openly.
 
 Key facts:
-- Location: Toronto, Ontario, Canada. Service-area business — serves Toronto and the GTA
+- Location: Toronto, Ontario, Canada. Service-area business serving Toronto and the GTA
   (North York, Scarborough, Etobicoke, Mississauga, Brampton, Markham, Vaughan, Richmond Hill).
-- Price: from $499 CAD. Flat, scope-dependent.
+- Price: from $499 CAD. The Flagship package (a five-page custom site) is $499. Smaller jobs on
+  existing sites (Foundation) and larger builds (Flagship+) are quoted on scope, in writing,
+  before work starts.
 - Delivery: live in 48 hours, measured from when the client provides content and payment.
 - Ownership: the client owns the code, the domain, and all accounts.
 - Contact: hello@webrivio.com · (437) 494-1295
 - Webrivio is a young studio. It publishes no testimonials or reviews. The case-studies page
-  labels every build honestly: two client builds (one live, one nearing launch — unnamed until
+  labels every build honestly: two client builds (one live, one nearing launch, unnamed until
   the owners approve) and demo builds designed around real local businesses on the studio's
   own initiative. No business is named without its owner's permission.
 
 ## Pages
 
 - [Home](https://webrivio.com/): What Webrivio is, two featured builds, and how the studio works.
-- [Case Studies](https://webrivio.com/case-studies): Before-and-after rebuilds, client builds, and demo builds for real local businesses — with honest labels on every card.
+- [Case Studies](https://webrivio.com/case-studies): Before-and-after rebuilds, client builds, and demo builds for real local businesses, with honest labels on every card.
 - [Services & Pricing](https://webrivio.com/services): What is included, what a website costs, and what moves the price.
-- [What a Website Costs in Toronto](https://webrivio.com/website-cost-toronto): An honest guide to Toronto web design pricing across DIY builders, freelancers, and agencies — and where Webrivio sits.
+- [What a Website Costs in Toronto](https://webrivio.com/website-cost-toronto): An honest guide to Toronto web design pricing across DIY builders, freelancers, and agencies, and where Webrivio sits.
 - [Roofing Website Design in Toronto](https://webrivio.com/roofing-website-design-toronto): Websites built for Toronto roofing contractors, including a concept build.
 - [Process](https://webrivio.com/process): How a website goes live in 48 hours, step by step.
 - [About](https://webrivio.com/about): Rudra Garg and Ayzah Ashraf, the Summer Company grant, and why the studio exists.
-- [Contact](https://webrivio.com/contact): Project enquiry form and frequently asked questions.
+- [Contact](https://webrivio.com/contact): Project inquiry form and frequently asked questions.
 
 ## Optional
 

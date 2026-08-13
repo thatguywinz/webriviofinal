@@ -1,7 +1,7 @@
 {
-  "name": "Webrivio — Web Design Studio in Toronto",
+  "name": "Webrivio",
   "short_name": "Webrivio",
-  "description": "Custom websites for Toronto small businesses. From $499, live in 48 hours.",
+  "description": "Custom websites for Toronto small businesses from $499, live in 48 hours once your content and payment are in.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#050B18",

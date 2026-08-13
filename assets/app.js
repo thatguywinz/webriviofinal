@@ -215,7 +215,7 @@
 
       // Honeypot: if filled, silently succeed (spam bot)
       const honey = form.querySelector('input[name="_honey"]');
-      if (honey && honey.value) { setStatus('Thanks — we\'ll be in touch shortly.', 'ok'); form.reset(); return; }
+      if (honey && honey.value) { setStatus('Thanks, we\'ll be in touch shortly.', 'ok'); form.reset(); return; }
 
       // HTML5 validation
       if (!form.checkValidity()) {
@@ -246,7 +246,7 @@
         } catch (_) { /* non-JSON ok */ }
         if (!ok) throw new Error('Submission rejected');
 
-        if (label) label.textContent = 'Sent — we\'ll be in touch';
+        if (label) label.textContent = 'Sent. We\'ll be in touch.';
         showSuccess();
         form.reset();
         form.querySelectorAll('.chip.active').forEach(c => c.classList.remove('active'));
@@ -258,7 +258,7 @@
       } catch (err) {
         if (label) label.textContent = orig;
         if (btn) { btn.disabled = false; btn.style.opacity = 1; }
-        setStatus('Couldn\'t send right now. Email us at hello@webrivio.com — we\'ll get straight back to you.', 'err');
+        setStatus('Couldn\'t send right now. Email us at hello@webrivio.com and we\'ll get straight back to you.', 'err');
       }
     });
   }

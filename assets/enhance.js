@@ -267,11 +267,11 @@
   /* ---------------- sticky mobile CTA reveal ---------------- */
   const mcta = document.querySelector('.mobile-cta');
   if (mcta) {
+    mcta.classList.add('js-managed');
     const hero = document.querySelector('.hero') || document.querySelector('.page-head');
     const threshold = () => (hero ? hero.offsetHeight * 0.7 : 600);
     const onScroll = () => {
-      const nearBottom = window.innerHeight + window.scrollY > document.body.offsetHeight - 220;
-      if (window.scrollY > threshold() && !nearBottom) mcta.classList.add('show');
+      if (window.scrollY > threshold()) mcta.classList.add('show');
       else mcta.classList.remove('show');
     };
     window.addEventListener('scroll', onScroll, { passive: true });

@@ -179,10 +179,11 @@ html:not(.js) .sig-underline .u path {
   border: 1px solid var(--border-strong);
   border-radius: 999px;
   box-shadow: 0 20px 50px -16px rgba(0,0,0,0.7);
-  transform: translateY(140%);
+  transform: none; /* visible by default: the call bar must not depend on JS */
   transition: transform .6s var(--ease-out);
 }
-.mobile-cta.show { transform: translateY(0); }
+.mobile-cta.js-managed { transform: translateY(140%); }
+.mobile-cta.js-managed.show { transform: translateY(0); }
 .mobile-cta a {
   flex: 1;
   display: inline-flex;

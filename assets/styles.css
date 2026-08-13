@@ -371,6 +371,17 @@ h3.display { font-size: clamp(32px, 4.2vw, 64px); }
   letter-spacing: 0.2em;
   color: var(--mute);
 }
+.nav-drawer .drawer-meta a {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-style: normal;
+  letter-spacing: 0.2em;
+  color: var(--mute);
+  display: inline;
+  padding: 0;
+}
+.nav-drawer .drawer-meta a:hover,
+.nav-drawer .drawer-meta a:focus-visible { color: var(--accent-glow); transform: none; }
 .nav-links {
   display: flex;
   gap: 28px;

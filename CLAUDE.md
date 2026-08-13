@@ -63,6 +63,14 @@ Editing wording is fine. **But several strings exist in TWO places** — the vis
 
 `tools/seo-check.py` catches all of these. Run it.
 
+## Copy register (locked in, Aug 2026 humanization pass)
+
+- **No em dashes in any rendered string.** That means visible copy, `<title>`s, meta/OG/alt attributes, JSON-LD, `llms.txt`, `site.webmanifest`, and the user-facing strings in `app.js`/`contact.js`. Use a period, comma, colon, or `·`. HTML/CSS/JS *comments* are exempt.
+- **Titles:** one clean line, ≤60 chars, no em dash (Google was wrapping the old ones). **Descriptions:** 120–155 chars, written as the business speaking (we/you), never "Webrivio is a…".
+- **Price language:** "from $499" or "$499", never "flat $499" or "flat, scope-dependent" (they contradict). The formula: *from $499, a fixed number agreed before we start.*
+- **The funnel promise, identical everywhere:** form reply within one business day → free 15-20 minute fit call → price in writing at the call. Never "demo" for the first call, never a price promised in the email reply.
+- **en-CA:** inquiry (not enquiry), postal codes (not postcodes); colour/neighbourhood/centre stay Canadian.
+
 ## Never do these
 
 - **Change a page's URL/slug.** It destroys the indexing that was earned. If you truly must, add a 301 in `vercel.json`.
