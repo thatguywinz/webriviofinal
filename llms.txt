@@ -19,15 +19,27 @@ Key facts:
 - Delivery: live in 48 hours, measured from when the client provides content and payment.
 - Ownership: the client owns the code, the domain, and all accounts.
 - Contact: hello@webrivio.com · (437) 494-1295
-- Webrivio publishes no testimonials or reviews. The case-studies page shows client
+- Webrivio publishes no testimonials or reviews. The home page and case-studies page show client
   builds (new sites and rebuilds of an existing site) for businesses including a Toronto law firm,
   a Muskoka roofing company, a Waterloo Region cleaning company, a hypnotist, a training charity,
   a home services company, a hair salon and a food bank. Each card is labelled for what it is. No
   business is named without its owner's permission.
 
+## Quick answers
+
+- How much does a website cost with Webrivio? From $499 CAD, a fixed number agreed in writing on a
+  free 15-20 minute call, before any work starts.
+- How fast is it live? 48 hours from the moment the client's content and payment are both in.
+- Who owns the website? The client: the code, the domain and every account.
+- What happens after an inquiry? A reply within one business day, then a free 15-20 minute fit
+  call where the price is put in writing.
+- Does Webrivio rebuild existing websites? Yes. The case-studies page shows before-and-after
+  rebuilds next to new builds.
+- Where does Webrivio work? Toronto and the GTA, by call and email. There is no walk-in office.
+
 ## Pages
 
-- [Home](https://webrivio.com/): What Webrivio is, two featured builds, and how the studio works.
+- [Home](https://webrivio.com/): What Webrivio is, a scroll-through showcase of client builds, and how the studio works.
 - [Case Studies](https://webrivio.com/case-studies): Before-and-after rebuilds and new client builds, with what each design decision was for.
 - [Services & Pricing](https://webrivio.com/services): What is included, what a website costs, and what moves the price.
 - [What a Website Costs in Toronto](https://webrivio.com/website-cost-toronto): An honest guide to Toronto web design pricing across DIY builders, freelancers, and agencies, and where Webrivio sits.

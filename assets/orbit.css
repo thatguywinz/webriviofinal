@@ -1,0 +1,148 @@
+/* Webrivio — "orbit" selected-work section (home).
+   Desktop + JS: the section pins, screenshot cards from every client build fly in
+   from depth, gather into a slowly turning cloud beside an index of the builds,
+   then scatter past the camera. Everything else (mobile, reduced motion, no JS)
+   gets .orbit-reel: a plain swipeable row of the same builds. */
+
+.orbit { position: relative; }
+.orbit-pin {
+  position: relative;
+  height: 100vh; height: 100svh;
+  overflow: hidden;
+}
+.orbit-stage {
+  position: absolute; inset: 0;
+  perspective: 1400px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}
+.orbit-glow {
+  position: absolute; left: 50%; top: 50%;
+  width: 70vmin; height: 70vmin; margin: -35vmin 0 0 -35vmin;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(77,126,255,0.30), rgba(77,126,255,0.08) 45%, transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+.orb-card {
+  position: absolute; left: 50%; top: 50%;
+  width: var(--w, 200px);
+  aspect-ratio: 16 / 10;
+  margin-left: calc(var(--w, 200px) / -2);
+  border-radius: 6px;
+  background: var(--surface-2) center top / 100% auto no-repeat;
+  box-shadow: 0 18px 40px -18px rgba(0,0,0,0.85);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translate3d(0, -50%, -4000px);
+  opacity: 0;
+}
+.orb-card.ph { aspect-ratio: 390 / 844; border-radius: 10px; }
+.orb-card::after {
+  /* the silhouette: cards arrive as flat navy shapes and resolve into the build */
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  background: var(--surface);
+  opacity: var(--veil, 1);
+}
+
+/* the big title, sized like the hero H1 */
+.orbit-title {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  pointer-events: none;
+  z-index: 2;
+}
+.orbit-title h2 {
+  font-family: var(--serif); font-weight: 400;
+  font-size: clamp(64px, 12vw, 210px);
+  line-height: 0.86; letter-spacing: -0.03em; text-align: center;
+  text-shadow: 0 10px 60px rgba(5,11,24,0.6);
+}
+.orbit-title h2 .it { font-style: italic; color: var(--accent-glow); }
+
+/* left index: the builds, by trade (names stay in the screenshots only) */
+.orbit-list {
+  position: absolute; z-index: 3;
+  left: calc(var(--gutter) + var(--safe-l)); top: 50%;
+  transform: translateY(-50%);
+  list-style: none;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.orbit-list a {
+  display: flex; align-items: baseline; gap: 14px;
+  font-family: var(--serif); font-size: clamp(26px, 2.7vw, 44px); line-height: 1.12; letter-spacing: -0.015em;
+  color: var(--ink);
+  opacity: 0.38;
+  transition: opacity .35s var(--ease), transform .5s var(--ease-out), color .35s var(--ease);
+}
+.orbit-list a .n { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--accent-glow); transform: translateY(-0.9em); }
+.orbit-list li.on a { opacity: 1; transform: translateX(10px); }
+.orbit-list li.on a .t { font-style: italic; color: var(--accent-glow); }
+.orbit-list a:focus-visible { outline: 2px solid var(--accent-glow); outline-offset: 4px; opacity: 1; }
+
+/* right column: where + what, lines up with the index */
+.orbit-meta {
+  position: absolute; z-index: 3;
+  right: calc(var(--gutter) + var(--safe-r)); top: 50%;
+  transform: translateY(-50%);
+  list-style: none; text-align: right;
+  display: flex; flex-direction: column; gap: 2px;
+}
+.orbit-meta li {
+  height: calc(clamp(26px, 2.7vw, 44px) * 1.12);
+  display: flex; align-items: center; justify-content: flex-end;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--mute);
+  transition: color .35s var(--ease);
+}
+.orbit-meta li.on { color: var(--ink); }
+
+.orbit-foot {
+  position: absolute; z-index: 3;
+  left: calc(var(--gutter) + var(--safe-l)); right: calc(var(--gutter) + var(--safe-r));
+  bottom: clamp(24px, 5vh, 48px);
+  display: flex; justify-content: space-between; align-items: center; gap: 20px;
+}
+.orbit-foot .tiny-mono { color: var(--mute); }
+.orbit-foot .acts { display: flex; gap: 10px; }
+
+/* JS-driven phases fade these in; with JS off they're simply visible */
+.orbit.is-live .orbit-list,
+.orbit.is-live .orbit-meta,
+.orbit.is-live .orbit-foot { opacity: 0; }
+
+/* ---------- fallback reel (mobile / reduced motion / no JS) ---------- */
+.orbit-reel { display: none; }
+.orbit:not(.is-live) .orbit-pin { height: auto; overflow: visible; padding: var(--sect-lg) 0 var(--sect-sm); }
+.orbit:not(.is-live) .orbit-stage,
+.orbit:not(.is-live) .orbit-glow,
+.orbit:not(.is-live) .orbit-meta { display: none; }
+.orbit:not(.is-live) .orbit-title { position: static; display: block; padding: 0 calc(var(--gutter) + var(--safe-l)); margin-bottom: 32px; }
+.orbit:not(.is-live) .orbit-title h2 { text-align: left; font-size: clamp(56px, 13vw, 160px); }
+.orbit:not(.is-live) .orbit-list { display: none; }
+.orbit:not(.is-live) .orbit-reel {
+  display: flex; gap: 14px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding: 4px calc(var(--gutter) + var(--safe-l)) 18px;
+  scroll-padding-inline: calc(var(--gutter) + var(--safe-l));
+  scrollbar-width: none;
+}
+.orbit-reel::-webkit-scrollbar { display: none; }
+.orbit-reel a {
+  flex: none; width: min(78vw, 420px); scroll-snap-align: start;
+  display: flex; flex-direction: column; gap: 12px; color: var(--ink);
+}
+.orbit-reel .shot {
+  aspect-ratio: 16 / 10; border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border-strong); background: var(--surface);
+}
+.orbit-reel img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.orbit-reel .cap { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.orbit-reel .cap b { font-family: var(--serif); font-weight: 400; font-size: 26px; letter-spacing: -0.01em; }
+.orbit-reel .cap span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mute); }
+.orbit:not(.is-live) .orbit-foot { position: static; padding: 18px calc(var(--gutter) + var(--safe-l)) 0; flex-wrap: wrap; }
+
+@media (max-width: 767px) {
+  .orbit:not(.is-live) .orbit-foot .acts { width: 100%; flex-direction: column; }
+}
