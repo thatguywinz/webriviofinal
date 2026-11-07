@@ -19,7 +19,7 @@ Key facts:
 - Delivery: live in 48 hours, measured from when the client provides content and payment.
 - Ownership: the client owns the code, the domain, and all accounts.
 - Contact: hello@webrivio.com · (437) 494-1295
-- Webrivio publishes no testimonials or reviews. The home page and case-studies page show client
+- Webrivio publishes no testimonials or reviews. The case-studies page shows client
   builds (new sites and rebuilds of an existing site) for businesses including a Toronto law firm,
   a Muskoka roofing company, a Waterloo Region cleaning company, a hypnotist, a training charity,
   a home services company, a hair salon and a food bank. Each card is labelled for what it is. No
@@ -27,7 +27,7 @@ Key facts:
 
 ## Pages
 
-- [Home](https://webrivio.com/): What Webrivio is, a wall of client builds, before-and-after rebuilds, and how the studio works.
+- [Home](https://webrivio.com/): What Webrivio is, two featured builds, and how the studio works.
 - [Case Studies](https://webrivio.com/case-studies): Before-and-after rebuilds and new client builds, with what each design decision was for.
 - [Services & Pricing](https://webrivio.com/services): What is included, what a website costs, and what moves the price.
 - [What a Website Costs in Toronto](https://webrivio.com/website-cost-toronto): An honest guide to Toronto web design pricing across DIY builders, freelancers, and agencies, and where Webrivio sits.
